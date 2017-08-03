@@ -1,0 +1,29 @@
+# TMDbFramework
+
+[![CI Status](http://img.shields.io/travis/saragiotto/TMDbFramework.svg?style=flat)](https://travis-ci.org/saragiotto/TMDbFramework)
+[![Version](https://img.shields.io/cocoapods/v/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
+[![License](https://img.shields.io/cocoapods/l/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
+[![Platform](https://img.shields.io/cocoapods/p/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+## Installation
+
+TMDbFramework is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "TMDbFramework"
+```
+
+## Author
+
+saragiotto, leonardo.saragiotto@gmail.com
+
+## License
+
+TMDbFramework is available under the MIT license. See the LICENSE file for more info.

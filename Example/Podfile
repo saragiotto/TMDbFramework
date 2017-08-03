@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TMDbFramework_Example' do
+  pod 'TMDbFramework', :path => '../'
+
+  target 'TMDbFramework_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
