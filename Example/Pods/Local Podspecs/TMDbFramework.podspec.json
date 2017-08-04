@@ -1,0 +1,22 @@
+{
+  "name": "TMDbFramework",
+  "version": "0.1.0",
+  "summary": "A short description of TMDbFramework.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/saragiotto/TMDbFramework",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "saragiotto": "leonardo.saragiotto@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/saragiotto/TMDbFramework.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "TMDbFramework/Classes/**/*"
+}

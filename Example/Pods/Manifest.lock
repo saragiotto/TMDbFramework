@@ -1,0 +1,27 @@
+PODS:
+  - Alamofire (4.5.0)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - SwiftyJSON (3.1.4)
+  - TMDbFramework (0.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.3)
+  - ChameleonFramework
+  - SwiftyJSON
+  - TMDbFramework (from `../`)
+
+EXTERNAL SOURCES:
+  TMDbFramework:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TMDbFramework: 94fb8981320dfe5951508d6ee944e03c37ef0056
+
+PODFILE CHECKSUM: fa52395117fe1119afd7d01841c84dc214e41ea5
+
+COCOAPODS: 1.2.1
