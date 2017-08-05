@@ -1,6 +1,7 @@
 use_frameworks!
 
 target 'TMDbFramework_Example' do
+  
   pod 'TMDbFramework', :path => '../'
   pod 'Alamofire', '~> 4.3'
   pod 'SwiftyJSON'

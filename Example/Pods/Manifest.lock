@@ -1,10 +1,28 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Alamofire (4.5.0)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
   - SwiftyJSON (3.1.4)
-  - TMDbFramework (0.1.0)
+  - TMDbFramework (0.1.0):
+    - AFNetworking
+    - ChameleonFramework
+    - SwiftyJSON
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
@@ -17,11 +35,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TMDbFramework: 94fb8981320dfe5951508d6ee944e03c37ef0056
+  TMDbFramework: 17d204c68033aa32d035dc362e3c346eed6b5187
 
-PODFILE CHECKSUM: fa52395117fe1119afd7d01841c84dc214e41ea5
+PODFILE CHECKSUM: 3ffe932146e4f079c320b1255d0ada64c8869b5b
 
 COCOAPODS: 1.2.1
