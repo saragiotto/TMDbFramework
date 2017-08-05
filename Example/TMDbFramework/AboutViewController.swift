@@ -8,6 +8,8 @@
 
 import UIKit
 import TMDbFramework
+import Alamofire
+import SwiftyJSON
 
 class AboutViewController: UIViewController {
 
@@ -23,6 +25,7 @@ class AboutViewController: UIViewController {
         
         let myNewPod = TMDb.sharedInstance
         
+        myNewPod.loadTMDbConfigurations()
         
 
         self.movieDBAttr.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.openWebsite)))

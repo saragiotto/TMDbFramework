@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class TMDbConfigurationManager {
     
-    static func loadConfiguration() {
+    internal static func loadConfiguration() {
         
         let configEndpoint = "configuration?"
         

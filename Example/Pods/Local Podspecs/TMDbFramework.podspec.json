@@ -2,7 +2,6 @@
   "name": "TMDbFramework",
   "version": "0.1.0",
   "summary": "Swift framwork to connect with themoviedb.org",
-  "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/saragiotto/TMDbFramework",
   "license": {
     "type": "MIT",
@@ -18,8 +17,7 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "TMDbFramework/Classes/**/*",
-  "public_header_files": "Pod/Classes/**/*.h",
+  "source_files": "TMDbFramework/Classes/*.swift",
   "dependencies": {
     "Alamofire": [
 

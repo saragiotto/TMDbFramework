@@ -9,13 +9,13 @@
 import Foundation
 import Alamofire
 
-final class TMDb {
+open class TMDb {
     
     public var bearerAuth: String = ""
     
     public let alamofireManager:SessionManager
     
-    static let sharedInstance: TMDb = {
+    public static let sharedInstance: TMDb = {
         let instance = TMDb()
         
         return instance
@@ -28,11 +28,15 @@ final class TMDb {
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
     }
     
-    public func buildURLWith(endpoint:String) -> String {
+    internal func buildURLWith(endpoint:String) -> String {
         
         let finalString = TMDbEnunsConsts.baseTMDbURLV3 + endpoint + "api_key=" + TMDbEnunsConsts.apiKeyV3 + "&language=en-US"
         
         return finalString
+    }
+    
+    public func loadTMDbConfigurations() {
+        TMDbConfigurationManager.loadConfiguration()
     }
     
 }
