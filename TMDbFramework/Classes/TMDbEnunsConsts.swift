@@ -8,6 +8,12 @@
 
 import Foundation
 
+public enum ListMovieType {
+    case UpComming
+    case TopRated
+    case Popular
+}
+
 class TMDbEnunsConsts {
 
     static let apiKeyV3 = "094bda1680d9981474a3647d78d554bd"
@@ -17,6 +23,5 @@ class TMDbEnunsConsts {
     static let baseTMDbURLV3 = "https://api.themoviedb.org/3/"
     
     static let moviesUpcomming = "movie/upcoming?"
-    
 
 }

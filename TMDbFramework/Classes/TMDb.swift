@@ -39,4 +39,15 @@ open class TMDb {
         TMDbConfigurationManager.loadConfiguration()
     }
     
+    public func loadMovies(listType:ListMovieType) {
+        
+        switch listType {
+        case .UpComming:
+            TMDbMovieManager.upCommingMovies()
+        case .TopRated:
+            TMDbMovieManager.topRatedMovies()
+        default:
+            return
+        }
+    }
 }
