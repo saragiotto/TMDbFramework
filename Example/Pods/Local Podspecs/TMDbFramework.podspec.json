@@ -19,8 +19,9 @@
     "ios": "8.0"
   },
   "source_files": "TMDbFramework/Classes/**/*",
+  "public_header_files": "Pod/Classes/**/*.h",
   "dependencies": {
-    "AFNetworking": [
+    "Alamofire": [
 
     ],
     "SwiftyJSON": [

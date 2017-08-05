@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TMDbFramework
 
 class AboutViewController: UIViewController {
 
@@ -19,6 +20,10 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let myNewPod = TMDb.sharedInstance
+        
+        
 
         self.movieDBAttr.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.openWebsite)))
         
