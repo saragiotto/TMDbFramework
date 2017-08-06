@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias GenreBlock = (String?) -> Void
+public typealias GenreBlock = (String?) -> Void
 
 public enum ListMovieType {
     case UpComming

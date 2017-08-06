@@ -25,8 +25,9 @@ class AboutViewController: UIViewController {
         
         let myNewPod = TMDb.sharedInstance
         
-        myNewPod.loadMovies(listType: .UpComming)
-        myNewPod.loadMovies(listType: .UpComming, page: 1000)
+        myNewPod.movieGenreFor(id: 289) { genreName in
+            print(genreName!)
+        }
 
         self.movieDBAttr.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.openWebsite)))
         

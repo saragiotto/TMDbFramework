@@ -14,17 +14,23 @@ class TMDbGenreManager {
     
     var genres: [TMDbGenre]?
     
-    internal func movieGenreBy(id: Int, completition:@escaping GenreBlock){
+    internal func movieGenreBy(_ id: Int, _ completition:@escaping GenreBlock){
         
         if (genres == nil) {
             self.loadMovieGenres(requestId:id, completition: completition)
         } else {
-            if (genres![id] == nil) {
-                completition(nil)
-            } else {
-                completition(genres![id].name)
+            completition(self.getNameBy(id))
+        }
+    }
+    
+    private func getNameBy(_ id: Int) -> String? {
+        for genre in self.genres! {
+            if (genre.id == id) {
+                return genre.name
             }
         }
+        
+        return nil
     }
     
     private func loadMovieGenres(requestId:Int, completition:@escaping GenreBlock) {
@@ -41,19 +47,14 @@ class TMDbGenreManager {
                 if let value = response.result.value {
                     let jsonValue = JSON(value).dictionary
                     
-                    if let results = jsonValue!["genres"] {
+                    if let results = jsonValue!["genres"]!.array {
                         self.genres = []
                         
                         for genre in results {
-                            self.genres!.append(TMDbGenre(data: JSON(genre)))
+                            self.genres!.append(TMDbGenre(data: genre))
                         }
                         
-                        
-                        if (self.genres![requestId] == nil) {
-                            completition(nil)
-                        } else {
-                            completition(self.genres![requestId].name)
-                        }
+                        completition(self.getNameBy(requestId))
                     }
                 }
             case .failure(let error):

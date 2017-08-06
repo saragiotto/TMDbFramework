@@ -15,6 +15,8 @@ open class TMDb {
     
     public let alamofireManager:SessionManager
     
+    private var genreManager:TMDbGenreManager?
+    
     public static let sharedInstance: TMDb = {
         let instance = TMDb()
         
@@ -47,7 +49,12 @@ open class TMDb {
         }
     }
     
-    public func movieGenreFor(id:Int, completition:GenreBlock) {
+    public func movieGenreFor(id:Int, completition:@escaping GenreBlock) {
         
+        if (self.genreManager == nil) {
+            self.genreManager = TMDbGenreManager()
+        }
+        
+        self.genreManager?.movieGenreBy(id, completition)
     }
 }
