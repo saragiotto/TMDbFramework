@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias GenreBlock = (String?) -> Void
+
 public enum ListMovieType {
     case UpComming
     case TopRated

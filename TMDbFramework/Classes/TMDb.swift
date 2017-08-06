@@ -35,19 +35,19 @@ open class TMDb {
         return finalString
     }
     
-    public func loadTMDbConfigurations() {
-        TMDbConfigurationManager.loadConfiguration()
-    }
-    
-    public func loadMovies(listType:ListMovieType) {
+    public func loadMovies(listType:ListMovieType, page:Int? = nil) {
         
         switch listType {
         case .UpComming:
-            TMDbMovieManager.upCommingMovies()
+            TMDbMovieManager.upCommingMovies(page: page)
         case .TopRated:
-            TMDbMovieManager.topRatedMovies()
+            TMDbMovieManager.topRatedMovies(page: page)
         default:
             return
         }
+    }
+    
+    public func movieGenreFor(id:Int, completition:GenreBlock) {
+        
     }
 }
