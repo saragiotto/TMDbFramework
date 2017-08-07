@@ -10,6 +10,8 @@ target 'TMDbFramework_Example' do
   target 'TMDbFramework_Tests' do
     inherit! :search_paths
 
+    pod 'Quick'
+    pod 'Nimble'
     
   end
 end

@@ -13,6 +13,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		81AC1D70273B2EE12A0901A6 /* Pods_TMDbFramework_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C33A43091911268959719E /* Pods_TMDbFramework_Tests.framework */; };
+		981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */; };
 		A77641AC1F33EEFF00717FBD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776418E1F33EEFF00717FBD /* AboutViewController.swift */; };
 		A77641AD1F33EEFF00717FBD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776418F1F33EEFF00717FBD /* Configuration.swift */; };
 		A77641AE1F33EEFF00717FBD /* ConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77641901F33EEFF00717FBD /* ConfigurationController.swift */; };
@@ -59,6 +60,7 @@
 		6DF3CE53A43518E88570EC49 /* Pods-TMDbFramework_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDbFramework_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMDbFramework_Example/Pods-TMDbFramework_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		77D59487A1433FAD82F1366A /* Pods_TMDbFramework_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDbFramework_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FD1B5B3D924E3B17DD30FC /* Pods-TMDbFramework_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDbFramework_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMDbFramework_Example/Pods-TMDbFramework_Example.release.xcconfig"; sourceTree = "<group>"; };
+		981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbMoviesTest.swift; sourceTree = "<group>"; };
 		A776418E1F33EEFF00717FBD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A776418F1F33EEFF00717FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A77641901F33EEFF00717FBD /* ConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDbFramework_Example.app/TMDbFramework_Example";
 			};
 			name = Debug;
 		};
@@ -634,6 +639,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDbFramework_Example.app/TMDbFramework_Example";
 			};
 			name = Release;
 		};
