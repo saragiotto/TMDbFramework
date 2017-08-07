@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import TMDbFramework
+import Alamofire
+import SwiftyJSON
 
 class AboutViewController: UIViewController {
 
@@ -19,7 +22,21 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let myNewPod = TMDb.sharedInstance
+        
+        myNewPod.loadMovies(listType: .UpComming) { result, movies in
+            
+            print("\(result)")
+            
+        }
+        
+        myNewPod.loadMovies(listType: .UpComming, page: 10) { result, movies in
+            
+            print("\(result)")
+            
+        }
+        
         self.movieDBAttr.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.openWebsite)))
         
         self.contactEmail.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.sendEmail)))

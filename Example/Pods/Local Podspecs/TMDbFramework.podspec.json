@@ -1,15 +1,14 @@
 {
   "name": "TMDbFramework",
   "version": "0.1.0",
-  "summary": "A short description of TMDbFramework.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Swift framwork to connect with themoviedb.org",
   "homepage": "https://github.com/saragiotto/TMDbFramework",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "saragiotto": "leonardo.saragiotto@gmail.com"
+    "Leonardo Saragiotto": "leonardo.saragiotto@gmail.com"
   },
   "source": {
     "git": "https://github.com/saragiotto/TMDbFramework.git",
@@ -18,5 +17,16 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "TMDbFramework/Classes/**/*"
+  "source_files": "TMDbFramework/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+
+    ],
+    "SwiftyJSON": [
+
+    ],
+    "ChameleonFramework": [
+
+    ]
+  }
 }

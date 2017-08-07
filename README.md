@@ -22,7 +22,7 @@ pod "TMDbFramework"
 
 ## Author
 
-saragiotto, leonardo.saragiotto@gmail.com
+Leonardo Saragiotto, leonardo.saragiotto@gmail.com
 
 ## License
 
