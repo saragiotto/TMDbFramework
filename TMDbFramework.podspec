@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/saragiotto/TMDbFramework.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'TMDbFramework/Classes/*.swift'
+  s.source_files = 'TMDbFramework/Classes/**/*'
 
   s.dependency 'Alamofire'
   s.dependency 'SwiftyJSON'
