@@ -29,9 +29,9 @@ class TMDbEnunsConsts {
 }
 
 public class TMDbListResult: CustomStringConvertible {
-    let page:Int
-    let totalPages:Int
-    let totalResults:Int
+    public let page:Int
+    public let totalPages:Int
+    public let totalResults:Int
     
     init(page:Int, totalPages:Int, totalResults:Int) {
         self.page = page

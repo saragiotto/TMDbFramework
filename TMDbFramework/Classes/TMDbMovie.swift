@@ -28,20 +28,20 @@ public class TMDbMovie {
     
     init(data:JSON) {
         
-        posterPath = data["poster_path"].string!
-        adult = data["adult"].bool!
-        overview = data["overview"].string!
-        releaseDate = data["release_date"].string!
+        posterPath = data["poster_path"].string
+        adult = data["adult"].bool
+        overview = data["overview"].string
+        releaseDate = data["release_date"].string
         genres_ids = data["genre_ids"].arrayValue.map({$0.intValue})
-        id = data["id"].int!
-        originalTitle = data["original_title"].string!
-        originalLanguage = data["original_language"].string!
-        title = data["title"].string!
-        backdropPath = data["backdrop_path"].string!
-        popularity = data["popularity"].double!
-        voteCount = data["vote_count"].int!
-        video = data["video"].bool!
-        voteAverage = data["vote_average"].double!
+        id = data["id"].int
+        originalTitle = data["original_title"].string
+        originalLanguage = data["original_language"].string
+        title = data["title"].string
+        backdropPath = data["backdrop_path"].string
+        popularity = data["popularity"].double
+        voteCount = data["vote_count"].int
+        video = data["video"].bool
+        voteAverage = data["vote_average"].double
     }
 
 }

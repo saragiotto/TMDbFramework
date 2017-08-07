@@ -3,6 +3,8 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
+  - Nimble (7.0.1)
+  - Quick (1.1.0)
   - SwiftyJSON (3.1.4)
   - TMDbFramework (0.1.0):
     - Alamofire
@@ -12,6 +14,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework
+  - Nimble
+  - Quick
   - SwiftyJSON
   - TMDbFramework (from `../`)
 
@@ -22,9 +26,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TMDbFramework: 46078987ae011e5c2f7f0588079f1734045b3164
 
-PODFILE CHECKSUM: 46fd409cc6e508cd3a50b44bc82b86f56bc12796
+PODFILE CHECKSUM: 1cfb93c376f3b6f77431dc0d25c8eb5117b27d9b
 
 COCOAPODS: 1.2.1
