@@ -18,7 +18,7 @@ class TMDbConfigurationManager {
         
         let manager = TMDb.sharedInstance.alamofireManager
         
-        let url = TMDb.sharedInstance.buildURLWith(endpoint:configEndpoint)
+        let url = TMDbUtils.buildURLWith(endpoint:configEndpoint)
         
         manager.request(url).validate().responseJSON { response in
             

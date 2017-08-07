@@ -10,20 +10,36 @@ import Foundation
 
 public typealias GenreBlock = (String?) -> Void
 
+public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
+
+public typealias MovieBlock = (TMDbMovie?) -> Void
+
 public enum ListMovieType {
     case UpComming
     case TopRated
     case Popular
 }
 
+internal let kApiKeyV3 = "094bda1680d9981474a3647d78d554bd"
+
+internal let kBaseTMDbURLV3 = "https://api.themoviedb.org/3/"
+
 class TMDbEnunsConsts {
 
-    static let apiKeyV3 = "094bda1680d9981474a3647d78d554bd"
-    
-    static let defaultBearer = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOTRiZGExNjgwZDk5ODE0NzRhMzY0N2Q3OGQ1NTRiZCIsInN1YiI6IjU4ODlmNDk0YzNhMzY4NTllOTAxZmQyYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sa_6LR_LvCgAcl3Z1Z--jhdy1USpy4F6JP257vCs1E8"
-    
-    static let baseTMDbURLV3 = "https://api.themoviedb.org/3/"
-    
-    static let moviesUpcomming = "movie/upcoming?"
+}
 
+public class TMDbListResult: CustomStringConvertible {
+    let page:Int
+    let totalPages:Int
+    let totalResults:Int
+    
+    init(page:Int, totalPages:Int, totalResults:Int) {
+        self.page = page
+        self.totalPages = totalPages
+        self.totalResults = totalResults
+    }
+    
+    public var description : String {
+        return "page-\(page) total Pages-\(totalPages) total results-\(totalResults)"
+    }
 }

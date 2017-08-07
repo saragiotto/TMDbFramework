@@ -11,8 +11,6 @@ import Alamofire
 
 open class TMDb {
     
-    public var bearerAuth: String = ""
-    
     public let alamofireManager:SessionManager
     
     private var genreManager:TMDbGenreManager?
@@ -30,20 +28,13 @@ open class TMDb {
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
     }
     
-    internal func buildURLWith(endpoint:String) -> String {
-        
-        let finalString = TMDbEnunsConsts.baseTMDbURLV3 + endpoint + "api_key=" + TMDbEnunsConsts.apiKeyV3 + "&language=en-US"
-        
-        return finalString
-    }
-    
-    public func loadMovies(listType:ListMovieType, page:Int? = nil) {
+    public func loadMovies(listType:ListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
         
         switch listType {
         case .UpComming:
-            TMDbMovieManager.upCommingMovies(page: page)
+            TMDbMovieManager.upCommingMovies(page: page, completition)
         case .TopRated:
-            TMDbMovieManager.topRatedMovies(page: page)
+            TMDbMovieManager.topRatedMovies(page: page, completition)
         default:
             return
         }

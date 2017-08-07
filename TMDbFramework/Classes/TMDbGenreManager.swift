@@ -38,7 +38,7 @@ class TMDbGenreManager {
         
         let manager = TMDb.sharedInstance.alamofireManager
         
-        let url = TMDb.sharedInstance.buildURLWith(endpoint:configEndpoint)
+        let url = TMDbUtils.buildURLWith(endpoint:configEndpoint)
         
         manager.request(url).validate().responseJSON { response in
             
@@ -58,6 +58,7 @@ class TMDbGenreManager {
                     }
                 }
             case .failure(let error):
+                completition(nil)
                 print(error)
             }
             
