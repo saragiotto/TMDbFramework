@@ -1,0 +1,11 @@
+coverage_service: html
+output_directory: html
+xcodeproj: Example/TMDbFramework.xcodeproj
+scheme: TMDbFramework-Example
+workspace: Example/TMDbFramework.xcworkspace
+source_directory: TMDbFramework/Classes
+binary_basename: TMDbFramework-Example
+ignore:
+  - '../*'
+  - 'Pods/*'
+  - 'Example/*'
