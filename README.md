@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
 [![License](https://img.shields.io/cocoapods/l/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
 [![Platform](https://img.shields.io/cocoapods/p/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
+[![codecov.io](https://codecov.io/gh/saragiotto/TMDbFramework/branch/master/graphs/badge.svg)](https://codecov.io/gh/saragiotto/TMDbFramework/branch/master)
 
 ## Example
 
