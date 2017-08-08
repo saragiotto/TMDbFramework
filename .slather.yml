@@ -1,5 +1,5 @@
-coverage_service: html
-output_directory: html
+coverage_service: cobertura_xml
+output_directory: xml_report
 xcodeproj: Example/TMDbFramework.xcodeproj
 scheme: TMDbFramework-Example
 workspace: Example/TMDbFramework.xcworkspace

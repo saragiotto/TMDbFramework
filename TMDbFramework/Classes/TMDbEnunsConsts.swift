@@ -28,7 +28,7 @@ class TMDbEnunsConsts {
 
 }
 
-public class TMDbListResult: CustomStringConvertible {
+public class TMDbListResult {
     public let page:Int
     public let totalPages:Int
     public let totalResults:Int
@@ -37,9 +37,5 @@ public class TMDbListResult: CustomStringConvertible {
         self.page = page
         self.totalPages = totalPages
         self.totalResults = totalResults
-    }
-    
-    public var description : String {
-        return "page-\(page) total Pages-\(totalPages) total results-\(totalResults)"
     }
 }
