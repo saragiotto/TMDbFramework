@@ -15,11 +15,7 @@ class TMDbMoviesTest: QuickSpec {
     override func spec() {
         describe("Test TMDbMovieManager and TMDbMovie") {
             
-            var tmdbPod:TMDb!
-            
-            beforeEach {
-                tmdbPod = TMDb.sharedInstance
-            }
+            let tmdbPod:TMDb = TMDb.sharedInstance
             
             it("Request upcomming movies ommiting page param") {
                 
