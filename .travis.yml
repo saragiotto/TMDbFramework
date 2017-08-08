@@ -13,6 +13,10 @@ before_install: rvm use $RVM_RUBY_VERSION
 install: gem install slather --no-rdoc --no-ri --no-document --quiet
 after_success: 
   - slather --verbose
+  - ls -a
+  - cd /xml_report
+  - ls -a
+  - cat obertura.xml
   - bash <(curl -s https://codecov.io/bash) -f /xml_report/cobertura.xml -X coveragepy -X gcov -X xcode
 script:
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TMDbFramework.xcworkspace -scheme TMDbFramework-Example -sdk iphonesimulator10.3 -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 | xcpretty
