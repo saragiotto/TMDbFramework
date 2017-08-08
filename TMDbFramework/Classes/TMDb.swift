@@ -35,8 +35,8 @@ open class TMDb {
             TMDbMovieManager.upCommingMovies(page: page, completition)
         case .TopRated:
             TMDbMovieManager.topRatedMovies(page: page, completition)
-        default:
-            return
+        case .Popular:
+            TMDbMovieManager.popularMovies(page: page, completition)
         }
     }
     

@@ -11,7 +11,6 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		81AC1D70273B2EE12A0901A6 /* Pods_TMDbFramework_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C33A43091911268959719E /* Pods_TMDbFramework_Tests.framework */; };
 		981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */; };
 		981FFF3A1F38FE03006FE8F5 /* TMDbGenreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFF391F38FE03006FE8F5 /* TMDbGenreTest.swift */; };
@@ -55,7 +54,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* TMDbFramework_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDbFramework_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		60C33A43091911268959719E /* Pods_TMDbFramework_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDbFramework_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6286457B6FFA4977C4E3269D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6DF3CE53A43518E88570EC49 /* Pods-TMDbFramework_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDbFramework_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMDbFramework_Example/Pods-TMDbFramework_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */,
 				981FFF391F38FE03006FE8F5 /* TMDbGenreTest.swift */,
 			);
@@ -464,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				981FFF3A1F38FE03006FE8F5 /* TMDbGenreTest.swift in Sources */,
 				981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */,
 			);
