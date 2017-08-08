@@ -9,6 +9,8 @@ language: objective-c
 # before_install:
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
+before_install: rvm use $RVM_RUBY_VERSION
+install: gem install slather --no-rdoc --no-ri --no-document --quiet
 after_success: 
   - slather
   - bash <(curl -s https://codecov.io/bash) -f /xml_report/cobertura.xml -X coveragepy -X gcov -X xcode
