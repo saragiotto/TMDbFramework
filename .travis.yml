@@ -12,7 +12,7 @@ language: objective-c
 before_install: rvm use $RVM_RUBY_VERSION
 install: gem install slather --no-rdoc --no-ri --no-document --quiet
 after_success: 
-  - slather --verbose
+  - slather
   - ls -a
   - cd /xml_report
   - ls -a
