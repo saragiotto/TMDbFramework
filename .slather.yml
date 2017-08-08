@@ -4,8 +4,7 @@ xcodeproj: Example/TMDbFramework.xcodeproj
 scheme: TMDbFramework-Example
 workspace: Example/TMDbFramework.xcworkspace
 source_directory: TMDbFramework/Classes
-binary_basename: TMDbFramework_Example
+binary_basename: TMDbFramework
 ignore:
   - '../*'
-  - 'Pods/*'
   - 'Example/*'

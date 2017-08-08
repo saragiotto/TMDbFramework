@@ -629,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F21122720D08FF819AFA25DB /* Pods-TMDbFramework_Tests.debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -650,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F3F7C3573ABECC369E363305 /* Pods-TMDbFramework_Tests.release.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
