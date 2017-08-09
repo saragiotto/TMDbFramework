@@ -13,6 +13,8 @@ open class TMDb {
     
     public let alamofireManager:SessionManager
     
+    public var imageQuality: TMDbImageQuality
+    
     private var genreManager:TMDbGenreManager?
     
     public static let sharedInstance: TMDb = {
@@ -26,9 +28,10 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
+        self.imageQuality = .Medium
     }
     
-    public func loadMovies(listType:ListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
+    public func loadMovies(listType:TMDbListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
         
         switch listType {
         case .UpComming:

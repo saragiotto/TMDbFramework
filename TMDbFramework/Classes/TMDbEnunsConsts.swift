@@ -14,10 +14,17 @@ public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
 
 public typealias MovieBlock = (TMDbMovie?) -> Void
 
-public enum ListMovieType {
+public enum TMDbListMovieType {
     case UpComming
     case TopRated
     case Popular
+}
+
+public enum TMDbImageQuality {
+    case Low
+    case Medium
+    case High
+    case VeryHigh
 }
 
 internal let kApiKeyV3 = "094bda1680d9981474a3647d78d554bd"
