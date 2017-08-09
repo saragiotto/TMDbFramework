@@ -14,6 +14,8 @@ public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
 
 public typealias MovieBlock = (TMDbMovie?) -> Void
 
+public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
+
 public enum TMDbListMovieType {
     case UpComming
     case TopRated

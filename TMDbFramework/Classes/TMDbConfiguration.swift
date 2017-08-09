@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class TMDbConfiguration {
+public class TMDbConfiguration {
     
     let imageBaseUrl: String?
     
@@ -25,15 +25,15 @@ class TMDbConfiguration {
     
     let stillSizes: [String]?
     
-    let backdropSize: String?
+    public let backdropSize: String?
     
-    let logoSize: String?
+    public let logoSize: String?
     
-    let posterSize: String?
+    public let posterSize: String?
     
-    let profileSize: String?
+    public let profileSize: String?
     
-    let stillSize: String?
+    public let stillSize: String?
     
     init(data:JSON) {
         
@@ -45,35 +45,81 @@ class TMDbConfiguration {
         
         self.backdropSizes = data["backdrop_sizes"].arrayValue.map({$0.stringValue})
         
-        self.backdropSize = TMDbConfiguration.setSizeFor(list: self.backdropSizes, quality: imageQuality)
+        self.backdropSize = TMDbConfiguration.getSizeFor(list: self.backdropSizes, quality: imageQuality)
         
         self.logoSizes = data["logo_sizes"].arrayValue.map({$0.stringValue})
         
-        self.logoSize = TMDbConfiguration.setSizeFor(list: self.logoSizes, quality: imageQuality)
+        self.logoSize = TMDbConfiguration.getSizeFor(list: self.logoSizes, quality: imageQuality)
         
         self.posterSizes = data["poster_sizes"].arrayValue.map({$0.stringValue})
         
-        self.posterSize = TMDbConfiguration.setSizeFor(list: self.posterSizes, quality: imageQuality)
+        self.posterSize = TMDbConfiguration.getSizeFor(list: self.posterSizes, quality: imageQuality)
         
         self.profileSizes = data["profile_sizes"].arrayValue.map({$0.stringValue})
         
-        self.profileSize = TMDbConfiguration.setSizeFor(list: self.profileSizes, quality: imageQuality)
+        self.profileSize = TMDbConfiguration.getSizeFor(list: self.profileSizes, quality: imageQuality)
         
         self.stillSizes = data["still_sizes"].arrayValue.map({$0.stringValue})
         
-        self.stillSize = TMDbConfiguration.setSizeFor(list: self.stillSizes, quality: imageQuality)
+        self.stillSize = TMDbConfiguration.getSizeFor(list: self.stillSizes, quality: imageQuality)
     }
     
-    static func setSizeFor(list:[String]?, quality:TMDbImageQuality) -> String? {
+    static func getSizeFor(list:[String]?, quality:TMDbImageQuality) -> String? {
         
         if (list == nil) {
             return nil
         }
         
-        var newList = list
+        var newList = list!
+        let originalSize = newList.removeLast()
         
-        newList?.removeLast()
+        if (newList.count == 1) {
+            return newList.first
+        }
         
-        return nil
+        switch quality {
+        case .Low:
+            return newList.first
+        case .Medium:
+            return findMediumSizeFor(sizeList: newList, smallSize: newList.first!, bigSize: newList.last!)
+        case .High:
+            return newList.last
+        case .VeryHigh:
+            return originalSize
+        }
+        
     }
+    
+    static private func findMediumSizeFor(sizeList:[String], smallSize:String, bigSize:String) -> String? {
+        
+        let smallSizeInt = convertTMDbSize(size: smallSize)!
+        let bigSizeInt = convertTMDbSize(size: bigSize)!
+        let midSizeInt = ((bigSizeInt - smallSizeInt) / 2) + smallSizeInt
+        
+        var floatDistance:Double?
+        
+        var mediuSize:String? = nil
+        
+        for (index, size) in sizeList.enumerated() {
+            
+            let sizeInt = convertTMDbSize(size: size)
+            
+            let distance:Double = Double(sizeInt! - midSizeInt) > 0.0 ? Double(sizeInt! - midSizeInt) : Double(midSizeInt - sizeInt!)
+            
+            if (floatDistance == nil || distance <= floatDistance!) {
+                floatDistance = distance
+                mediuSize = sizeList[index]
+            }
+        }
+        
+        return mediuSize
+    }
+    
+    static private func convertTMDbSize(size:String) -> Int? {
+        var givenSize = size
+        givenSize.remove(at: givenSize.startIndex)
+        
+        return Int(givenSize)
+    }
+
 }

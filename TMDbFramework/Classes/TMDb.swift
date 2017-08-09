@@ -14,6 +14,7 @@ open class TMDb {
     public let alamofireManager:SessionManager
     
     public var imageQuality: TMDbImageQuality
+    public var tmdbConfigurations: TMDbConfiguration?
     
     private var genreManager:TMDbGenreManager?
     
@@ -50,5 +51,16 @@ open class TMDb {
         }
         
         self.genreManager?.movieGenreBy(id, completition)
+    }
+    
+    public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
+        if (self.tmdbConfigurations == nil) {
+            TMDbConfigurationManager.loadConfiguration({ configs in
+                self.tmdbConfigurations = configs
+                completition(configs)
+            })
+        } else {
+            completition(self.tmdbConfigurations)
+        }
     }
 }

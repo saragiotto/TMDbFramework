@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class TMDbConfigurationManager {
     
-    internal static func loadConfiguration() {
+    internal static func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
         
         let configEndpoint = "configuration?"
         
@@ -25,7 +25,11 @@ class TMDbConfigurationManager {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    let loadedConfigs = TMDbConfiguration(data: JSON(value))
+                    let results = JSON(value).dictionary
+                    
+                    if let results = results!["images"] {
+                        completition(TMDbConfiguration(data: results))
+                    }
                 }
             case .failure(let error):
                 print(error)
