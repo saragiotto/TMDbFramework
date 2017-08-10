@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class TMDbImage {
+public class TMDbImage {
 
     let image:UIImage?
     
