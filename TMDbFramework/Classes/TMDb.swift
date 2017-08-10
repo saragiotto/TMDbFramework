@@ -14,7 +14,7 @@ open class TMDb {
     public let alamofireManager:SessionManager
     
     public var imageQuality: TMDbImageQuality
-    public var tmdbConfigurations: TMDbConfiguration?
+    public var configurations: TMDbConfiguration?
     
     private var genreManager:TMDbGenreManager?
     
@@ -29,6 +29,7 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
+        self.alamofireManager.retrier = TMDbRetrierHandler()
         self.imageQuality = .Medium
     }
     
@@ -54,13 +55,19 @@ open class TMDb {
     }
     
     public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
-        if (self.tmdbConfigurations == nil) {
+        if (self.configurations == nil) {
             TMDbConfigurationManager.loadConfiguration({ configs in
-                self.tmdbConfigurations = configs
+                self.configurations = configs
                 completition(configs)
             })
         } else {
-            completition(self.tmdbConfigurations)
+            completition(self.configurations)
         }
     }
+    
+    public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
+        
+        TMDbImageManager.imageFor(type: type, path: path, completition)
+    }
 }
+

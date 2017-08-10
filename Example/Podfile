@@ -6,6 +6,7 @@ target 'TMDbFramework_Example' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'ChameleonFramework'
+  pod 'AlamofireImage'
 
   target 'TMDbFramework_Tests' do
     inherit! :search_paths

@@ -14,7 +14,7 @@ class TMDbGenreManager {
     
     var genres: [TMDbGenre]?
     
-    internal func movieGenreBy(_ id: Int, _ completition:@escaping GenreBlock){
+    func movieGenreBy(_ id: Int, _ completition:@escaping GenreBlock){
         
         if (genres == nil) {
             self.loadMovieGenres(requestId:id, completition: completition)
