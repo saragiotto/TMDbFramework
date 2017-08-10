@@ -40,6 +40,6 @@ class TMDbUtils {
             size = configuration.stillSize!
         }
         
-        return configuration.imageBaseUrl! + size + path
+        return configuration.secureImageBaseUrl! + size + path
     }
 }

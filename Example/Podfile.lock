@@ -10,6 +10,7 @@ PODS:
   - SwiftyJSON (3.1.4)
   - TMDbFramework (0.1.0):
     - Alamofire
+    - AlamofireImage
     - ChameleonFramework
     - SwiftyJSON
 
@@ -33,8 +34,8 @@ SPEC CHECKSUMS:
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TMDbFramework: 46078987ae011e5c2f7f0588079f1734045b3164
+  TMDbFramework: b6fee73ffcd1a558ee8338ecab81c1c2c13b6502
 
-PODFILE CHECKSUM: 0963657be545979917d069187c4e6270bd2877b0
+PODFILE CHECKSUM: b7cc3ee02301bc8dfbd636d1a62c711eccd5481e
 
 COCOAPODS: 1.3.1

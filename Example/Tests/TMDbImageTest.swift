@@ -32,7 +32,7 @@ class TMDbImageTest: QuickSpec {
             
             it("Request image backdrop medium quality") {
                 
-                waitUntil { done in
+                waitUntil(timeout: 2.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadImageFor(path: backdropPath, type: .Backdrop) {image in
                             
@@ -45,7 +45,7 @@ class TMDbImageTest: QuickSpec {
             }
         }
         
-        xdescribe("Test TMDbImageManager and TMDbImage for High poster") {
+        describe("Test TMDbImageManager and TMDbImage for High poster") {
             
             let tmdbPod:TMDb = TMDb.sharedInstance
             
@@ -63,7 +63,7 @@ class TMDbImageTest: QuickSpec {
             
             it("Request poster high quality") {
                 
-                waitUntil { done in
+                waitUntil(timeout: 2.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadImageFor(path: posterPath, type: .Poster) {image in
                             
