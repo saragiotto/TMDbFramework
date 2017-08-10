@@ -29,7 +29,7 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
-        self.alamofireManager.retrier = RetrierHandler()
+        self.alamofireManager.retrier = TMDbRetrierHandler()
         self.imageQuality = .Medium
     }
     
@@ -68,17 +68,6 @@ open class TMDb {
     public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
         
         TMDbImageManager.imageFor(type: type, path: path, completition)
-    }
-}
-
-class RetrierHandler: RequestRetrier {
-    
-    public func should(_ manager: SessionManager, retry request: Request, with error: Error, completion:@escaping RequestRetryCompletion) {
-        if let response = request.task?.response as? HTTPURLResponse, response.statusCode == 429 {
-            completion(true, 10.0) // retry after 10 seconds
-        } else {
-            completion(false, 0.0) // don't retry
-        }
     }
 }
 
