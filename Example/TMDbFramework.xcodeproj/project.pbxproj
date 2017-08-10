@@ -15,6 +15,7 @@
 		981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */; };
 		981FFF3A1F38FE03006FE8F5 /* TMDbGenreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFF391F38FE03006FE8F5 /* TMDbGenreTest.swift */; };
 		9859A0CB1F3B894F00F8D37C /* TMDbConfigurationsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859A0CA1F3B894F00F8D37C /* TMDbConfigurationsTest.swift */; };
+		98DFAF741F3CC275007212AD /* TMDbImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DFAF731F3CC275007212AD /* TMDbImageTest.swift */; };
 		A77641AC1F33EEFF00717FBD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776418E1F33EEFF00717FBD /* AboutViewController.swift */; };
 		A77641AD1F33EEFF00717FBD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776418F1F33EEFF00717FBD /* Configuration.swift */; };
 		A77641AE1F33EEFF00717FBD /* ConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77641901F33EEFF00717FBD /* ConfigurationController.swift */; };
@@ -63,6 +64,7 @@
 		981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbMoviesTest.swift; sourceTree = "<group>"; };
 		981FFF391F38FE03006FE8F5 /* TMDbGenreTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbGenreTest.swift; sourceTree = "<group>"; };
 		9859A0CA1F3B894F00F8D37C /* TMDbConfigurationsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbConfigurationsTest.swift; sourceTree = "<group>"; };
+		98DFAF731F3CC275007212AD /* TMDbImageTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbImageTest.swift; sourceTree = "<group>"; };
 		A776418E1F33EEFF00717FBD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A776418F1F33EEFF00717FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A77641901F33EEFF00717FBD /* ConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				9859A0CA1F3B894F00F8D37C /* TMDbConfigurationsTest.swift */,
 				981FFF391F38FE03006FE8F5 /* TMDbGenreTest.swift */,
 				981FFF341F38E1A1006FE8F5 /* TMDbMoviesTest.swift */,
+				98DFAF731F3CC275007212AD /* TMDbImageTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TMDbFramework_Example/Pods-TMDbFramework_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TMDbFramework/TMDbFramework.framework",
@@ -415,6 +419,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMDbFramework.framework",
@@ -484,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DFAF741F3CC275007212AD /* TMDbImageTest.swift in Sources */,
 				9859A0CB1F3B894F00F8D37C /* TMDbConfigurationsTest.swift in Sources */,
 				981FFF3A1F38FE03006FE8F5 /* TMDbGenreTest.swift in Sources */,
 				981FFF351F38E1A1006FE8F5 /* TMDbMoviesTest.swift in Sources */,

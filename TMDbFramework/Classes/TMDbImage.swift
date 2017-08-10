@@ -12,11 +12,11 @@ import SwiftyJSON
 
 public class TMDbImage {
 
-    let image:UIImage?
+    public let image:UIImage?
     
-    let size:CGSize?
+    public let size:CGSize?
     
-    let type:TMDbImageType?
+    public let type:TMDbImageType?
     
     init(image:UIImage, type:TMDbImageType) {
         

@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+import AlamofireImage
 
 class TMDbImageManager {
 
@@ -28,6 +28,18 @@ class TMDbImageManager {
             } else {
                 
                 completition(nil)
+            }
+        }
+        
+        Alamofire.request(url).responseImage { response in
+            debugPrint(response)
+            
+            print(response.request)
+            print(response.response)
+            debugPrint(response.result)
+            
+            if let image = response.result.value {
+                print("image downloaded: \(image)")
             }
         }
 
