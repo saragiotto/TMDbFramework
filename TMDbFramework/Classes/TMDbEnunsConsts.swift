@@ -14,6 +14,8 @@ public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
 
 public typealias MovieBlock = (TMDbMovie?) -> Void
 
+public typealias ImageBlock = (TMDbImage?) -> Void
+
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
 public enum TMDbListMovieType {
@@ -27,6 +29,14 @@ public enum TMDbImageQuality {
     case Medium
     case High
     case VeryHigh
+}
+
+public enum TMDbImageType {
+    case Backdrop
+    case Logo
+    case Poster
+    case Profile
+    case Still
 }
 
 internal let kApiKeyV3 = "094bda1680d9981474a3647d78d554bd"
