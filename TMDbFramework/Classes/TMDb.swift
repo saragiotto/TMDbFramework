@@ -33,9 +33,9 @@ open class TMDb {
         self.imageQuality = .Medium
     }
     
-    public func loadMovies(listType:TMDbListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
+    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
         
-        switch listType {
+        switch type {
         case .UpComming:
             TMDbMovieManager.upCommingMovies(page: page, completition)
         case .TopRated:

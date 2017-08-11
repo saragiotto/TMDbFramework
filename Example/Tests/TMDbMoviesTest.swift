@@ -20,7 +20,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request upcomming movies ommiting page param") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .UpComming) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -33,7 +33,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 1 upcomming movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .UpComming, page: 1) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .UpComming, page: 1) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -46,7 +46,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 3 upcomming movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .UpComming, page: 3) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .UpComming, page: 3) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(3))
                         expect(movieList?.count).to(equal(20))
@@ -59,7 +59,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request top rated movies ommiting page param") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .TopRated) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .TopRated) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -72,7 +72,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 1 top rated movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .TopRated, page: 1) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .TopRated, page: 1) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -85,7 +85,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 3 top rated movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .TopRated, page: 3) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .TopRated, page: 3) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(3))
                         expect(movieList?.count).to(equal(20))
@@ -98,7 +98,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request popular movies ommiting page param") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .Popular) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .Popular) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -111,7 +111,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 1 popular movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .Popular, page: 1) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .Popular, page: 1) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -124,7 +124,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Request page 3 popular movies") {
                 
                 waitUntil { done in
-                    tmdbPod.loadMovies(listType: .Popular, page: 3) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .Popular, page: 3) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(3))
                         expect(movieList?.count).to(equal(20))

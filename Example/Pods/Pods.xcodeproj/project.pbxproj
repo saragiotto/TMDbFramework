@@ -128,7 +128,7 @@
 		91D6663C8B0FF42DEE26E87B6DD145A4 /* TMDbEnunsConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6D518825A58F7EEA9FC1E54D0DA2 /* TMDbEnunsConsts.swift */; };
 		95439623FE5C1C8CFB740F66E91F99ED /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E53F79598C27BB13D34215911C215EF /* Configuration.swift */; };
 		96132E7432F8DD315A88A07C6B4F9C72 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = C69ED19FAB630D0E1392DD9D0EEA08FE /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		980CDC1F1F3CE91B00025716 /* TMDbRetrierHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980CDC1E1F3CE91B00025716 /* TMDbRetrierHandler.swift */; };
+		987BF5081F3E0259004508CB /* TMDbRetrierHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987BF5071F3E0259004508CB /* TMDbRetrierHandler.swift */; };
 		988EED125395950177DC14AF9BC87D8D /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB76BAC4CB0F92A5EBB50BA2907B73 /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		99484AA48DD9C5C81D2ACC70C524C4BC /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A8D32D335D115D46E3228FAFCC8DD /* QCKDSL.m */; };
 		9E4BFB7CFC09258C22A18B4AB4C331DB /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = F748D629D476DB7507C512935D13FFCE /* NSArray+Chameleon.m */; };
@@ -447,7 +447,7 @@
 		94ADB62B19A0C660B028B9A80B64005C /* Pods-TMDbFramework_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TMDbFramework_Example.release.xcconfig"; sourceTree = "<group>"; };
 		94B618ABCAC0320675FD1C863FC1B355 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		977DB58F02CAD196EF25FF334157EB5C /* TMDbFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TMDbFramework-umbrella.h"; sourceTree = "<group>"; };
-		980CDC1E1F3CE91B00025716 /* TMDbRetrierHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbRetrierHandler.swift; sourceTree = "<group>"; };
+		987BF5071F3E0259004508CB /* TMDbRetrierHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbRetrierHandler.swift; path = TMDbFramework/Classes/TMDbRetrierHandler.swift; sourceTree = "<group>"; };
 		9C998A90D021B193C25C79512639C011 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Source/Image.swift; sourceTree = "<group>"; };
 		9CE66DDCCB1C5D0E5D149549DA047B0D /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		9CFE1D7C147F7A0C5A384F3997DD1417 /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
@@ -925,7 +925,7 @@
 				592E1C8048ED1A768F1874535435E3DF /* TMDbMovie.swift */,
 				901DE5DB43F5A3B583FC9EF54B3D1327 /* TMDbMovieManager.swift */,
 				E0FCF4CEC78201D919362929A68B7C41 /* TMDbUtils.swift */,
-				980CDC1E1F3CE91B00025716 /* TMDbRetrierHandler.swift */,
+				987BF5071F3E0259004508CB /* TMDbRetrierHandler.swift */,
 				838AF250FD883250BCD780DCB53A9040 /* Support Files */,
 			);
 			name = TMDbFramework;
@@ -1500,7 +1500,7 @@
 				91D6663C8B0FF42DEE26E87B6DD145A4 /* TMDbEnunsConsts.swift in Sources */,
 				B1A88FB5A125BAD7297A80937BCCC49D /* TMDbFramework-dummy.m in Sources */,
 				FB59D8775D458EBEC28186E2B7D039D3 /* TMDbGenre.swift in Sources */,
-				980CDC1F1F3CE91B00025716 /* TMDbRetrierHandler.swift in Sources */,
+				987BF5081F3E0259004508CB /* TMDbRetrierHandler.swift in Sources */,
 				5D0A9753855F24AD6DDE65B71680A185 /* TMDbGenreManager.swift in Sources */,
 				885CE66E5CFAF9D8124A5886A7F55F9A /* TMDbImage.swift in Sources */,
 				D2ECD3D7E503EFAB94D756174820180F /* TMDbImageManager.swift in Sources */,

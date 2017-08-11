@@ -22,13 +22,13 @@ class TMDbRetrierTest: QuickSpec {
                 var succesTimes = 0
                 var atemptTimes = 0
                 
-                waitUntil(timeout: 15.0) { done in
+                waitUntil(timeout: 25.0) { done in
                     
                     for _ in 1...42 {
                         atemptTimes += 1
                         print("atemptTimes - \(atemptTimes)")
                         DispatchQueue.global(qos: .background).async {
-                            tmdbPod.loadMovies(listType: .UpComming) { listResult, movieList in
+                            tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
                                 
                                 if (movieList != nil){
                                     succesTimes += 1
