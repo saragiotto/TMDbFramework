@@ -11,25 +11,25 @@ import SwiftyJSON
 
 class TMDbMovieManager {
     
-    static func upCommingMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func upCommingMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/upcoming?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    static func topRatedMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func topRatedMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/top_rated?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    static func popularMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func popularMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/popular?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    private static func loadMovieWith(endpoint:String, pageRequest:Int?, _ completition: @escaping MovieListBlock) {
+    private static func loadMovieWith(endpoint:String, pageRequest:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
         var page = 1
         
@@ -55,7 +55,16 @@ class TMDbMovieManager {
                     if let results = jsonValue!["results"]!.array {
                         
                         for jsonMovie in results {
-                            movies.append(TMDbMovie(data: jsonMovie))
+                            let movie = TMDbMovie(data: jsonMovie)
+                            
+                            if (!allowExplicit) {
+                                if (movie.adult != true) {
+                                    movies.append(movie)
+                                }
+                            } else {
+                                movies.append(movie)
+                            }
+                            
                         }
                         
                     }

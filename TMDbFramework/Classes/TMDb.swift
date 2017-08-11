@@ -35,15 +35,15 @@ open class TMDb {
         self.apiKey = ""
     }
     
-    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
+    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
         switch type {
         case .UpComming:
-            TMDbMovieManager.upCommingMovies(page: page, completition)
+            TMDbMovieManager.upCommingMovies(page: page, allowExplicit:allowExplicit, completition)
         case .TopRated:
-            TMDbMovieManager.topRatedMovies(page: page, completition)
+            TMDbMovieManager.topRatedMovies(page: page, allowExplicit:allowExplicit, completition)
         case .Popular:
-            TMDbMovieManager.popularMovies(page: page, completition)
+            TMDbMovieManager.popularMovies(page: page, allowExplicit:allowExplicit, completition)
         }
     }
     
