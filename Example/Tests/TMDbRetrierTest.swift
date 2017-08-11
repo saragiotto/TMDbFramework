@@ -22,7 +22,7 @@ class TMDbRetrierTest: QuickSpec {
                 var succesTimes = 0
                 var atemptTimes = 0
                 
-                waitUntil(timeout: 15.0) { done in
+                waitUntil(timeout: 25.0) { done in
                     
                     for _ in 1...42 {
                         atemptTimes += 1
