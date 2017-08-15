@@ -136,7 +136,7 @@ class TMDbMoviesTest: QuickSpec {
             
             it("Detail movie") {
                 
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 10.0) { done in
                     tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
                         
                         let movie = movieList!.first
