@@ -71,5 +71,10 @@ open class TMDb {
         
         TMDbImageManager.imageFor(type: type, path: path, completition)
     }
+    
+    public func movieDetailFor(movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        TMDbMovieManager.detailMovie(movie, completition)
+    }
 }
 

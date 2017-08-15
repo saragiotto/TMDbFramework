@@ -77,4 +77,31 @@ class TMDbMovieManager {
             
         }
     }
+    
+    static func detailMovie(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        let detailEndpoint = "movie/" + String.init(describing: movie.id!) + "?"
+        
+        let manager = TMDb.sharedInstance.alamofireManager
+        
+        let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
+        
+        manager.request(url).validate().responseJSON { response in
+        
+            switch response.result {
+            case .success:
+                
+                if let value = response.result.value {
+                    let jsonValue = JSON(value)
+                    
+                    movie.populateDetail(data: jsonValue)
+                    
+                    completition(movie)
+
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

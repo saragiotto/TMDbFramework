@@ -26,6 +26,17 @@ public class TMDbMovie {
     let video: Bool?
     let voteAverage: Double?
     
+    var budget: Int?
+    var homepage: String?
+    var imdbId: String?
+    var productionCompanies: [String]?
+    var productionCountries: [String]?
+    var revenue: Int?
+    var runtime: Int?
+    var spokenLanguages: [String]?
+    var status: String?
+    var tagline: String?
+    
     init(data:JSON) {
         
         posterPath = data["poster_path"].string
@@ -44,4 +55,17 @@ public class TMDbMovie {
         voteAverage = data["vote_average"].double
     }
 
+    func populateDetail(data: JSON) {
+        
+        budget = data["budget"].int
+        homepage = data["homepage"].string
+        imdbId = data["imdb_id"].string
+        productionCompanies = data["production_companies"].arrayValue.map({$0["name"].stringValue})
+        productionCountries = data["production_countries"].arrayValue.map({$0["name"].stringValue})
+        revenue = data["revenue"].int
+        runtime = data["runtime"].int
+        spokenLanguages = data["spoken_languages"].arrayValue.map({$0["name"].stringValue})
+        status = data["status"].string
+        tagline = data["tagline"].string
+    }
 }

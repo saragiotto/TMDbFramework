@@ -12,7 +12,7 @@ public typealias GenreBlock = (String?) -> Void
 
 public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
 
-public typealias MovieBlock = (TMDbMovie?) -> Void
+public typealias MovieDetailBlock = (TMDbMovie?) -> Void
 
 public typealias ImageBlock = (TMDbImage?) -> Void
 
