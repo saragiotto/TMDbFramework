@@ -41,6 +41,8 @@ class TMDbMovieManager {
         
         let url = TMDbUtils.buildURLWith(endpoint:endpoint, page:page)
         
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
         manager.request(url).validate().responseJSON { response in
             
             switch response.result {
@@ -85,6 +87,8 @@ class TMDbMovieManager {
         let manager = TMDb.sharedInstance.alamofireManager
         
         let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
         
         manager.request(url).validate().responseJSON { response in
         

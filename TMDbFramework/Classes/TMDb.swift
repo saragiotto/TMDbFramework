@@ -30,7 +30,7 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
-        self.alamofireManager.retrier = TMDbRetrierHandler()
+        self.alamofireManager.retrier = TMDbRetrierHandler.sharedInstance
         self.imageQuality = .Medium
         self.apiKey = ""
     }

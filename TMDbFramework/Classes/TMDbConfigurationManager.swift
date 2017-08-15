@@ -20,6 +20,8 @@ class TMDbConfigurationManager {
         
         let url = TMDbUtils.buildURLWith(endpoint:configEndpoint)
         
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
         manager.request(url).validate().responseJSON { response in
             
             switch response.result {
