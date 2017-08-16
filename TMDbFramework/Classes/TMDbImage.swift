@@ -18,13 +18,17 @@ public class TMDbImage {
     
     public let type:TMDbImageType?
     
-    init(image:UIImage, type:TMDbImageType) {
+    public let path:String?
+    
+    init(image:UIImage, type:TMDbImageType, path:String) {
         
         self.image = image
         
         self.size = image.size
         
         self.type = type
+        
+        self.path = path
     }
     
 }

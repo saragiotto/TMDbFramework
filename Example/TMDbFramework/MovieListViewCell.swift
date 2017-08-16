@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TMDbFramework
 
 class MovieListViewCell: UICollectionViewCell {
     
@@ -73,18 +74,23 @@ class MovieListViewCell: UICollectionViewCell {
         } else {
             
             if cellMovie.posterPath != nil {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 
-                let movieId = cellMovie.id
+                let tmdbPod = TMDb.sharedInstance
+                tmdbPod.imageQuality = .Medium
                 
-                MovieDBApi.sharedInstance.posterImage(cellMovie) { image in
-
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    
-                    if movieId == self.cellMovie.id {
-                        self.animatedPosterImageShow(image)
+                let posterPath = cellMovie.posterPath
+                
+                tmdbPod.loadConfiguration() { _ in
+                
+                    tmdbPod.loadImageFor(path: self.cellMovie.posterPath!, type: .Poster) { image in
+                        
+                        if (posterPath == image?.path!) {
+                            self.animatedPosterImageShow((image?.image)!)
+                        }
                     }
                 }
+                
+                
             } else {
                 self.moviePoster.image = UIImage(named: "NoPosterNew.png")!
             }

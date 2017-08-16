@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import ChameleonFramework
+import TMDbFramework
 
 private let reuseIdentifier = "MovieListViewCell"
 
