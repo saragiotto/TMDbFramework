@@ -142,7 +142,7 @@ class TMDbMoviesTest: QuickSpec {
                         let movie = movieList!.first
                         
                         
-                        tmdbPod.movieDetailFor(movie: movie!) { movie in
+                        tmdbPod.movieDetailFor(movie!) { movie in
                         
                             expect(movie).notTo(beNil())
                             done()

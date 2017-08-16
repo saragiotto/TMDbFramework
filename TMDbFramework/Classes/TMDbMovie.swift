@@ -37,6 +37,8 @@ public class TMDbMovie {
     var status: String?
     var tagline: String?
     
+    public var cast:[TMDbCast]?
+    
     init(data:JSON) {
         
         posterPath = data["poster_path"].string
@@ -68,4 +70,21 @@ public class TMDbMovie {
         status = data["status"].string
         tagline = data["tagline"].string
     }
+    
+    func populateCredits(data: JSON) {
+        
+        cast = data["cast"].arrayValue.map({TMDbCast.init(data: $0)})
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

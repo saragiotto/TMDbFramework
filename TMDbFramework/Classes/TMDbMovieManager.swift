@@ -101,4 +101,33 @@ class TMDbMovieManager {
             }
         }
     }
+    
+    static func creditsForMovie(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        let creditsEndpoint = "movie/" + String.init(describing: movie.id!) + "/credits?"
+        
+        let manager = TMDb.sharedInstance.alamofireManager
+        
+        let url = TMDbUtils.buildURLWith(endpoint:creditsEndpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let value = response.result.value {
+                    let jsonValue = JSON(value)
+                    
+                    movie.populateCredits(data: jsonValue)
+                    
+                    completition(movie)
+                    
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
