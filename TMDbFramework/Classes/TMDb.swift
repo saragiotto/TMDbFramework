@@ -14,6 +14,7 @@ open class TMDb {
     public let alamofireManager:SessionManager
     
     public var imageQuality: TMDbImageQuality
+    public var apiKey: String
     public var configurations: TMDbConfiguration?
     
     private var genreManager:TMDbGenreManager?
@@ -29,19 +30,20 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
-        self.alamofireManager.retrier = TMDbRetrierHandler()
+        self.alamofireManager.retrier = TMDbRetrierHandler.sharedInstance
         self.imageQuality = .Medium
+        self.apiKey = ""
     }
     
-    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, completition: @escaping MovieListBlock) {
+    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
         switch type {
         case .UpComming:
-            TMDbMovieManager.upCommingMovies(page: page, completition)
+            TMDbMovieManager.upCommingMovies(page: page, allowExplicit:allowExplicit, completition)
         case .TopRated:
-            TMDbMovieManager.topRatedMovies(page: page, completition)
+            TMDbMovieManager.topRatedMovies(page: page, allowExplicit:allowExplicit, completition)
         case .Popular:
-            TMDbMovieManager.popularMovies(page: page, completition)
+            TMDbMovieManager.popularMovies(page: page, allowExplicit:allowExplicit, completition)
         }
     }
     
@@ -68,6 +70,11 @@ open class TMDb {
     public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
         
         TMDbImageManager.imageFor(type: type, path: path, completition)
+    }
+    
+    public func movieDetailFor(movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        TMDbMovieManager.detailMovie(movie, completition)
     }
 }
 

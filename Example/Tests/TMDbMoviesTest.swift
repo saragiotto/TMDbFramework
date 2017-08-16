@@ -133,6 +133,23 @@ class TMDbMoviesTest: QuickSpec {
                 }
                 
             }
+            
+            it("Detail movie") {
+                
+                waitUntil(timeout: 15.0) { done in
+                    tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
+                        
+                        let movie = movieList!.first
+                        
+                        
+                        tmdbPod.movieDetailFor(movie: movie!) { movie in
+                        
+                            expect(movie).notTo(beNil())
+                            done()
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -12,7 +12,9 @@ class TMDbUtils {
     
     internal static func buildURLWith(endpoint:String, page:Int? = nil) -> String {
         
-        var finalString = kBaseTMDbURLV3 + endpoint + "api_key=" + kApiKeyV3 + "&language=en-US"
+        let apiKey = (TMDb.sharedInstance.apiKey != "") ? TMDb.sharedInstance.apiKey : kApiKeyV3
+        
+        var finalString = kBaseTMDbURLV3 + endpoint + "api_key=" + apiKey + "&language=en-US"
         
         if (page != nil) {
             finalString += "&page=\(String(describing: page!))"

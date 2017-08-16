@@ -11,25 +11,25 @@ import SwiftyJSON
 
 class TMDbMovieManager {
     
-    static func upCommingMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func upCommingMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/upcoming?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    static func topRatedMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func topRatedMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/top_rated?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    static func popularMovies(page:Int?, _ completition: @escaping MovieListBlock) {
+    static func popularMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         let configEndpoint = "movie/popular?"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, completition)
+        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
     }
     
-    private static func loadMovieWith(endpoint:String, pageRequest:Int?, _ completition: @escaping MovieListBlock) {
+    private static func loadMovieWith(endpoint:String, pageRequest:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
         var page = 1
         
@@ -40,6 +40,8 @@ class TMDbMovieManager {
         let manager = TMDb.sharedInstance.alamofireManager
         
         let url = TMDbUtils.buildURLWith(endpoint:endpoint, page:page)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
@@ -55,7 +57,16 @@ class TMDbMovieManager {
                     if let results = jsonValue!["results"]!.array {
                         
                         for jsonMovie in results {
-                            movies.append(TMDbMovie(data: jsonMovie))
+                            let movie = TMDbMovie(data: jsonMovie)
+                            
+                            if (!allowExplicit) {
+                                if (movie.adult != true) {
+                                    movies.append(movie)
+                                }
+                            } else {
+                                movies.append(movie)
+                            }
+                            
                         }
                         
                     }
@@ -66,6 +77,35 @@ class TMDbMovieManager {
                 print(error)
             }
             
+        }
+    }
+    
+    static func detailMovie(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        let detailEndpoint = "movie/" + String.init(describing: movie.id!) + "?"
+        
+        let manager = TMDb.sharedInstance.alamofireManager
+        
+        let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+        
+            switch response.result {
+            case .success:
+                
+                if let value = response.result.value {
+                    let jsonValue = JSON(value)
+                    
+                    movie.populateDetail(data: jsonValue)
+                    
+                    completition(movie)
+
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
