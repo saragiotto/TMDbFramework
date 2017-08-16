@@ -11,25 +11,18 @@ import SwiftyJSON
 
 class TMDbMovieManager {
     
-    static func upCommingMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
-        let configEndpoint = "movie/upcoming?"
+    static func loadMovieWith(type:TMDbListMovieType, pageRequest:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
-    }
-    
-    static func topRatedMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
-        let configEndpoint = "movie/top_rated?"
+        var endpoint = "movie/"
         
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
-    }
-    
-    static func popularMovies(page:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
-        let configEndpoint = "movie/popular?"
-        
-        self.loadMovieWith(endpoint:configEndpoint, pageRequest: page, allowExplicit:allowExplicit, completition)
-    }
-    
-    private static func loadMovieWith(endpoint:String, pageRequest:Int?, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
+        switch type {
+        case .UpComming:
+            endpoint += "upcoming?"
+        case .TopRated:
+            endpoint += "top_rated?"
+        case .Popular:
+            endpoint += "popular?"
+        }
         
         var page = 1
         

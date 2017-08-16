@@ -35,16 +35,9 @@ open class TMDb {
         self.apiKey = ""
     }
     
-    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
+    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, _ completition: @escaping MovieListBlock) {
         
-        switch type {
-        case .UpComming:
-            TMDbMovieManager.upCommingMovies(page: page, allowExplicit:allowExplicit, completition)
-        case .TopRated:
-            TMDbMovieManager.topRatedMovies(page: page, allowExplicit:allowExplicit, completition)
-        case .Popular:
-            TMDbMovieManager.popularMovies(page: page, allowExplicit:allowExplicit, completition)
-        }
+        TMDbMovieManager.loadMovieWith(type: type, pageRequest: page, completition)
     }
     
     public func movieGenreFor(id:Int, completition:@escaping GenreBlock) {
@@ -53,7 +46,7 @@ open class TMDb {
             self.genreManager = TMDbGenreManager()
         }
         
-        self.genreManager?.movieGenreBy(id, completition)
+        self.genreManager!.movieGenreBy(id, completition)
     }
     
     public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
