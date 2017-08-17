@@ -22,7 +22,7 @@ class TMDbImageManager {
             
             if let image = response.result.value {
                 print("image downloaded: \(image)")
-                completition(TMDbImage.init(image: image, type: type))
+                completition(TMDbImage.init(image: image, type: type, path: path))
             } else {
                 completition(nil)
             }

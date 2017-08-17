@@ -23,7 +23,7 @@ class TMDbImageTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .Medium
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -32,7 +32,7 @@ class TMDbImageTest: QuickSpec {
             
             it("Request image backdrop medium quality") {
                 
-                waitUntil(timeout: 2.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadImageFor(path: backdropPath, type: .Backdrop) {image in
                             

@@ -35,16 +35,9 @@ open class TMDb {
         self.apiKey = ""
     }
     
-    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
+    public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, _ completition: @escaping MovieListBlock) {
         
-        switch type {
-        case .UpComming:
-            TMDbMovieManager.upCommingMovies(page: page, allowExplicit:allowExplicit, completition)
-        case .TopRated:
-            TMDbMovieManager.topRatedMovies(page: page, allowExplicit:allowExplicit, completition)
-        case .Popular:
-            TMDbMovieManager.popularMovies(page: page, allowExplicit:allowExplicit, completition)
-        }
+        TMDbMovieManager.loadMovieWith(type: type, pageRequest: page, completition)
     }
     
     public func movieGenreFor(id:Int, completition:@escaping GenreBlock) {
@@ -53,7 +46,7 @@ open class TMDb {
             self.genreManager = TMDbGenreManager()
         }
         
-        self.genreManager?.movieGenreBy(id, completition)
+        self.genreManager!.movieGenreBy(id, completition)
     }
     
     public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
@@ -69,12 +62,23 @@ open class TMDb {
     
     public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
         
-        TMDbImageManager.imageFor(type: type, path: path, completition)
+        if (self.configurations == nil) {
+            self.loadConfiguration() { _ in
+                TMDbImageManager.imageFor(type: type, path: path, completition)
+            }
+        } else {
+            TMDbImageManager.imageFor(type: type, path: path, completition)
+        }
     }
     
-    public func movieDetailFor(movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+    public func movieDetailFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
         TMDbMovieManager.detailMovie(movie, completition)
+    }
+    
+    public func creditsFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
+        
+        TMDbMovieManager.creditsForMovie(movie, completition)
     }
 }
 

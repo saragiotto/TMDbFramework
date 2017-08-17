@@ -9,7 +9,7 @@
 import Foundation
 import Nimble
 import Quick
-@testable import TMDbFramework
+import TMDbFramework
 
 class TMDbRetrierTest: QuickSpec {
     

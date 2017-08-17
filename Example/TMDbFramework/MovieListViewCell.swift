@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TMDbFramework
 
 class MovieListViewCell: UICollectionViewCell {
     
@@ -15,42 +16,36 @@ class MovieListViewCell: UICollectionViewCell {
     @IBOutlet weak var movieGenre: UILabel!
     @IBOutlet weak var movieReleaseDate: UILabel!
     
-    var movieIndex: Int? {
-        didSet {
-            updateCell()
-        }
-    }
-    
-    private var cellMovie = Movie()
-    
-    private func updateCell() {
-        
-        let movieApi = MovieDBApi.sharedInstance
+    func configureWithMovie(_ movie:TMDbMovie) {
         
         moviePoster?.image = nil
         movieName?.text = nil
         movieGenre?.text = nil
         movieReleaseDate?.text = nil
         
-        cellMovie = movieApi.movies![movieIndex!]
-        
-        if let title = cellMovie.title {
+        if let title = movie.title {
             self.movieName.text = title
         } else {
-            if let origTitle = cellMovie.originalTitle {
+            if let origTitle = movie.originalTitle {
                 self.movieName.text = origTitle
             } else {
                 self.movieName.text = "Title not available"
             }
         }
         
-        if cellMovie.genres_ids.isEmpty {
+        if movie.genresIds == nil {
             self.movieGenre.text = "-"
         } else {
-            self.movieGenre.text = Genre.genreName(id: cellMovie.genres_ids[0], genres: movieApi.genres!)
+            TMDb.sharedInstance.movieGenreFor(id: movie.genresIds![0]) { genreName in
+                if let name = genreName {
+                    self.movieGenre.text = name
+                } else {
+                    self.movieGenre.text = "-"
+                }
+            }
         }
         
-        if let releaseDate = cellMovie.releaseDate {
+        if let releaseDate = movie.releaseDate {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -68,27 +63,24 @@ class MovieListViewCell: UICollectionViewCell {
         
         self.moviePoster.image = UIImage(named: "LaunchPoster.png")!
         
-        if let posterImg = cellMovie.posterImage {
-            self.moviePoster.image = posterImg
-        } else {
+        
+        if movie.posterPath != nil {
             
-            if cellMovie.posterPath != nil {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            let tmdbPod = TMDb.sharedInstance
+            let posterPath = movie.posterPath
+            
+            tmdbPod.loadImageFor(path: movie.posterPath!, type: .Poster) { image in
                 
-                let movieId = cellMovie.id
-                
-                MovieDBApi.sharedInstance.posterImage(cellMovie) { image in
-
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    
-                    if movieId == self.cellMovie.id {
-                        self.animatedPosterImageShow(image)
-                    }
+                if (posterPath == image?.path!) {
+                    self.animatedPosterImageShow((image?.image)!)
                 }
-            } else {
-                self.moviePoster.image = UIImage(named: "NoPosterNew.png")!
             }
+            
+            
+        } else {
+            self.moviePoster.image = UIImage(named: "NoPosterNew.png")!
         }
+        
     }
     
     private func animatedPosterImageShow(_ posterImage: UIImage) {

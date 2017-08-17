@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TMDbFramework
 import Alamofire
 import SwiftyJSON
 
