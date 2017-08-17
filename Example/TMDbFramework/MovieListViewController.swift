@@ -16,7 +16,7 @@ private let reuseIdentifier = "MovieListViewCell"
 
 class MovieListViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private var movieDBModel:MovieDBApi? = nil
+    private var movieListVM:MovieListViewModel! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
 
         // Do any additional setup after loading the view.
         
-        movieDBModel = MovieDBApi.sharedInstance
+        movieListVM = MovieListViewModel()
         
         let rightSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(title: "About", style: .plain, target: self, action: #selector(MovieListViewController.presentAboutScreen))
         
@@ -34,39 +34,10 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         
         self.navigationItem.setRightBarButtonItems([rightSearchBarButtonItem], animated: true)
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        MovieDBApi.sharedInstance.loadMovies {
-            self.collectionView?.reloadData()
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
-        
-        MovieDBApi.sharedInstance.performWhenNetworkIsBackAlive {
+        movieListVM.loadMovies() { 
             self.collectionView?.reloadData()
         }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-        if let indexPaths = self.collectionView?.indexPathsForVisibleItems {
-        
-            if let movies = movieDBModel!.movies {
-            
-                var movieIds = [Int]()
-                
-                for index in indexPaths {
-                    movieIds.append(movies[index.row].id)
-                }
-                
-                movieDBModel!.memoryWarning(visibleMovieIds: movieIds, detailedMovieId: nil)
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.collectionView?.reloadData()
     }
     
     private struct Storyboard {
@@ -84,7 +55,8 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         switch segue.identifier! {
         case Storyboard.movieDetailIdentifier:
             if let movieDetailVC = segue.destination as? MovieDetailViewController {
-                movieDetailVC.movieIndex = self.collectionView!.indexPathsForSelectedItems!.first!.row
+                let row = self.collectionView!.indexPathsForSelectedItems!.first!.row
+                movieDetailVC.movie = movieListVM.movies?[row]
             }
         default:
             break
@@ -102,7 +74,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
-        if let movies = movieDBModel!.movies {
+        if let movies = movieListVM.movies {
             return movies.count
         } else {
             return 0
@@ -115,12 +87,13 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         
         // Configure the cell
 
-        cell.movieIndex = indexPath.row
-
-        print("CellDisp \(indexPath.row)")
-        if (indexPath.row == movieDBModel!.movies!.count - 1) {
+        cell.configureWithMovie((movieListVM.movies?[indexPath.row])!)
+        
+        if (indexPath.row == movieListVM.movies!.count - 1) {
             
-            self.loadNextMovies()
+            movieListVM.loadMovies() {
+                self.collectionView?.reloadData()
+            }
         }
 
         return cell
@@ -131,51 +104,6 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
     }
-    
-    private func loadNextMovies() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        print("carregando proxima pagina!")
-        
-        movieDBModel!.loadMovies() {
-            
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            
-            print("carregou proxima pagina! \(self.movieDBModel!.movies!.count)")
-            self.collectionView?.reloadData()
-        }
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

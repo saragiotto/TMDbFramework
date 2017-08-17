@@ -29,20 +29,19 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var detailScrollView: UIScrollView!
     
-    var movieIndex: Int?
-    
-    private var movie = Movie()
+    var movie: TMDbMovie?
     
     private var curtainsView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.displayMovie()
-        
-        MovieDBApi.sharedInstance.performWhenNetworkIsBackAlive {
+        TMDb.sharedInstance.movieDetailFor(movie!) {movie in
+            self.movie = movie
+            
             self.displayMovie()
         }
+    
         // Do any additional setup after loading the view.
     }
     
@@ -54,23 +53,14 @@ class MovieDetailViewController: UIViewController {
     
     private func displayMovie() {
         
-        movie = MovieDBApi.sharedInstance.movies![movieIndex!]
-        
         website.text = " "
         cast.text = " "
         runTime.text = ""
         
-        if !movie.detailedMovie {
-            print("request movie detail!")
-            requestMovieDetails()
-        } else {
-            putMovieDetailOnScreen()
-        }
-        
-        if let title = movie.title {
+        if let title = movie!.title {
             movieTitle.text = title
         } else {
-            if let originalTitle = movie.originalTitle {
+            if let originalTitle = movie!.originalTitle {
                 movieTitle.text = originalTitle
             } else {
                 movieTitle.text = "Title Not Available"
@@ -79,13 +69,13 @@ class MovieDetailViewController: UIViewController {
         
         self.navigationItem.title = movieTitle.text!
         
-        if let overview = movie.overview {
+        if let overview = movie!.overview {
             overviewInfo.text = overview
         } else {
             overviewInfo.text = "Overview not available."
         }
         
-        if let movieDate = movie.releaseDate {
+        if let movieDate = movie!.releaseDate {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -100,50 +90,53 @@ class MovieDetailViewController: UIViewController {
         } else {
             releaseDate.text = "To be announced"
         }
-
-        var genreArray = [String]()
         
-        for genreId in movie.genres_ids {
-            if let name = Genre.genreName(id: genreId, genres: MovieDBApi.sharedInstance.genres!) {
-                genreArray.append(name)
+        self.genre.text = "-"
+        
+        movie!.genresIds!.map() { genreId in
+            TMDb.sharedInstance.movieGenreFor(id: genreId) { genreName in
+                self.genre.text! += genreName!
             }
+            return
         }
         
-        if !genreArray.isEmpty {
-            genre.text = genreArray.joined(separator: ", ")
-        } else {
-            genre.text = "-"
-        }
-        
-        if let popMovie = movie.voteAverage, popMovie > 0.0 {
+        if let popMovie = movie!.voteAverage, popMovie > 0.0 {
             populatiry.textColor = UIColor.flatYellowColorDark()
             populatiry.text = String(format:"%.1f", popMovie)
         } else {
             populatiry.text = ""
         }
         
-        if let backDropimg = movie.backdropImage {
-            backdropMovie.image = backDropimg
-        } else {
-            if movie.backdropPath != nil {
+        if movie!.backdropPath != nil {
+            
+            let tmdbPod = TMDb.sharedInstance
+            tmdbPod.imageQuality = .Medium
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .Backdrop) { image in
                 
-                let tmdbPod = TMDb.sharedInstance
-                tmdbPod.imageQuality = .Medium
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                
-                tmdbPod.loadImageFor(path: self.movie.backdropPath!, type: .Backdrop) { image in
-                    
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    
-                    self.animatedImageShow((image?.image)!)
-                }
-                
-            } else {
-                backdropMovie.image = UIImage(named: "NoPosterNew.png")!
+                self.animatedImageShow((image?.image)!)
             }
+            
+        } else {
+            backdropMovie.image = UIImage(named: "NoPosterNew.png")!
         }
         
+        
+        if let homepage = movie!.homepage {
+            
+            let url = URL(string: homepage)
+            
+            self.website.textColor = UIColor.flatYellowColorDark()
+            self.website.text = url!.host!
+            self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
+            
+        } else {
+            self.website.text = "Not available"
+        }
     }
     
     private func animatedImageShow(_ image: UIImage) {
@@ -162,14 +155,6 @@ class MovieDetailViewController: UIViewController {
         })
     }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-        MovieDBApi.sharedInstance.memoryWarning(visibleMovieIds: nil, detailedMovieId: self.movie.id)
-    }
-
     /*
     // MARK: - Navigation
 
@@ -181,58 +166,10 @@ class MovieDetailViewController: UIViewController {
     */
 
     public func openWebsite() {
-        if let website = self.movie.homepage {
+        if let website = self.movie!.homepage {
             UIApplication.shared.open(URL.init(string: website)!, options: [:], completionHandler: nil)
         }
         
         return
-    }
-
-    private func requestMovieDetails() {
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        curtainsView.frame = self.view.frame
-        curtainsView.backgroundColor = UIColor.black
-        curtainsView.alpha = 1.0
-        
-        self.view.addSubview(curtainsView)
-        
-        MovieDBApi.sharedInstance.loadMovieDetail(movie) { movie in
-            
-            self.putMovieDetailOnScreen()
-            
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-                self.curtainsView.alpha = 0.0
-            }, completion: { finished in
-                self.curtainsView.removeFromSuperview()
-            })
-            
-        }
-    }
-    
-    private func putMovieDetailOnScreen() {
-
-        if let homepage = self.movie.homepage {
-            
-            let url = URL(string: homepage)
-            
-            self.website.textColor = UIColor.flatYellowColorDark()
-            self.website.text = url!.host!
-            self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
-            
-        } else {
-            self.website.text = "Not available"
-        }
-        
-        if let movieCast = self.movie.cast {
-            self.cast.text = movieCast.joined(separator: ", ")
-        }
-        
-        if let movieRunTime = self.movie.finalRunTime {
-            self.runTime.text = "\(movieRunTime)"
-        } else {
-            self.runTime.text = "-"
-        }
     }
 }

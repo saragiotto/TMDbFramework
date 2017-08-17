@@ -11,31 +11,31 @@ import SwiftyJSON
 
 public class TMDbMovie {
     
-    let posterPath: String?
-    let adult: Bool?
-    let overview: String?
-    let releaseDate: String?
-    let genres_ids: [Int]?
-    let id: Int?
-    let originalTitle: String?
-    let originalLanguage: String?
-    let title: String?
-    let backdropPath: String?
-    let popularity: Double?
-    let voteCount: Int?
-    let video: Bool?
-    let voteAverage: Double?
+    public let posterPath: String?
+    public let adult: Bool?
+    public let overview: String?
+    public let releaseDate: String?
+    public let genresIds: [Int]?
+    public let id: Int?
+    public let originalTitle: String?
+    public let originalLanguage: String?
+    public let title: String?
+    public let backdropPath: String?
+    public let popularity: Double?
+    public let voteCount: Int?
+    public let video: Bool?
+    public let voteAverage: Double?
     
-    var budget: Int?
-    var homepage: String?
-    var imdbId: String?
-    var productionCompanies: [String]?
-    var productionCountries: [String]?
-    var revenue: Int?
-    var runtime: Int?
-    var spokenLanguages: [String]?
-    var status: String?
-    var tagline: String?
+    public var budget: Int?
+    public var homepage: String?
+    public var imdbId: String?
+    public var productionCompanies: [String]?
+    public var productionCountries: [String]?
+    public var revenue: Int?
+    public var runtime: Int?
+    public var spokenLanguages: [String]?
+    public var status: String?
+    public var tagline: String?
     
     public var cast:[TMDbCast]?
     
@@ -45,7 +45,7 @@ public class TMDbMovie {
         adult = data["adult"].bool
         overview = data["overview"].string
         releaseDate = data["release_date"].string
-        genres_ids = data["genre_ids"].arrayValue.map({$0.intValue})
+        genresIds = data["genre_ids"].arrayValue.map({$0.intValue})
         id = data["id"].int
         originalTitle = data["original_title"].string
         originalLanguage = data["original_language"].string
@@ -76,15 +76,4 @@ public class TMDbMovie {
         cast = data["cast"].arrayValue.map({TMDbCast.init(data: $0)})
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
