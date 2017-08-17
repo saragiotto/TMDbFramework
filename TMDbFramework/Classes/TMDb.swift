@@ -16,6 +16,7 @@ open class TMDb {
     public var imageQuality: TMDbImageQuality
     public var apiKey: String
     public var configurations: TMDbConfiguration?
+    public var language: TMDbLanguage
     
     private var genreManager:TMDbGenreManager?
     
@@ -31,8 +32,9 @@ open class TMDb {
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
         self.alamofireManager.retrier = TMDbRetrierHandler.sharedInstance
-        self.imageQuality = .Medium
+        self.imageQuality = .medium
         self.apiKey = ""
+        self.language = .english
     }
     
     public func listMoviesOf(type:TMDbListMovieType, page:Int? = nil, _ completition: @escaping MovieListBlock) {

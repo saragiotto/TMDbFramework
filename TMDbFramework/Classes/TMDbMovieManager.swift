@@ -16,11 +16,11 @@ class TMDbMovieManager {
         var endpoint = "movie/"
         
         switch type {
-        case .UpComming:
+        case .upComming:
             endpoint += "upcoming?"
-        case .TopRated:
+        case .topRated:
             endpoint += "top_rated?"
-        case .Popular:
+        case .popular:
             endpoint += "popular?"
         }
         

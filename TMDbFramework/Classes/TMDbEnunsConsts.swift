@@ -19,24 +19,31 @@ public typealias ImageBlock = (TMDbImage?) -> Void
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
 public enum TMDbListMovieType {
-    case UpComming
-    case TopRated
-    case Popular
+    case upComming
+    case topRated
+    case popular
 }
 
 public enum TMDbImageQuality {
-    case Low
-    case Medium
-    case High
-    case VeryHigh
+    case low
+    case medium
+    case high
+    case veryHigh
 }
 
 public enum TMDbImageType {
-    case Backdrop
-    case Logo
-    case Poster
-    case Profile
-    case Still
+    case backdrop
+    case logo
+    case poster
+    case profile
+    case still
+}
+
+public enum TMDbLanguage: String{
+    case english = "en"
+    case spanish = "es"
+    case french = "fr"
+    case portuguese = "pt"
 }
 
 internal let kApiKeyV3 = "094bda1680d9981474a3647d78d554bd"

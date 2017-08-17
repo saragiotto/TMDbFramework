@@ -26,7 +26,7 @@ class MovieListViewModel {
     
     init() {
         tmdbModel = TMDb.sharedInstance
-        tmdbModel.imageQuality = .Medium
+        tmdbModel.imageQuality = .medium
         page = 0
         movies = nil
         totalPages = nil
@@ -37,7 +37,7 @@ class MovieListViewModel {
         
         page! += 1
         
-        tmdbModel.listMoviesOf(type: .UpComming, page: page) { response, movieList in
+        tmdbModel.listMoviesOf(type: .upComming, page: page) { response, movieList in
             
             if (self.movies == nil) {
                 self.movies = movieList

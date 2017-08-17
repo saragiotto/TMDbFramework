@@ -78,13 +78,13 @@ public class TMDbConfiguration {
         }
         
         switch quality {
-        case .Low:
+        case .low:
             return newList.first
-        case .Medium:
+        case .medium:
             return findMediumSizeFor(sizeList: newList, smallSize: newList.first!, bigSize: newList.last!)
-        case .High:
+        case .high:
             return newList.last
-        case .VeryHigh:
+        case .veryHigh:
             return originalSize
         }
         

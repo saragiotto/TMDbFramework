@@ -117,11 +117,11 @@ class MovieDetailViewController: UIViewController {
         if movie!.backdropPath != nil {
             
             let tmdbPod = TMDb.sharedInstance
-            tmdbPod.imageQuality = .Medium
+            tmdbPod.imageQuality = .medium
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             
-            tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .Backdrop) { image in
+            tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 

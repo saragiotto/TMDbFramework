@@ -18,7 +18,7 @@ class TMDbConfigurationsTest: QuickSpec {
             let tmdbPod:TMDb = TMDb.sharedInstance
             
             beforeEach {
-                tmdbPod.imageQuality = .Low
+                tmdbPod.imageQuality = .low
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
@@ -96,7 +96,7 @@ class TMDbConfigurationsTest: QuickSpec {
             let tmdbPod:TMDb! = TMDb.sharedInstance
             
             beforeEach {
-                tmdbPod.imageQuality = .Medium
+                tmdbPod.imageQuality = .medium
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
@@ -174,7 +174,7 @@ class TMDbConfigurationsTest: QuickSpec {
             let tmdbPod:TMDb! = TMDb.sharedInstance
             
             beforeEach {
-                tmdbPod.imageQuality = .High
+                tmdbPod.imageQuality = .high
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
@@ -252,7 +252,7 @@ class TMDbConfigurationsTest: QuickSpec {
             let tmdbPod:TMDb! = TMDb.sharedInstance
             
             beforeEach {
-                tmdbPod.imageQuality = .VeryHigh
+                tmdbPod.imageQuality = .veryHigh
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {

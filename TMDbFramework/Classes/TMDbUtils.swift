@@ -12,9 +12,13 @@ class TMDbUtils {
     
     internal static func buildURLWith(endpoint:String, page:Int? = nil) -> String {
         
-        let apiKey = (TMDb.sharedInstance.apiKey != "") ? TMDb.sharedInstance.apiKey : kApiKeyV3
+        let mdbFrmk = TMDb.sharedInstance
         
-        var finalString = kBaseTMDbURLV3 + endpoint + "api_key=" + apiKey + "&language=en-US"
+        let apiKey = "api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
+        
+        let language = "&language=" + mdbFrmk.language.rawValue
+        
+        var finalString = kBaseTMDbURLV3 + endpoint + apiKey + language
         
         if (page != nil) {
             finalString += "&page=\(String(describing: page!))"
@@ -30,15 +34,15 @@ class TMDbUtils {
         var size = ""
         
         switch type {
-        case .Backdrop:
+        case .backdrop:
             size = configuration.backdropSize!
-        case .Logo:
+        case .logo:
             size = configuration.logoSize!
-        case .Poster:
+        case .poster:
             size = configuration.posterSize!
-        case .Profile:
+        case .profile:
             size = configuration.profileSize!
-        case .Still:
+        case .still:
             size = configuration.stillSize!
         }
         

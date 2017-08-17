@@ -69,7 +69,7 @@ class MovieListViewCell: UICollectionViewCell {
             let tmdbPod = TMDb.sharedInstance
             let posterPath = movie.posterPath
             
-            tmdbPod.loadImageFor(path: movie.posterPath!, type: .Poster) { image in
+            tmdbPod.loadImageFor(path: movie.posterPath!, type: .poster) { image in
                 
                 if (posterPath == image?.path!) {
                     self.animatedPosterImageShow((image?.image)!)

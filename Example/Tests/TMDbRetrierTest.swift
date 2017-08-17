@@ -28,7 +28,7 @@ class TMDbRetrierTest: QuickSpec {
                         atemptTimes += 1
                         print("atemptTimes - \(atemptTimes)")
                         DispatchQueue.global(qos: .background).async {
-                            tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
+                            tmdbPod.listMoviesOf(type: .upComming) { listResult, movieList in
                                 
                                 if (movieList != nil){
                                     succesTimes += 1

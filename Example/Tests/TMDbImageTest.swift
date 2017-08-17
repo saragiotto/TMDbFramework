@@ -21,7 +21,7 @@ class TMDbImageTest: QuickSpec {
             let backdropPath = "/puV2PFq42VQPItaygizgag8jrXa.jpg"
             
             beforeEach {
-                tmdbPod.imageQuality = .Medium
+                tmdbPod.imageQuality = .medium
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
@@ -34,7 +34,7 @@ class TMDbImageTest: QuickSpec {
                 
                 waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
-                        tmdbPod.loadImageFor(path: backdropPath, type: .Backdrop) {image in
+                        tmdbPod.loadImageFor(path: backdropPath, type: .backdrop) {image in
                             
                             expect(image).notTo(beNil())
                             expect(image!.size!.width).to(equal(780.0))
@@ -52,7 +52,7 @@ class TMDbImageTest: QuickSpec {
             let posterPath = "/5qcUGqWoWhEsoQwNUrtf3y3fcWn.jpg"
             
             beforeEach {
-                tmdbPod.imageQuality = .High
+                tmdbPod.imageQuality = .high
                 tmdbPod.configurations = nil
                 waitUntil(timeout: 5.0) { done in
                     DispatchQueue.global(qos: .background).async {
@@ -65,7 +65,7 @@ class TMDbImageTest: QuickSpec {
                 
                 waitUntil(timeout: 2.0) { done in
                     DispatchQueue.global(qos: .background).async {
-                        tmdbPod.loadImageFor(path: posterPath, type: .Poster) {image in
+                        tmdbPod.loadImageFor(path: posterPath, type: .poster) {image in
                             
                             expect(image).notTo(beNil())
                             expect(image!.size!.width).to(equal(780.0))
