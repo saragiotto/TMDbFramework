@@ -20,7 +20,7 @@ class TMDbConfigurationsTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .Low
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -28,7 +28,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Load Configs Low") {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations).notTo(beNil())
                         done()
@@ -37,7 +37,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check backdrop Low")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.backdropSize).notTo(beNil())
                         expect(tmdbPod.configurations!.backdropSize!).to(equal("w300"))
@@ -48,7 +48,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check logo Low")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.logoSize).notTo(beNil())
                         expect(tmdbPod.configurations!.logoSize!).to(equal("w45"))
@@ -59,7 +59,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check poster Low")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.posterSize).notTo(beNil())
                         expect(tmdbPod.configurations!.posterSize!).to(equal("w92"))
@@ -70,7 +70,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check profile Low")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.profileSize).notTo(beNil())
                         expect(tmdbPod.configurations!.profileSize!).to(equal("w45"))
@@ -81,7 +81,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check still Low")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.stillSize).notTo(beNil())
                         expect(tmdbPod.configurations!.stillSize!).to(equal("w92"))
@@ -98,7 +98,7 @@ class TMDbConfigurationsTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .Medium
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -106,7 +106,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Load Configs Medium") {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations).notTo(beNil())
                         done()
@@ -115,7 +115,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check backdrop Medium")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.backdropSize).notTo(beNil())
                         expect(tmdbPod.configurations!.backdropSize!).to(equal("w780"))
@@ -126,7 +126,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check logo Medium")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.logoSize).notTo(beNil())
                         expect(tmdbPod.configurations!.logoSize!).to(equal("w300"))
@@ -137,7 +137,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check poster Medium")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.posterSize).notTo(beNil())
                         expect(tmdbPod.configurations!.posterSize!).to(equal("w500"))
@@ -148,7 +148,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check profile Medium")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.profileSize).notTo(beNil())
                         expect(tmdbPod.configurations!.profileSize!).to(equal("w185"))
@@ -159,7 +159,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check still Medium")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.stillSize).notTo(beNil())
                         expect(tmdbPod.configurations!.stillSize!).to(equal("w185"))
@@ -176,7 +176,7 @@ class TMDbConfigurationsTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .High
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -184,7 +184,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Load Configs High") {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations).notTo(beNil())
                         done()
@@ -193,7 +193,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check backdrop High")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.backdropSize).notTo(beNil())
                         expect(tmdbPod.configurations!.backdropSize!).to(equal("w1280"))
@@ -204,7 +204,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check logo High")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.logoSize).notTo(beNil())
                         expect(tmdbPod.configurations!.logoSize!).to(equal("w500"))
@@ -215,7 +215,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check poster High")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.posterSize).notTo(beNil())
                         expect(tmdbPod.configurations!.posterSize!).to(equal("w780"))
@@ -226,7 +226,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check profile High")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.profileSize).notTo(beNil())
                         expect(tmdbPod.configurations!.profileSize!).to(equal("h632"))
@@ -237,7 +237,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check still High")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.stillSize).notTo(beNil())
                         expect(tmdbPod.configurations!.stillSize!).to(equal("w300"))
@@ -254,7 +254,7 @@ class TMDbConfigurationsTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .VeryHigh
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -262,7 +262,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Load Configs VeryHigh") {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations).notTo(beNil())
                         done()
@@ -271,7 +271,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check backdrop VeryHigh")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.backdropSize).notTo(beNil())
                         expect(tmdbPod.configurations!.backdropSize!).to(equal("original"))
@@ -282,7 +282,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check logo VeryHigh")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.logoSize).notTo(beNil())
                         expect(tmdbPod.configurations!.logoSize!).to(equal("original"))
@@ -293,7 +293,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check poster VeryHigh")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.posterSize).notTo(beNil())
                         expect(tmdbPod.configurations!.posterSize!).to(equal("original"))
@@ -304,7 +304,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check profile VeryHigh")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.profileSize).notTo(beNil())
                         expect(tmdbPod.configurations!.profileSize!).to(equal("original"))
@@ -315,7 +315,7 @@ class TMDbConfigurationsTest: QuickSpec {
             }
             
             it("Check still VeryHigh")  {
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         expect(tmdbPod.configurations!.stillSize).notTo(beNil())
                         expect(tmdbPod.configurations!.stillSize!).to(equal("original"))

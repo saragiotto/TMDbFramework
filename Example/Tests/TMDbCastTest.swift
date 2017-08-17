@@ -19,7 +19,7 @@ class TMDbCastTest: QuickSpec {
             
             it("Request upcomming movies and then its Cast") {
                 
-                waitUntil(timeout: 3.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     tmdbPod.listMoviesOf(type: .UpComming) { listResult, movieList in
                         
                         let movie = movieList!.first
