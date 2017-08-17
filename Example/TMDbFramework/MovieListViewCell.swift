@@ -80,13 +80,10 @@ class MovieListViewCell: UICollectionViewCell {
                 
                 let posterPath = cellMovie.posterPath
                 
-                tmdbPod.loadConfiguration() { _ in
-                
-                    tmdbPod.loadImageFor(path: self.cellMovie.posterPath!, type: .Poster) { image in
-                        
-                        if (posterPath == image?.path!) {
-                            self.animatedPosterImageShow((image?.image)!)
-                        }
+                tmdbPod.loadImageFor(path: self.cellMovie.posterPath!, type: .Poster) { image in
+                    
+                    if (posterPath == image?.path!) {
+                        self.animatedPosterImageShow((image?.image)!)
                     }
                 }
                 

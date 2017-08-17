@@ -62,7 +62,13 @@ open class TMDb {
     
     public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
         
-        TMDbImageManager.imageFor(type: type, path: path, completition)
+        if (self.configurations == nil) {
+            self.loadConfiguration() { _ in
+                TMDbImageManager.imageFor(type: type, path: path, completition)
+            }
+        } else {
+            TMDbImageManager.imageFor(type: type, path: path, completition)
+        }
     }
     
     public func movieDetailFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
