@@ -33,9 +33,7 @@ class MovieListViewCell: UICollectionViewCell {
             }
         }
         
-        if movie.genresIds == nil {
-            self.movieGenre.text = "-"
-        } else {
+        if movie.genresIds != nil && movie.genresIds!.count > 0{
             TMDb.sharedInstance.movieGenreFor(id: movie.genresIds![0]) { genreName in
                 if let name = genreName {
                     self.movieGenre.text = name
@@ -43,6 +41,8 @@ class MovieListViewCell: UICollectionViewCell {
                     self.movieGenre.text = "-"
                 }
             }
+        } else {
+            self.movieGenre.text = "-"
         }
         
         if let releaseDate = movie.releaseDate {

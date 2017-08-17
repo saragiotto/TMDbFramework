@@ -10,24 +10,26 @@ import UIKit
 import ChameleonFramework
 import TMDbFramework
 
-class MovieDetailViewController: UIViewController {
+class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backdropMovie: UIImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var overviewInfo: UILabel!
+    @IBOutlet weak var overview: UITextView!
+    
+    
     @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var cast: UILabel!
     
+    
     @IBOutlet weak var runTime: UILabel!
-    @IBOutlet weak var overviewView: UIView!
-    @IBOutlet weak var infoView: UIView!
+    
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var populatiry: UILabel!
     @IBOutlet weak var website: UILabel!
     
-    @IBOutlet weak var detailScrollView: UIScrollView!
+    @IBOutlet weak var castTableView: UITableView!
     
     var movie: TMDbMovie?
     
@@ -36,6 +38,12 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        overview.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        castTableView.delegate = self
+//        castTableView.dataSource = self
+//        
         TMDb.sharedInstance.movieDetailFor(movie!) {movie in
             self.movie = movie
             
@@ -45,74 +53,85 @@ class MovieDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        NSLog("scroll view \(self.detailScrollView)")
+        return cell
+    }
+    
+    private func updateScrollViewHeigh(_ heigh: CGFloat) {
+        
+        let newHeigh = self.scrollView.contentSize.height + heigh
+        
+        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: newHeigh)
     }
     
     private func displayMovie() {
         
-        website.text = " "
-        cast.text = " "
-        runTime.text = ""
+//        website.text = " "
+//        cast.text = " "
+//        runTime.text = ""
         
         if let title = movie!.title {
-            movieTitle.text = title
+            self.navigationItem.title = title
         } else {
             if let originalTitle = movie!.originalTitle {
-                movieTitle.text = originalTitle
+                self.navigationItem.title = originalTitle
             } else {
-                movieTitle.text = "Title Not Available"
+                self.navigationItem.title = "Title Not Available"
             }
         }
         
-        self.navigationItem.title = movieTitle.text!
-        
-        if let overview = movie!.overview {
-            overviewInfo.text = overview
+        if let overviewMovie = movie!.overview {
+            overview.text = overviewMovie
         } else {
-            overviewInfo.text = "Overview not available."
+            overview.text = "Overview not available."
         }
         
-        if let movieDate = movie!.releaseDate {
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            
-            let releaseDateFormatted = dateFormatter.date(from: movieDate)
-            
-            let newDateFormat = DateFormatter()
-            newDateFormat.dateStyle = .medium
-            
-            releaseDate.text = newDateFormat.string(from: releaseDateFormatted!)
-        } else {
-            releaseDate.text = "To be announced"
-        }
+        self.updateScrollViewHeigh(overview.contentSize.height)
         
-        self.cast.text = ""
+//        if let movieDate = movie!.releaseDate {
+//            
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateStyle = .medium
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+//            
+//            let releaseDateFormatted = dateFormatter.date(from: movieDate)
+//            
+//            let newDateFormat = DateFormatter()
+//            newDateFormat.dateStyle = .medium
+//            
+//            releaseDate.text = newDateFormat.string(from: releaseDateFormatted!)
+//        } else {
+//            releaseDate.text = "To be announced"
+//        }
+//        
+//        self.cast.text = ""
+//        
+//        self.genre.text = ""
         
-        self.genre.text = ""
+//        let ganreNames = movie!.genresIds!.flatMap() { (genreId:Int) -> (String?) in
+//            var genreName:String? = nil
+//            TMDb.sharedInstance.movieGenreFor(id: genreId) { name in
+//                
+//                genreName = name
+//            }
+//            
+//            return genreName
+//        }
+//        
+//        self.genre.text = ganreNames.joined(separator: ", ")
         
-        let ganreNames = movie!.genresIds!.flatMap() { (genreId:Int) -> (String?) in
-            var genreName:String? = nil
-            TMDb.sharedInstance.movieGenreFor(id: genreId) { name in
-                
-                genreName = name
-            }
-            
-            return genreName
-        }
-        
-        self.genre.text = ganreNames.joined(separator: ", ")
-        
-        if let popMovie = movie!.voteAverage, popMovie > 0.0 {
-            populatiry.textColor = UIColor.flatYellowColorDark()
-            populatiry.text = String(format:"%.1f", popMovie)
-        } else {
-            populatiry.text = ""
-        }
+//        if let popMovie = movie!.voteAverage, popMovie > 0.0 {
+//            populatiry.textColor = UIColor.flatYellowColorDark()
+//            populatiry.text = String(format:"%.1f", popMovie)
+//        } else {
+//            populatiry.text = ""
+//        }
         
         if movie!.backdropPath != nil {
             
@@ -133,24 +152,24 @@ class MovieDetailViewController: UIViewController {
         }
         
         
-        if (movie!.homepage != nil && !(movie!.homepage!.isEmpty)) {
-            
-            if let url = URL(string: movie!.homepage!) {
-                
-                if let host = url.host {
-                
-                    self.website.textColor = UIColor.flatYellowColorDark()
-                    self.website.text = host
-                    self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
-                } else {
-                    self.website.text = "Not available"
-                }
-            } else {
-                self.website.text = "Not available"
-            }
-        } else {
-            self.website.text = "Not available"
-        }
+//        if (movie!.homepage != nil && !(movie!.homepage!.isEmpty)) {
+//            
+//            if let url = URL(string: movie!.homepage!) {
+//                
+//                if let host = url.host {
+//                
+//                    self.website.textColor = UIColor.flatYellowColorDark()
+//                    self.website.text = host
+//                    self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
+//                } else {
+//                    self.website.text = "Not available"
+//                }
+//            } else {
+//                self.website.text = "Not available"
+//            }
+//        } else {
+//            self.website.text = "Not available"
+//        }
     }
     
     private func animatedImageShow(_ image: UIImage) {
@@ -161,6 +180,8 @@ class MovieDetailViewController: UIViewController {
         bdMovie.backgroundColor = UIColor.black
         self.backdropMovie.addSubview(bdMovie)
         self.backdropMovie.image = image
+        
+        self.updateScrollViewHeigh(backdropMovie.image!.size.height)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
             bdMovie.alpha = 0.0
