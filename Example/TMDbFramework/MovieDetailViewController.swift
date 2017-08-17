@@ -91,14 +91,21 @@ class MovieDetailViewController: UIViewController {
             releaseDate.text = "To be announced"
         }
         
-        self.genre.text = "-"
+        self.cast.text = ""
         
-        movie!.genresIds!.map() { genreId in
-            TMDb.sharedInstance.movieGenreFor(id: genreId) { genreName in
-                self.genre.text! += genreName!
+        self.genre.text = ""
+        
+        let ganreNames = movie!.genresIds!.flatMap() { (genreId:Int) -> (String?) in
+            var genreName:String? = nil
+            TMDb.sharedInstance.movieGenreFor(id: genreId) { name in
+                
+                genreName = name
             }
-            return
+            
+            return genreName
         }
+        
+        self.genre.text = ganreNames.joined(separator: ", ")
         
         if let popMovie = movie!.voteAverage, popMovie > 0.0 {
             populatiry.textColor = UIColor.flatYellowColorDark()
@@ -126,14 +133,21 @@ class MovieDetailViewController: UIViewController {
         }
         
         
-        if let homepage = movie!.homepage {
+        if (movie!.homepage != nil && !(movie!.homepage!.isEmpty)) {
             
-            let url = URL(string: homepage)
-            
-            self.website.textColor = UIColor.flatYellowColorDark()
-            self.website.text = url!.host!
-            self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
-            
+            if let url = URL(string: movie!.homepage!) {
+                
+                if let host = url.host {
+                
+                    self.website.textColor = UIColor.flatYellowColorDark()
+                    self.website.text = host
+                    self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
+                } else {
+                    self.website.text = "Not available"
+                }
+            } else {
+                self.website.text = "Not available"
+            }
         } else {
             self.website.text = "Not available"
         }
