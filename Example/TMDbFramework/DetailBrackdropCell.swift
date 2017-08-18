@@ -11,8 +11,42 @@ import TMDbFramework
 
 class DetailBrackdropCell: UITableViewCell {
     
-    var backdropImageView:UIImageView = UIImageView()
-
+    var backdropImageView:UIImageView
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        backdropImageView = UIImageView.init()
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.commomInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        backdropImageView = UIImageView.init()
+        super.init(coder: aDecoder)
+        
+        self.commomInit()
+    }
+    
+    func commomInit() {
+        backdropImageView.backgroundColor = UIColor.clear
+        backdropImageView.contentMode = .scaleAspectFill
+        backdropImageView.clipsToBounds = true
+        
+        self.backgroundColor = UIColor.clear
+        
+        self.accessoryType = .none
+        self.selectionStyle = .none
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.setConstraints()
+    }
+    
+    override func layoutSubviews() {
+        self.contentView.frame = self.bounds
+        self.backdropImageView.frame = self.bounds
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +59,7 @@ class DetailBrackdropCell: UITableViewCell {
     }
     
     func setConstraints() {
+    
         self.contentView.addSubview(self.backdropImageView)
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.backdropImageView,
@@ -35,6 +70,13 @@ class DetailBrackdropCell: UITableViewCell {
                                                                  multiplier: 1.0,
                                                                  constant: 0.0),
                                          NSLayoutConstraint.init(item: self.backdropImageView,
+                                                                 attribute: .right,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .right,
+                                                                 multiplier: 1.0,
+                                                                 constant: 0.0),
+                                         NSLayoutConstraint.init(item: self.backdropImageView,
                                                                  attribute: .top,
                                                                  relatedBy: .equal,
                                                                  toItem: self.contentView,
@@ -47,14 +89,7 @@ class DetailBrackdropCell: UITableViewCell {
                                                                  toItem: self.contentView,
                                                                  attribute: .bottom,
                                                                  multiplier: 1.0,
-                                                                 constant: 0.0),
-                                         NSLayoutConstraint.init(item: self.backdropImageView,
-                                                                 attribute: .right,
-                                                                 relatedBy: .equal,
-                                                                 toItem: self.contentView,
-                                                                 attribute: .right,
-                                                                 multiplier: 1.0,
-                                                                 constant: 0.0), ])
+                                                                 constant: 0.0),])
     }
     
     func configureWith(imagePath: String) {
@@ -65,8 +100,8 @@ class DetailBrackdropCell: UITableViewCell {
         tmdbPod.loadImageFor(path: imagePath, type: .backdrop) { image in
             
             self.backdropImageView.image = (image?.image)!
-            self.setConstraints()
-            self.layoutIfNeeded()
+            
+            self.setNeedsLayout()
         }
     }
 

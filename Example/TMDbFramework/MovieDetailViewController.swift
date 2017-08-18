@@ -42,8 +42,11 @@ class MovieDetailViewController: UITableViewController {
         
         self.navigationController?.title = movieTitle()
         
+        self.tableView.contentInset = UIEdgeInsets.zero
         self.tableView.backgroundColor = UIColor.black
+        self.tableView.alwaysBounceVertical = false
         self.tableView.register(DetailBrackdropCell.classForCoder(), forCellReuseIdentifier: "cell")
+        self.tableView.tableFooterView = UIView()
 
 //        TMDb.sharedInstance.movieDetailFor(movie!) {movie in
 //            self.movie = movie
@@ -66,6 +69,10 @@ class MovieDetailViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250.0
     }
     
     private func movieTitle() -> String {
