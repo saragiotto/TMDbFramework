@@ -42,22 +42,28 @@ class MovieDetailViewController: UITableViewController {
         
         self.navigationController?.title = movieTitle()
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        overview.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
+        self.tableView.backgroundColor = UIColor.black
+        self.tableView.register(DetailBrackdropCell.classForCoder(), forCellReuseIdentifier: "cell")
 
-        TMDb.sharedInstance.movieDetailFor(movie!) {movie in
-            self.movie = movie
-            
-            self.displayMovie()
-        }
+//        TMDb.sharedInstance.movieDetailFor(movie!) {movie in
+//            self.movie = movie
+//            
+//            self.displayMovie()
+//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailBrackdropCell
+        
+        if movie!.backdropPath != nil {
+            
+            cell.configureWith(imagePath: movie!.backdropPath!)
+            
+        }
         
         return cell
     }

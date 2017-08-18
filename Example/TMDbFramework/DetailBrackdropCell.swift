@@ -7,47 +7,15 @@
 //
 
 import UIKit
+import TMDbFramework
 
 class DetailBrackdropCell: UITableViewCell {
     
-    var backdropImageView:UIImageView?
+    var backdropImageView:UIImageView = UIImageView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.backdropImageView = UIImageView()
-        
-        self.contentView.addSubview(self.backdropImageView!)
-        
-        self.contentView.addConstraints([NSLayoutConstraint.init(item: self.backdropImageView,
-                                                            attribute: .left,
-                                                            relatedBy: .equal,
-                                                               toItem: self.contentView,
-                                                            attribute: .left,
-                                                           multiplier: 1.0,
-                                                             constant: 0.0),
-                                        NSLayoutConstraint.init(item: self.backdropImageView,
-                                                                  attribute: .top,
-                                                                  relatedBy: .equal,
-                                                                  toItem: self.contentView,
-                                                                  attribute: .top,
-                                                                  multiplier: 1.0,
-                                                                  constant: 0.0),
-                                        NSLayoutConstraint.init(item: self.backdropImageView,
-                                                                   attribute: .bottom,
-                                                                   relatedBy: .equal,
-                                                                   toItem: self.contentView,
-                                                                   attribute: .bottom,
-                                                                   multiplier: 1.0,
-                                                                   constant: 0.0),
-                                        NSLayoutConstraint.init(item: self.backdropImageView,
-                                                                    attribute: .right,
-                                                                    relatedBy: .equal,
-                                                                    toItem: self.contentView,
-                                                                    attribute: .right,
-                                                                    multiplier: 1.0,
-                                                                    constant: 0.0), ])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,8 +24,50 @@ class DetailBrackdropCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureWith(image: UIImage) {
+    func setConstraints() {
+        self.contentView.addSubview(self.backdropImageView)
+        
+        self.contentView.addConstraints([NSLayoutConstraint.init(item: self.backdropImageView,
+                                                                 attribute: .left,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .left,
+                                                                 multiplier: 1.0,
+                                                                 constant: 0.0),
+                                         NSLayoutConstraint.init(item: self.backdropImageView,
+                                                                 attribute: .top,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .top,
+                                                                 multiplier: 1.0,
+                                                                 constant: 0.0),
+                                         NSLayoutConstraint.init(item: self.backdropImageView,
+                                                                 attribute: .bottom,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .bottom,
+                                                                 multiplier: 1.0,
+                                                                 constant: 0.0),
+                                         NSLayoutConstraint.init(item: self.backdropImageView,
+                                                                 attribute: .right,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .right,
+                                                                 multiplier: 1.0,
+                                                                 constant: 0.0), ])
+    }
     
+    func configureWith(imagePath: String) {
+        
+        let tmdbPod = TMDb.sharedInstance
+        tmdbPod.imageQuality = .medium
+        
+        tmdbPod.loadImageFor(path: imagePath, type: .backdrop) { image in
+            
+            self.backdropImageView.image = (image?.image)!
+            self.setConstraints()
+            self.layoutIfNeeded()
+        }
     }
 
 }
