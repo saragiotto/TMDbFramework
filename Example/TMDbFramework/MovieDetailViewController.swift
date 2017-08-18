@@ -10,7 +10,7 @@ import UIKit
 import ChameleonFramework
 import TMDbFramework
 
-class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MovieDetailViewController: UITableViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backdropMovie: UIImageView!
@@ -52,11 +52,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         return cell
