@@ -10,9 +10,13 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class TMDbConfigurationManager {
+extension TMDb {
     
-    internal static func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
+    public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
+        
+        if (self.configurations != nil) {
+            completition(self.configurations)
+        }
         
         let configEndpoint = "configuration?"
         
@@ -30,15 +34,13 @@ class TMDbConfigurationManager {
                     let results = JSON(value).dictionary
                     
                     if let results = results!["images"] {
-                        completition(TMDbConfiguration(data: results))
+                        self.configurations = TMDbConfiguration(data: results)
+                        completition(self.configurations)
                     }
                 }
             case .failure(let error):
                 print(error)
             }
-         
         }
-        
     }
-    
 }

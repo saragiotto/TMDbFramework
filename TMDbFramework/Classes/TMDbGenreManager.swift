@@ -10,13 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class TMDbGenreManager {
+extension TMDb {
     
-    var genres: [TMDbGenre]?
-    
-    func movieGenreBy(_ id: Int, _ completition:@escaping GenreBlock){
+    public func movieGenreFor(_ id: Int, _ completition:@escaping GenreBlock){
         
-        if (genres == nil) {
+        if (self.genres == nil) {
             self.loadMovieGenres(requestId:id, completition: completition)
         } else {
             completition(self.getNameBy(id))

@@ -37,7 +37,7 @@ class MovieListViewModel {
         
         page! += 1
         
-        tmdbModel.listMoviesOf(type: .upComming, page: page) { response, movieList in
+        tmdbModel.listMoviesOf(type: .upComing, page: page) { response, movieList in
             
             if (self.movies == nil) {
                 self.movies = movieList

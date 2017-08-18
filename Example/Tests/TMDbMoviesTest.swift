@@ -17,10 +17,10 @@ class TMDbMoviesTest: QuickSpec {
             
             let tmdbPod:TMDb = TMDb.sharedInstance
             
-            it("Request upcomming movies ommiting page param") {
+            it("Request upComing movies ommiting page param") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listMoviesOf(type: .upComming) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .upComing) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -30,10 +30,10 @@ class TMDbMoviesTest: QuickSpec {
                 
             }
             
-            it("Request page 1 upcomming movies") {
+            it("Request page 1 upComing movies") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listMoviesOf(type: .upComming, page: 1) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .upComing, page: 1) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(1))
                         expect(movieList?.count).to(equal(20))
@@ -43,10 +43,10 @@ class TMDbMoviesTest: QuickSpec {
                 
             }
             
-            it("Request page 3 upcomming movies") {
+            it("Request page 3 upComing movies") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listMoviesOf(type: .upComming, page: 3) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .upComing, page: 3) { listResult, movieList in
                         
                         expect(listResult.page).to(equal(3))
                         expect(movieList?.count).to(equal(20))
@@ -137,7 +137,7 @@ class TMDbMoviesTest: QuickSpec {
             it("Detail movie") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listMoviesOf(type: .upComming) { listResult, movieList in
+                    tmdbPod.listMoviesOf(type: .upComing) { listResult, movieList in
                         
                         let movie = movieList!.first
                         

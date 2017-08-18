@@ -18,10 +18,10 @@ public typealias ImageBlock = (TMDbImage?) -> Void
 
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
-public enum TMDbListMovieType {
-    case upComming
-    case topRated
-    case popular
+public enum TMDbListMovieType: String {
+    case upComing = "upcoming?"
+    case topRated = "top_rated?"
+    case popular = "popular?"
 }
 
 public enum TMDbImageQuality {

@@ -20,7 +20,7 @@ class TMDbGenreTest: QuickSpec {
             it("Request existing genreName") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.movieGenreFor(id: 28) { genreName in
+                    tmdbPod.movieGenreFor(28) { genreName in
                         
                         expect(genreName).notTo(beNil())
                         done()
@@ -31,7 +31,7 @@ class TMDbGenreTest: QuickSpec {
             it("Request not existing genreName") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.movieGenreFor(id: 28000) { genreName in
+                    tmdbPod.movieGenreFor(28000) { genreName in
                         
                         expect(genreName).to(beNil())
                         done()
