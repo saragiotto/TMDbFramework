@@ -219,11 +219,11 @@
 		A77641CC1F33EFBA00717FBD /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A72855CF1F4679070066408D /* Cell */,
 				A776418E1F33EEFF00717FBD /* AboutViewController.swift */,
 				A77641A61F33EEFF00717FBD /* MovieDetailViewController.swift */,
 				A77641A81F33EEFF00717FBD /* MovieListViewCell.swift */,
 				A77641A91F33EEFF00717FBD /* MovieListViewController.swift */,
+				A72855CF1F4679070066408D /* Cell */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
