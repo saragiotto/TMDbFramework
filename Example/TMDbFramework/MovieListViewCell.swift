@@ -33,16 +33,16 @@ class MovieListViewCell: UICollectionViewCell {
             }
         }
         
-        if movie.genresIds == nil {
-            self.movieGenre.text = "-"
-        } else {
-            TMDb.sharedInstance.movieGenreFor(id: movie.genresIds![0]) { genreName in
+        if movie.genresIds != nil && movie.genresIds!.count > 0{
+            TMDb.sharedInstance.movieGenreFor(movie.genresIds![0]) { genreName in
                 if let name = genreName {
                     self.movieGenre.text = name
                 } else {
                     self.movieGenre.text = "-"
                 }
             }
+        } else {
+            self.movieGenre.text = "-"
         }
         
         if let releaseDate = movie.releaseDate {
@@ -69,7 +69,7 @@ class MovieListViewCell: UICollectionViewCell {
             let tmdbPod = TMDb.sharedInstance
             let posterPath = movie.posterPath
             
-            tmdbPod.loadImageFor(path: movie.posterPath!, type: .Poster) { image in
+            tmdbPod.loadImageFor(path: movie.posterPath!, type: .poster) { image in
                 
                 if (posterPath == image?.path!) {
                     self.animatedPosterImageShow((image?.image)!)

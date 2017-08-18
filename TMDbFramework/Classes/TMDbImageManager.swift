@@ -10,9 +10,20 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-class TMDbImageManager {
+extension TMDb {
+    
+    public func loadImageFor(path:String, type:TMDbImageType, _ completition:@escaping ImageBlock) {
+        
+        if (self.configurations == nil) {
+            self.loadConfiguration() { _ in
+                self.imageFor(type: type, path: path, completition)
+            }
+        } else {
+            self.imageFor(type: type, path: path, completition)
+        }
+    }
 
-    static func imageFor(type:TMDbImageType, path:String, _ completition: @escaping ImageBlock) {
+    func imageFor(type:TMDbImageType, path:String, _ completition: @escaping ImageBlock) {
         
         let url = TMDbUtils.buildImageURL(path: path, type: type)
         
