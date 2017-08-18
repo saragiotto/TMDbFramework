@@ -38,19 +38,18 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        // Do any additional setup after loading the view.
         
+        self.navigationController?.title = movieTitle()
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         overview.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
-//        castTableView.delegate = self
-//        castTableView.dataSource = self
-//        
+
         TMDb.sharedInstance.movieDetailFor(movie!) {movie in
             self.movie = movie
             
             self.displayMovie()
         }
-    
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,11 +62,19 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    private func updateScrollViewHeigh(_ heigh: CGFloat) {
+    private func movieTitle() -> String {
         
-        let newHeigh = self.scrollView.contentSize.height + heigh
+        var finalTitle = "Title Not Available"
         
-        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: newHeigh)
+        if let title = movie!.title {
+            finalTitle = title
+        } else {
+            if let originalTitle = movie!.originalTitle {
+                finalTitle = originalTitle
+            }
+        }
+        
+        return finalTitle
     }
     
     private func displayMovie() {
@@ -76,23 +83,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
 //        cast.text = " "
 //        runTime.text = ""
         
-        if let title = movie!.title {
-            self.navigationItem.title = title
-        } else {
-            if let originalTitle = movie!.originalTitle {
-                self.navigationItem.title = originalTitle
-            } else {
-                self.navigationItem.title = "Title Not Available"
-            }
-        }
-        
         if let overviewMovie = movie!.overview {
             overview.text = overviewMovie
         } else {
             overview.text = "Overview not available."
         }
-        
-        self.updateScrollViewHeigh(overview.contentSize.height)
         
 //        if let movieDate = movie!.releaseDate {
 //            
@@ -138,11 +133,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             let tmdbPod = TMDb.sharedInstance
             tmdbPod.imageQuality = .medium
             
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            
             tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
                 self.animatedImageShow((image?.image)!)
             }
@@ -181,7 +172,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.backdropMovie.addSubview(bdMovie)
         self.backdropMovie.image = image
         
-        self.updateScrollViewHeigh(backdropMovie.image!.size.height)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
             bdMovie.alpha = 0.0
