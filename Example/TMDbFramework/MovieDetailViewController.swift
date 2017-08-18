@@ -50,10 +50,23 @@ class MovieDetailViewController: UITableViewController {
         self.tableView.register(BrackdropCell.classForCoder(), forCellReuseIdentifier: "backdropCell")
         self.tableView.register(ReleaseDateCell.classForCoder(), forCellReuseIdentifier: "releaseDateCell")
         self.tableView.register(OverviewCell.classForCoder(), forCellReuseIdentifier: "overviewCell")
-
+        self.tableView.register(CastCell.classForCoder(), forCellReuseIdentifier: "castCell")
+        
+        TMDb.sharedInstance.creditsFor(self.movie!) { movie in
+            
+            if (movie != nil) {
+                self.movie = movie!
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (self.movie?.cast != nil && (self.movie?.cast!.count)! > 0) {
+            return 3 + (self.movie?.cast?.count)!
+        }
+        
         return 3
     }
     
@@ -81,7 +94,11 @@ class MovieDetailViewController: UITableViewController {
             
             return cell
         default:
-            return UITableViewCell()
+            let cell:CastCell  = tableView.dequeueReusableCell(withIdentifier: "castCell", for: indexPath) as! CastCell
+            
+            cell.configureWith(cast: movie!.cast![indexPath.row - 2])
+            
+            return cell
         }
     }
     
@@ -95,7 +112,7 @@ class MovieDetailViewController: UITableViewController {
         case 2:
             return 88.0
         default:
-            return 44.0
+            return 56.0
         }
     }
     

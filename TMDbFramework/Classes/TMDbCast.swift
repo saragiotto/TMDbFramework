@@ -11,14 +11,14 @@ import SwiftyJSON
 
 open class TMDbCast{
     
-    let castId: Int?
-    let character: String?
-    let creditId: String?
-    let gender: Int?
-    let id: Int?
-    let name: String?
-    let order: Int?
-    let profilePath: String?
+    public let castId: Int?
+    public let character: String?
+    public let creditId: String?
+    public let gender: Int?
+    public let id: Int?
+    public let name: String?
+    public let order: Int?
+    public let profilePath: String?
     
     init(data: JSON) {
         
