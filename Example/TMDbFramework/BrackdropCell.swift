@@ -1,5 +1,5 @@
 //
-//  DetailBrackdropCell.swift
+//  BrackdropCell.swift
 //  TMDbFramework
 //
 //  Created by Leonardo Saragiotto on 8/17/17.
@@ -9,9 +9,20 @@
 import UIKit
 import TMDbFramework
 
-class DetailBrackdropCell: UITableViewCell {
+class BrackdropCell: BaseCell {
     
     var backdropImageView:UIImageView
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         backdropImageView = UIImageView.init()
@@ -32,12 +43,7 @@ class DetailBrackdropCell: UITableViewCell {
         backdropImageView.contentMode = .scaleAspectFill
         backdropImageView.clipsToBounds = true
         
-        self.backgroundColor = UIColor.clear
-        
-        self.accessoryType = .none
-        self.selectionStyle = .none
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.backdropImageView)
         
         self.setConstraints()
     }
@@ -45,22 +51,10 @@ class DetailBrackdropCell: UITableViewCell {
     override func layoutSubviews() {
         self.contentView.frame = self.bounds
         self.backdropImageView.frame = self.bounds
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
     func setConstraints() {
-    
-        self.contentView.addSubview(self.backdropImageView)
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.backdropImageView,
                                                                  attribute: .left,

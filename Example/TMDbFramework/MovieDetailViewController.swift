@@ -45,34 +45,58 @@ class MovieDetailViewController: UITableViewController {
         self.tableView.contentInset = UIEdgeInsets.zero
         self.tableView.backgroundColor = UIColor.black
         self.tableView.alwaysBounceVertical = false
-        self.tableView.register(DetailBrackdropCell.classForCoder(), forCellReuseIdentifier: "cell")
         self.tableView.tableFooterView = UIView()
+        
+        self.tableView.register(BrackdropCell.classForCoder(), forCellReuseIdentifier: "backdropCell")
+        self.tableView.register(ReleaseDateCell.classForCoder(), forCellReuseIdentifier: "releaseDateCell")
+        self.tableView.register(OverviewCell.classForCoder(), forCellReuseIdentifier: "overviewCell")
 
-//        TMDb.sharedInstance.movieDetailFor(movie!) {movie in
-//            self.movie = movie
-//            
-//            self.displayMovie()
-//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailBrackdropCell
-        
-        if movie!.backdropPath != nil {
+    
+        switch indexPath.row {
+        case 0:
+            let cell:BrackdropCell = tableView.dequeueReusableCell(withIdentifier: "backdropCell", for: indexPath) as! BrackdropCell
             
-            cell.configureWith(imagePath: movie!.backdropPath!)
+            if movie!.backdropPath != nil {
+                cell.configureWith(imagePath: movie!.backdropPath!)
+            }
             
+            return cell
+        case 1:
+            let cell:ReleaseDateCell  = tableView.dequeueReusableCell(withIdentifier: "releaseDateCell", for: indexPath) as! ReleaseDateCell
+            
+            cell.configureWith(releaseDate: movie!.releaseDate)
+            
+            return cell
+        case 2:
+            let cell:OverviewCell  = tableView.dequeueReusableCell(withIdentifier: "overviewCell", for: indexPath) as! OverviewCell
+            
+            cell.configureWith(overview: movie!.overview)
+            
+            return cell
+        default:
+            return UITableViewCell()
         }
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250.0
+        
+        switch indexPath.row {
+        case 0:
+            return 250.0
+        case 1:
+            return 44.0
+        case 2:
+            return 88.0
+        default:
+            return 44.0
+        }
     }
     
     private func movieTitle() -> String {
@@ -91,36 +115,6 @@ class MovieDetailViewController: UITableViewController {
     }
     
     private func displayMovie() {
-        
-//        website.text = " "
-//        cast.text = " "
-//        runTime.text = ""
-        
-        if let overviewMovie = movie!.overview {
-            overview.text = overviewMovie
-        } else {
-            overview.text = "Overview not available."
-        }
-        
-//        if let movieDate = movie!.releaseDate {
-//            
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateStyle = .medium
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//            
-//            let releaseDateFormatted = dateFormatter.date(from: movieDate)
-//            
-//            let newDateFormat = DateFormatter()
-//            newDateFormat.dateStyle = .medium
-//            
-//            releaseDate.text = newDateFormat.string(from: releaseDateFormatted!)
-//        } else {
-//            releaseDate.text = "To be announced"
-//        }
-//        
-//        self.cast.text = ""
-//        
-//        self.genre.text = ""
         
 //        let ganreNames = movie!.genresIds!.flatMap() { (genreId:Int) -> (String?) in
 //            var genreName:String? = nil
