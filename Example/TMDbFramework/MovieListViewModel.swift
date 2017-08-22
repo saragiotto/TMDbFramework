@@ -23,6 +23,7 @@ class MovieListViewModel {
     
     var totalResults: Int?
     
+    var requestResults: Int?
     
     init() {
         tmdbModel = TMDb.sharedInstance
@@ -31,11 +32,16 @@ class MovieListViewModel {
         movies = nil
         totalPages = nil
         totalResults = nil
+        requestResults = nil
     }
     
     func loadMovies(_ completition: @escaping () -> ()) {
         
         page! += 1
+        
+        if (totalPages != nil &&  page! > totalPages!) {
+            return
+        }
         
         tmdbModel.listMoviesOf(type: .upComing, page: page) { response, movieList in
             
@@ -50,6 +56,8 @@ class MovieListViewModel {
             self.totalPages = response.totalPages
             
             self.totalResults = response.totalResults
+            
+            self.requestResults = movieList?.count
             
             completition()
             

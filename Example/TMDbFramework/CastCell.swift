@@ -134,15 +134,18 @@ class CastCell: BaseCell {
             let tmdbPod = TMDb.sharedInstance
             tmdbPod.imageQuality = .medium
             
+            let profilePath = cast.profilePath!
+            
             tmdbPod.loadImageFor(path: cast.profilePath!, type: .profile) { image in
                 
-                self.castPhoto.image = (image?.image)!
-                
-                self.setNeedsLayout()
+                DispatchQueue.main.async {
+                    if (profilePath == image?.path) {
+                        self.castPhoto.image = (image?.image)!
+                        
+                        self.setNeedsLayout()
+                    }
+                }
             }
         }
-        
-        
-
     }
 }

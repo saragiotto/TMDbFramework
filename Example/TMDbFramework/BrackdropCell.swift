@@ -93,9 +93,12 @@ class BrackdropCell: BaseCell {
         
         tmdbPod.loadImageFor(path: imagePath, type: .backdrop) { image in
             
-            self.backdropImageView.image = (image?.image)!
+            DispatchQueue.main.async {
             
-            self.setNeedsLayout()
+                self.backdropImageView.image = (image?.image)!
+                
+                self.setNeedsLayout()
+            }
         }
     }
 

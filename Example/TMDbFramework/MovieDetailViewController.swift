@@ -96,7 +96,7 @@ class MovieDetailViewController: UITableViewController {
         default:
             let cell:CastCell  = tableView.dequeueReusableCell(withIdentifier: "castCell", for: indexPath) as! CastCell
             
-            cell.configureWith(cast: movie!.cast![indexPath.row - 2])
+            cell.configureWith(cast: movie!.cast![indexPath.row - 3])
             
             return cell
         }
