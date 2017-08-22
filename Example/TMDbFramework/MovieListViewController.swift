@@ -90,19 +90,10 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         cell.configureWithMovie((movieListVM.movies?[indexPath.row])!)
         
         if (indexPath.row == movieListVM.movies!.count - 1) {
-            
-            movieListVM.loadMovies() {
-                self.collectionView?.reloadData()
-            }
+            self.loadMoreMovies()
         }
 
         return cell
-    }
-    
-    override public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -122,6 +113,26 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0
+    }
+    
+    func loadMoreMovies() {
+        
+        movieListVM.loadMovies() {
+            
+            let moviesLoaded = self.movieListVM.requestResults
+            var indexPaths = [IndexPath]()
+            let movieListCount = self.movieListVM.movies!.count - moviesLoaded!
+            var row = 0
+            
+            for _ in 1...moviesLoaded! {
+                
+                indexPaths.append(IndexPath(item: movieListCount + row, section: 0))
+                
+                row += 1
+            }
+            
+            self.collectionView?.insertItems(at: indexPaths)
+        }
     }
     
     public func presentAboutScreen() {
