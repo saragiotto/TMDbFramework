@@ -37,6 +37,7 @@ class BaseCell: UITableViewCell {
     func commomSuperInit() {
         
         self.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
         self.accessoryType = .none
         self.selectionStyle = .none
         self.translatesAutoresizingMaskIntoConstraints = false

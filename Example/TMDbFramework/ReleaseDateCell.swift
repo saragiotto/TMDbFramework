@@ -38,8 +38,8 @@ class ReleaseDateCell: BaseCell {
     }
     
     func commomInit() {
-        
-        self.releaseDate.textColor = UIColor.lightText
+
+        self.releaseDate.textColor = UIColor.white
         self.releaseDate.font = UIFont.systemFont(ofSize: 14.0)
         self.releaseDate.textAlignment = .right
         self.releaseDate.translatesAutoresizingMaskIntoConstraints = false
@@ -48,16 +48,16 @@ class ReleaseDateCell: BaseCell {
         
         self.setConstraints()
     }
-
+    
     func setConstraints() {
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.releaseDate,
-                                                                 attribute: .right,
+                                                                 attribute: .leading,
                                                                  relatedBy: .equal,
                                                                  toItem: self.contentView,
-                                                                 attribute: .right,
+                                                                 attribute: .leading,
                                                                  multiplier: 1.0,
-                                                                 constant: 16.0),
+                                                                 constant: 8.0),
                                          NSLayoutConstraint.init(item: self.releaseDate,
                                                                  attribute: .centerY,
                                                                  relatedBy: .equal,

@@ -168,8 +168,11 @@ class CastCell: BaseCell {
             }
             
             switch gender {
-            case 1: self.castPhoto.image = UIImage(named: "womanProfile.png")
-            default: self.castPhoto.image = UIImage(named: "manProfile.png")
+            case 1:
+                self.castPhoto.image = UIImage(named: "womanProfile.png")
+                break
+            default:
+                self.castPhoto.image = UIImage(named: "manProfile.png")
             }
         }
         

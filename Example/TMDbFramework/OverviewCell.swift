@@ -10,7 +10,7 @@ import UIKit
 
 class OverviewCell: BaseCell {
     
-    var overviewTextView: UITextView
+    var overviewTextView: UILabel
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,14 +24,14 @@ class OverviewCell: BaseCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        self.overviewTextView = UITextView.init()
+        self.overviewTextView = UILabel()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.commomInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.overviewTextView = UITextView.init()
+        self.overviewTextView = UILabel()
         super.init(coder: aDecoder)
         
         self.commomInit()
@@ -42,7 +42,8 @@ class OverviewCell: BaseCell {
         self.overviewTextView.textColor = UIColor.lightText
         self.overviewTextView.font = UIFont.systemFont(ofSize: 12.0)
         self.overviewTextView.textAlignment = .justified
-        self.overviewTextView.isEditable = false
+        self.overviewTextView.numberOfLines = 0
+        self.overviewTextView.lineBreakMode = .byWordWrapping
         self.overviewTextView.backgroundColor = UIColor.clear
         self.overviewTextView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -59,27 +60,28 @@ class OverviewCell: BaseCell {
                                                                  toItem: self.contentView,
                                                                  attribute: .left,
                                                                  multiplier: 1.0,
-                                                                 constant: 16.0),
+                                                                 constant: 8.0),
                                          NSLayoutConstraint.init(item: self.overviewTextView,
                                                                  attribute: .top,
                                                                  relatedBy: .equal,
                                                                  toItem: self.contentView,
                                                                  attribute: .top,
                                                                  multiplier: 1.0,
-                                                                 constant: 0.0),
+                                                                 constant: 8.0),
                                          NSLayoutConstraint.init(item: self.overviewTextView,
-                                                                 attribute: .right,
+                                                                 attribute: .width,
                                                                  relatedBy: .equal,
-                                                                 toItem: self.contentView,
-                                                                 attribute: .right,
+                                                                 toItem: nil,
+                                                                 attribute: .notAnAttribute,
                                                                  multiplier: 1.0,
-                                                                 constant: 0.0),])
+                                                                 constant: self.bounds.size.width - 8.0),])
     }
 
     func configureWith(overview: String?) {
         
         if (overview != nil) {
             self.overviewTextView.text = overview!
+            self.overviewTextView.sizeToFit()
         }
     }
 }
