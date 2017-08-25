@@ -16,31 +16,25 @@ class MovieListViewCell: UICollectionViewCell {
     @IBOutlet weak var movieGenre: UILabel!
     @IBOutlet weak var movieReleaseDate: UILabel!
     
-    var movie: TMDbMovie?
-    var indexPath: IndexPath?
-    
-    func configureWithMovie(_ movie:TMDbMovie, atIndex:IndexPath) {
-        
-        self.movie = movie
-        self.indexPath = atIndex
+    func configureWithMovie(_ movie:TMDbMovie) {
         
         moviePoster?.image = nil
         movieName?.text = nil
         movieGenre?.text = nil
         movieReleaseDate?.text = nil
         
-        if let title = self.movie!.title {
+        if let title = movie.title {
             self.movieName.text = title
         } else {
-            if let origTitle = self.movie!.originalTitle {
+            if let origTitle = movie.originalTitle {
                 self.movieName.text = origTitle
             } else {
                 self.movieName.text = "Title not available"
             }
         }
         
-        if self.movie!.genresIds != nil && self.movie!.genresIds!.count > 0{
-            TMDb.sharedInstance.movieGenreFor(self.movie!.genresIds![0]) { genreName in
+        if movie.genresIds != nil && movie.genresIds!.count > 0{
+            TMDb.sharedInstance.movieGenreFor(movie.genresIds![0]) { genreName in
                 if let name = genreName {
                     self.movieGenre.text = name
                 } else {
@@ -51,7 +45,7 @@ class MovieListViewCell: UICollectionViewCell {
             self.movieGenre.text = "-"
         }
         
-        if let releaseDate = self.movie!.releaseDate {
+        if let releaseDate = movie.releaseDate {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -70,21 +64,17 @@ class MovieListViewCell: UICollectionViewCell {
         self.moviePoster.image = UIImage(named: "LaunchPoster.png")!
         
         
-        if self.movie!.posterPath != nil {
+        if movie.posterPath != nil {
             
             let tmdbPod = TMDb.sharedInstance
-            let posterPath = self.movie!.posterPath
+            let posterPath = movie.posterPath
             
-            tmdbPod.loadImageFor(path: posterPath!, type: .poster) { [weak self] image in
-                
-                DispatchQueue.main.async {
-                    if (posterPath! == image!.path!) {
-                        self?.animatedPosterImageShow((image?.image)!)
-                    }
-                }
+            tmdbPod.imageURLFor(path: posterPath!, type: .poster) { stringPosterPath in
+            
+                self.moviePoster.af_setImage(withURL: URL(string: stringPosterPath)!,
+                                 placeholderImage: UIImage(named: "LaunchPoster.png")!,
+                                 imageTransition: .crossDissolve(0.2))
             }
-            
-            
         } else {
             self.moviePoster.image = UIImage(named: "NoPosterNew.png")!
         }
@@ -93,22 +83,8 @@ class MovieListViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.movie = nil
-    }
-    
-    private func animatedPosterImageShow(_ posterImage: UIImage) {
-        
-        let posterMovie = UIImageView(image: UIImage())
-        posterMovie.frame = self.moviePoster.frame
-        posterMovie.alpha = 1.0
-        posterMovie.backgroundColor = UIColor.black
-        self.moviePoster.addSubview(posterMovie)
-        self.moviePoster.image = posterImage
-        
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: {
-            posterMovie.alpha = 0.0
-        }, completion: { finished in
-            posterMovie.removeFromSuperview()
-        })
+        self.moviePoster.af_cancelImageRequest()
+        self.moviePoster.layer.removeAllAnimations()
+        self.moviePoster.image = nil
     }
 }
