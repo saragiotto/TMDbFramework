@@ -13,7 +13,7 @@ typealias MovieListCompletition = (TMDbListResult, [TMDbMovie]?) -> Void
 
 class MovieListViewModel {
     
-    let tmdbModel: TMDb!
+    public let tmdbModel: TMDb!
     
     var movies: [TMDbMovie]?
     

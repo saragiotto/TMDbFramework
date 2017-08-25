@@ -39,9 +39,10 @@ class BrackdropCell: BaseCell {
     }
     
     func commomInit() {
-        backdropImageView.backgroundColor = UIColor.clear
-        backdropImageView.contentMode = .scaleAspectFill
-        backdropImageView.clipsToBounds = true
+        self.backdropImageView.backgroundColor = UIColor.clear
+        self.backdropImageView.contentMode = .scaleAspectFill
+        self.backdropImageView.clipsToBounds = true
+        self.backdropImageView.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(self.backdropImageView)
         
@@ -88,17 +89,12 @@ class BrackdropCell: BaseCell {
     
     func configureWith(imagePath: String) {
         
-        let tmdbPod = TMDb.sharedInstance
-        tmdbPod.imageQuality = .medium
+        let tmdbViewModel = MovieListViewModel()
         
-        tmdbPod.loadImageFor(path: imagePath, type: .backdrop) { image in
+        tmdbViewModel.tmdbModel.imageURLFor(path: imagePath, type: .backdrop) { stringBackdropPath in
             
-            DispatchQueue.main.async {
-            
-                self.backdropImageView.image = (image?.image)!
-                
-                self.setNeedsLayout()
-            }
+            self.backdropImageView.af_setImage(withURL: URL(string: stringBackdropPath)!,
+                                         imageTransition: .crossDissolve(0.2))
         }
     }
 

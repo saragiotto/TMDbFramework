@@ -61,15 +61,12 @@ class MovieListViewCell: UICollectionViewCell {
             self.movieReleaseDate.text = "To be announced"
         }
         
-        self.moviePoster.image = UIImage(named: "LaunchPoster.png")!
-        
-        
         if movie.posterPath != nil {
             
-            let tmdbPod = TMDb.sharedInstance
+            let tmdbViewModel = MovieListViewModel()
             let posterPath = movie.posterPath
             
-            tmdbPod.imageURLFor(path: posterPath!, type: .poster) { stringPosterPath in
+            tmdbViewModel.tmdbModel.imageURLFor(path: posterPath!, type: .poster) { stringPosterPath in
             
                 self.moviePoster.af_setImage(withURL: URL(string: stringPosterPath)!,
                                  placeholderImage: UIImage(named: "LaunchPoster.png")!,

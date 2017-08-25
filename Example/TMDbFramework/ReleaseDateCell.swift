@@ -24,14 +24,14 @@ class ReleaseDateCell: BaseCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        self.releaseDate = UILabel.init()
+        self.releaseDate = UILabel()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.commomInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.releaseDate = UILabel.init()
+        self.releaseDate = UILabel()
         super.init(coder: aDecoder)
         
         self.commomInit()
@@ -42,15 +42,9 @@ class ReleaseDateCell: BaseCell {
         self.releaseDate.textColor = UIColor.lightText
         self.releaseDate.font = UIFont.systemFont(ofSize: 14.0)
         self.releaseDate.textAlignment = .right
+        self.releaseDate.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(self.releaseDate)
-        
-        self.setConstraints()
-    }
-    
-    override func layoutSubviews() {
-        self.contentView.frame = self.bounds
-        self.releaseDate.frame = self.bounds
         
         self.setConstraints()
     }
@@ -89,5 +83,7 @@ class ReleaseDateCell: BaseCell {
         } else {
             self.releaseDate.text = "To be announced"
         }
+        
+        self.releaseDate.sizeToFit()
     }
 }
