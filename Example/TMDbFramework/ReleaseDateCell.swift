@@ -59,12 +59,19 @@ class ReleaseDateCell: BaseCell {
                                                                  multiplier: 1.0,
                                                                  constant: 8.0),
                                          NSLayoutConstraint.init(item: self.releaseDate,
-                                                                 attribute: .centerY,
+                                                                 attribute: .top,
                                                                  relatedBy: .equal,
                                                                  toItem: self.contentView,
-                                                                 attribute: .centerY,
+                                                                 attribute: .top,
                                                                  multiplier: 1.0,
-                                                                 constant: 0.0),])
+                                                                 constant: 8.0),
+                                         NSLayoutConstraint.init(item: self.releaseDate,
+                                                                 attribute: .right,
+                                                                 relatedBy: .equal,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .right,
+                                                                 multiplier: 1.0,
+                                                                 constant: -8.0),])
     }
     
     func configureWith(releaseDate: String?) {

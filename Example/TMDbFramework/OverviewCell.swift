@@ -52,6 +52,10 @@ class OverviewCell: BaseCell {
         self.setConstraints()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
     func setConstraints() {
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.overviewTextView,
@@ -69,12 +73,12 @@ class OverviewCell: BaseCell {
                                                                  multiplier: 1.0,
                                                                  constant: 8.0),
                                          NSLayoutConstraint.init(item: self.overviewTextView,
-                                                                 attribute: .width,
+                                                                 attribute: .right,
                                                                  relatedBy: .equal,
-                                                                 toItem: nil,
-                                                                 attribute: .notAnAttribute,
+                                                                 toItem: self.contentView,
+                                                                 attribute: .right,
                                                                  multiplier: 1.0,
-                                                                 constant: self.bounds.size.width - 8.0),])
+                                                                 constant: -8.0)])
     }
 
     func configureWith(overview: String?) {
@@ -82,6 +86,7 @@ class OverviewCell: BaseCell {
         if (overview != nil) {
             self.overviewTextView.text = overview!
             self.overviewTextView.sizeToFit()
+            self.contentView.sizeToFit()
         }
     }
 }

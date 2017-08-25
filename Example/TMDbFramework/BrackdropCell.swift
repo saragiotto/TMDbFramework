@@ -49,12 +49,6 @@ class BrackdropCell: BaseCell {
         self.setConstraints()
     }
     
-    override func layoutSubviews() {
-        self.contentView.frame = self.bounds
-        self.backdropImageView.frame = self.bounds
-        
-    }
-    
     func setConstraints() {
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.backdropImageView,
