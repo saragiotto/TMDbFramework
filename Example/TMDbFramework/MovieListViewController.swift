@@ -89,7 +89,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
 
         cell.configureWithMovie((movieListVM.movies?[indexPath.row])!)
         
-        if (indexPath.row == movieListVM.movies!.count - 1) {
+        if (indexPath.row == movieListVM.movies!.count - 3) {
             self.loadMoreMovies()
         }
 

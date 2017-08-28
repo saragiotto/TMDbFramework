@@ -40,10 +40,14 @@ class MovieDetailViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
         
-        self.navigationController?.title = movieTitle()
+        self.title = self.movieTitle()
         
-        self.tableView.contentInset = UIEdgeInsets.zero
+        self.tableView.contentInset = .zero
+        self.tableView.separatorInset = .zero
+        self.tableView.layoutMargins = .zero
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.backgroundColor = UIColor.black
+        self.tableView.cellLayoutMarginsFollowReadableWidth = false
         self.tableView.alwaysBounceVertical = false
         self.tableView.tableFooterView = UIView()
         

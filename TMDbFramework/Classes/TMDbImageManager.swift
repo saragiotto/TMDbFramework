@@ -22,6 +22,17 @@ extension TMDb {
             self.imageFor(type: type, path: path, completition)
         }
     }
+    
+    public func imageURLFor(path:String, type:TMDbImageType, _ completition:@escaping (String)->()) {
+        if (self.configurations == nil) {
+            self.loadConfiguration() { _ in
+                completition(TMDbUtils.buildImageURL(path: path, type: type))
+            }
+        } else {
+            completition(TMDbUtils.buildImageURL(path: path, type: type))
+        }
+        
+    }
 
     func imageFor(type:TMDbImageType, path:String, _ completition: @escaping ImageBlock) {
         
