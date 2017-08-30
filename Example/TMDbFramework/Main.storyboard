@@ -14,7 +14,7 @@
         <scene sceneID="tjh-oE-RVD">
             <objects>
                 <collectionViewController id="SKS-N1-Z74" customClass="MovieListViewController" customModule="TMDbFramework_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="tnz-0n-2dt">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" id="tnz-0n-2dt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,7 +141,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="r7g-40-w8j">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon512.png" translatesAutoresizingMaskIntoConstraints="NO" id="r7g-40-w8j">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="hR9-wx-bv1"/>
@@ -225,12 +225,11 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieDBAttr.png" translatesAutoresizingMaskIntoConstraints="NO" id="EXE-Ry-5m8">
                                 <rect key="frame" x="16" y="437" width="131" height="161"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-Pw-CPd">
-                                <rect key="frame" x="301" y="28" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-Pw-CPd">
+                                <rect key="frame" x="318" y="28" width="41" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Done">
-                                    <color key="titleColor" red="0.97670525312423706" green="0.60546392202377319" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.18431372549019609" green="0.80000000000000004" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="closeAboutScreen:" destination="5Gc-Sm-vSE" eventType="touchUpInside" id="JIe-GH-ZaP"/>
@@ -247,11 +246,13 @@
                             <constraint firstItem="13g-iM-dkW" firstAttribute="top" secondItem="r7g-40-w8j" secondAttribute="bottom" constant="8" id="ALE-ef-HrV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="13g-iM-dkW" secondAttribute="trailing" id="K45-bC-FW8"/>
                             <constraint firstItem="EXE-Ry-5m8" firstAttribute="top" secondItem="ri5-yO-Gch" secondAttribute="bottom" constant="16" id="Puq-Dq-D5h"/>
+                            <constraint firstItem="ZG2-Pw-CPd" firstAttribute="top" secondItem="TF8-nM-dva" secondAttribute="bottom" constant="8" id="Wza-N1-FCy"/>
                             <constraint firstItem="r7g-40-w8j" firstAttribute="top" secondItem="NVt-xu-4Rk" secondAttribute="top" id="X2D-it-vS6"/>
                             <constraint firstItem="r7g-40-w8j" firstAttribute="leading" secondItem="NVt-xu-4Rk" secondAttribute="leading" id="e1A-Sk-sL4"/>
                             <constraint firstItem="QCW-kd-Jyq" firstAttribute="leading" secondItem="NVt-xu-4Rk" secondAttribute="leadingMargin" id="grB-Rt-lVy"/>
                             <constraint firstItem="ri5-yO-Gch" firstAttribute="top" secondItem="QCW-kd-Jyq" secondAttribute="bottom" constant="16" id="h46-bH-8Ob"/>
                             <constraint firstItem="QCW-kd-Jyq" firstAttribute="top" secondItem="13g-iM-dkW" secondAttribute="bottom" constant="12" id="hLp-OC-Ypl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZG2-Pw-CPd" secondAttribute="trailing" id="liU-SP-vNd"/>
                             <constraint firstItem="EXE-Ry-5m8" firstAttribute="leading" secondItem="NVt-xu-4Rk" secondAttribute="leadingMargin" id="vAH-fj-E9Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EXE-Ry-5m8" secondAttribute="trailing" constant="212" id="xfA-Rr-pNk"/>
                         </constraints>
@@ -270,11 +271,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s8U-Iy-P5j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" autoresizesSubviews="NO" alpha="0.59999999999999998" contentMode="scaleToFill" barStyle="black" id="Vdn-Vm-9Ah">
+                    <navigationBar key="navigationBar" autoresizesSubviews="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Vdn-Vm-9Ah">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.97670525312423706" green="0.60546392202377319" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.18431372549019609" green="0.80000000000000004" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -287,7 +288,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage.png" width="2048" height="2048"/>
+        <image name="icon512.png" width="512" height="512"/>
         <image name="movieDBAttr.png" width="408" height="161"/>
     </resources>
 </document>

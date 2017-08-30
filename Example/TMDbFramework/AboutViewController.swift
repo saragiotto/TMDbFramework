@@ -26,7 +26,7 @@ class AboutViewController: UIViewController {
         
         self.contactEmail.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(AboutViewController.sendEmail)))
         
-        self.contactEmail.textColor = UIColor.flatYellowColorDark()
+        self.contactEmail.textColor = UIColor.flatGreen()
         // Do any additional setup after loading the view.
     }
 

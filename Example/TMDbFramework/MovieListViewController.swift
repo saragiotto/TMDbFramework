@@ -30,7 +30,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         
         let rightSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(title: "About", style: .plain, target: self, action: #selector(MovieListViewController.presentAboutScreen))
         
-        rightSearchBarButtonItem.tintColor = UIColor.flatYellowColorDark()
+        rightSearchBarButtonItem.tintColor = UIColor.flatGreen()
         
         self.navigationItem.setRightBarButtonItems([rightSearchBarButtonItem], animated: true)
         
