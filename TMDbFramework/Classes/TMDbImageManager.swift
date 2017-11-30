@@ -52,8 +52,8 @@ extension TMDb {
         }
     }
     
-    func imagesFor(movieId:Int, _ completition: @escaping ImagesBlock) {
-        let endpoint = "movie/" + String(movieId) + "/images"
+    public func imagesFor(movieId:Int, _ completition: @escaping ImagesBlock) {
+        let endpoint = "movie/" + String(movieId) + "/images?"
         let manager = TMDb.sharedInstance.alamofireManager
         
         let url = TMDbUtils.buildURLWith(endpoint:endpoint)

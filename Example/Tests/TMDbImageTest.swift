@@ -54,7 +54,7 @@ class TMDbImageTest: QuickSpec {
             beforeEach {
                 tmdbPod.imageQuality = .high
                 tmdbPod.configurations = nil
-                waitUntil(timeout: 5.0) { done in
+                waitUntil(timeout: 8.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadConfiguration({_ in done()})
                     }
@@ -63,7 +63,7 @@ class TMDbImageTest: QuickSpec {
             
             it("Request poster high quality") {
                 
-                waitUntil(timeout: 2.0) { done in
+                waitUntil(timeout: 8.0) { done in
                     DispatchQueue.global(qos: .background).async {
                         tmdbPod.loadImageFor(path: posterPath, type: .poster) {image in
                             
@@ -73,6 +73,23 @@ class TMDbImageTest: QuickSpec {
                         }
                     }
                 }
+            }
+        }
+        
+        describe("Backdrop and Poster test") {
+            
+            let tmdbPod:TMDb = TMDb.sharedInstance
+            
+            it("Request images for movie") {
+                
+                waitUntil(timeout: 8.0) { done in
+                    tmdbPod.imagesFor(movieId: 550) { imageList in
+                        
+                        expect(imageList?.count).to(beGreaterThan(0))
+                        done()
+                    }
+                }
+                
             }
         }
     }
