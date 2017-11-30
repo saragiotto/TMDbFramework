@@ -16,6 +16,8 @@ public typealias MovieDetailBlock = (TMDbMovie?) -> Void
 
 public typealias ImageBlock = (TMDbImage?) -> Void
 
+public typealias ImagesBlock = ([TMDbImage]?) -> Void
+
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
 public enum TMDbListMovieType: String {
@@ -39,7 +41,7 @@ public enum TMDbImageType {
     case still
 }
 
-public enum TMDbLanguage: String{
+public enum TMDbLanguage: String {
     case english = "en"
     case spanish = "es"
     case french = "fr"
