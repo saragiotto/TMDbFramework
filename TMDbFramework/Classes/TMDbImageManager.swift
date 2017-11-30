@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 import Alamofire
 import AlamofireImage
 
@@ -49,7 +50,52 @@ extension TMDb {
                 completition(nil)
             }
         }
-
+    }
+    
+    public func imagesFor(movieId:Int, _ completition: @escaping ImagesBlock) {
+        let endpoint = "movie/" + String(movieId) + "/images?"
+        let manager = TMDb.sharedInstance.alamofireManager
+        
+        let url = TMDbUtils.buildURLWith(endpoint:endpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let jsonValue = JSON(value).dictionary
+                    
+                    var images:[TMDbImage]? = [TMDbImage]()
+                    
+                    if let backdropArray = jsonValue!["backdrops"]?.array {
+                        
+                        for backdropImagePath in backdropArray {
+                            let backImage = TMDbImage(type: .backdrop, path: backdropImagePath["file_path"].string!)
+                            images?.append(backImage)
+                        }
+                        
+                    }
+                    
+                    if let posterArray = jsonValue!["posters"]?.array {
+                        
+                        for posterImagePath in posterArray {
+                            let backImage = TMDbImage(type: .poster, path: posterImagePath["file_path"].string!)
+                            images?.append(backImage)
+                        }
+                    }
+                    
+                    if (images?.count == 0) { completition(nil) }
+                    
+                    completition(images)
+                    
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
     }
 }
     
