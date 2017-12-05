@@ -71,6 +71,34 @@ extension TMDb {
         return list.count > 0 ? list : nil
     }
     
+    public func movieDetailFor(id movieId:String, _ completition: @escaping MovieDetailBlock) {
+        
+        let detailEndpoint = "movie/" + movieId + "?"
+        let manager = TMDb.sharedInstance.alamofireManager
+        let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                
+                if let value = response.result.value {
+                    let jsonValue = JSON(value)
+                    
+                    let movie = TMDbMovie(data: jsonValue)
+                    
+                    movie.populateDetail(data: jsonValue)
+                    
+                    completition(movie)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     public func movieDetailFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
         let detailEndpoint = "movie/" + String.init(describing: movie.id!) + "?"
