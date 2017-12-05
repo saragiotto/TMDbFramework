@@ -150,6 +150,17 @@ class TMDbMoviesTest: QuickSpec {
                     }
                 }
             }
+            
+            it("Detail movie by id") {
+                
+                waitUntil(timeout: 8.0) { done in
+                    tmdbPod.movieDetailFor(id: "550") { movie in
+                        
+                        expect(movie).notTo(beNil())
+                        done()
+                    }
+                }
+            }
         }
     }
 }
