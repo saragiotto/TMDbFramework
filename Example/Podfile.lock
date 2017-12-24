@@ -8,7 +8,7 @@ PODS:
   - Nimble (7.0.1)
   - Quick (1.1.0)
   - SwiftyJSON (3.1.4)
-  - TMDbFramework (1.0.1):
+  - TMDbFramework (1.0.2):
     - Alamofire
     - AlamofireImage
     - ChameleonFramework
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TMDbFramework: 34c77bafcc4ffa32b24c666b4949e30589fc9e91
+  TMDbFramework: 5c8d23f58b67c0e809db31df1288e3071516c9b3
 
 PODFILE CHECKSUM: b7cc3ee02301bc8dfbd636d1a62c711eccd5481e
 
