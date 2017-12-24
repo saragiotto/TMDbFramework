@@ -152,4 +152,34 @@ extension TMDb {
             }
         }
     }
+    
+    public func movieCreditsFor(castId:String, _ completion: @escaping ([TMDbMovie]) -> ()) {
+        let endpoint = "person/" + castId + "/movie_credits?"
+        let manager = TMDb.sharedInstance.alamofireManager
+        let url = TMDbUtils.buildURLWith(endpoint:endpoint)
+        
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+        
+                if let value = response.result.value {
+                    let jsonValue = JSON(value)
+                    let castList = jsonValue["cast"].array
+                    var returnList = [TMDbMovie]()
+                    
+                    for movie in castList! {
+                        let tmdbMovie = TMDbMovie.init(data: movie)
+                        returnList.append(tmdbMovie)
+                    }
+                    
+        
+                    completion(returnList)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
