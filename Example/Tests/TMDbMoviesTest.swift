@@ -161,6 +161,18 @@ class TMDbMoviesTest: QuickSpec {
                     }
                 }
             }
+            
+            it("Movie list by castId") {
+                
+                waitUntil(timeout: 8.0) { done in
+                    tmdbPod.movieCreditsFor(castId: "287") { movies in
+                        
+                        expect(movies).notTo(beNil())
+                        expect(movies.count).to(beGreaterThan(0))
+                        done()
+                    }
+                }
+            }
         }
     }
 }
