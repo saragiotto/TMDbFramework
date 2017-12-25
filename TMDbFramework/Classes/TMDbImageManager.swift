@@ -98,8 +98,37 @@ extension TMDb {
         }
     }
     
-    func videosFor(movieId:String, _ completion: @escaping () -> ()) {
+    public func videosFor(movieId:Int, _ completion: @escaping ([TMDbVideo]) -> ()) {
+        let endpoint = "movie/" + String(movieId) + "/videos?"
+        let manager = TMDb.sharedInstance.alamofireManager
+        let url = TMDbUtils.buildURLWith(endpoint:endpoint)
         
+        TMDbRetrierHandler.sharedInstance.addRequest()
+        
+        manager.request(url).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let jsonValue = JSON(value).dictionary
+                    
+                    var videoList:[TMDbVideo] = [TMDbVideo]()
+                    
+                    if let videoResponse = jsonValue!["results"]?.array {
+                        
+                        for videoResp in videoResponse {
+                            let video = TMDbVideo(data:videoResp)
+                            videoList.append(video)
+                        }
+                    }
+                    
+                    completion(videoList)
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
     }
 }
     
