@@ -97,5 +97,9 @@ extension TMDb {
             
         }
     }
+    
+    func videosFor(movieId:String, _ completion: @escaping () -> ()) {
+        
+    }
 }
     
