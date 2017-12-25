@@ -92,5 +92,22 @@ class TMDbImageTest: QuickSpec {
                 
             }
         }
+        
+        describe("Video list test") {
+            
+            let tmdbPod:TMDb = TMDb.sharedInstance
+            
+            it("Request videos for movie") {
+                
+                waitUntil(timeout: 8.0) { done in
+                    tmdbPod.videosFor(movieId: 550) { videoList in
+                        
+                        expect(videoList.count).to(beGreaterThan(0))
+                        done()
+                    }
+                }
+                
+            }
+        }
     }
 }
