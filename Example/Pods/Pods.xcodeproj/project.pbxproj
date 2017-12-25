@@ -378,7 +378,7 @@
 		4DAD037C483B723CEDD66D56B35D164A /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		4E0777C05BA3E18FB8CE827BC2D971E0 /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		4E9AB684E7F0D74CDE8FEFD4B210AC45 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		51B47425B6B25A1930B6A2666FF6C8C0 /* TMDbGenre.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMDbGenre.swift; path = TMDbFramework/Classes/TMDbGenre.swift; sourceTree = "<group>"; };
+		51B47425B6B25A1930B6A2666FF6C8C0 /* TMDbGenre.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TMDbGenre.swift; sourceTree = "<group>"; };
 		5232E42E745C30E69E6E42B3511DEEE7 /* TMDbFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TMDbFramework-prefix.pch"; sourceTree = "<group>"; };
 		52AAF35B6869B2DA23CB138A6B33A2B8 /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		52E8CD5E41E310D22221708FE83E5DD4 /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 		7812DD2564DD54E4F2023CA00EE69797 /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
 		7977780BC42855A3B1ACC673991CC261 /* UIImageView+AlamofireImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+AlamofireImage.swift"; path = "Source/UIImageView+AlamofireImage.swift"; sourceTree = "<group>"; };
 		79984FF08D6DCC439BAC88CBA461BCFE /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
-		79A4EB4204553C08137762C263F8CAB6 /* TMDbMovie.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMDbMovie.swift; path = TMDbFramework/Classes/TMDbMovie.swift; sourceTree = "<group>"; };
+		79A4EB4204553C08137762C263F8CAB6 /* TMDbMovie.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TMDbMovie.swift; sourceTree = "<group>"; };
 		7CB81842C4E007470DFF3805EE65E6FD /* Pods-TMDbFramework_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TMDbFramework_Tests-umbrella.h"; sourceTree = "<group>"; };
 		7E5A4D5C4FAAA30085532321D4E3B479 /* World+DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "World+DSL.swift"; path = "Sources/Quick/DSL/World+DSL.swift"; sourceTree = "<group>"; };
 		7E5EFB1380ED4321AD1DEE27F99BE614 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
@@ -457,11 +457,11 @@
 		9DA83D9A0C62834F2809E47063D31E6F /* Pods-TMDbFramework_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TMDbFramework_Tests-resources.sh"; sourceTree = "<group>"; };
 		9F5E92316FF06B80F35135A7280A5C14 /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickSpecBase/QuickSpecBase.m; sourceTree = "<group>"; };
 		9FB7E340A419C4BBDC2E860E24A3E23B /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
-		A275F36FDCF6B6354F8A205544F5595B /* TMDbCast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMDbCast.swift; path = TMDbFramework/Classes/TMDbCast.swift; sourceTree = "<group>"; };
+		A275F36FDCF6B6354F8A205544F5595B /* TMDbCast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TMDbCast.swift; sourceTree = "<group>"; };
 		A36122139A0476DF7857CEA71B16C16A /* AlamofireImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AlamofireImage-prefix.pch"; sourceTree = "<group>"; };
 		A36F81130E50B65513F40E1641E6546A /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
 		A68E452ADE0A934C0F449835B4FFFE29 /* Pods-TMDbFramework_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TMDbFramework_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A73174A81FF131060077B14A /* TMDbVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMDbVideo.swift; path = TMDbFramework/Classes/TMDbVideo.swift; sourceTree = "<group>"; };
+		A73174A81FF131060077B14A /* TMDbVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbVideo.swift; sourceTree = "<group>"; };
 		ABBBDA738FA441EA34EAC5333E0383CA /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
 		AC286713D9F038F8C48DE316BBD27264 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		ADB0CE48429133245A42A2FD8A470599 /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 		FA2F719E60759B0AB57AE1201EE679CB /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 		FAE776FCE9E6195390262C984398D207 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		FDA3F44F05446F1B1C391587643E996C /* TMDbFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMDbFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEA0D06E23CAB975685E4040C0BFFB9B /* TMDbImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TMDbImage.swift; path = TMDbFramework/Classes/TMDbImage.swift; sourceTree = "<group>"; };
+		FEA0D06E23CAB975685E4040C0BFFB9B /* TMDbImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TMDbImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -782,19 +782,15 @@
 			isa = PBXGroup;
 			children = (
 				D2CAF4A69575CCC134B66F293BD2931B /* TMDb.swift */,
-				A275F36FDCF6B6354F8A205544F5595B /* TMDbCast.swift */,
 				538978412EDEABF5EEDCBA78F8F15B77 /* TMDbConfiguration.swift */,
 				5BF066E9281A622E71B76E73EA591273 /* TMDbConfigurationManager.swift */,
 				1256416F3C2BD30D9310FA575B2A4290 /* TMDbEnunsConsts.swift */,
-				51B47425B6B25A1930B6A2666FF6C8C0 /* TMDbGenre.swift */,
 				2B7346A19762EC550797F788ADD166E3 /* TMDbGenreManager.swift */,
-				FEA0D06E23CAB975685E4040C0BFFB9B /* TMDbImage.swift */,
+				A73174AA1FF131610077B14A /* Model */,
 				D86434F60F22D417F3E7924730D87C42 /* TMDbImageManager.swift */,
-				79A4EB4204553C08137762C263F8CAB6 /* TMDbMovie.swift */,
 				1DD7217BF30AA8A9C426E0A5955415D7 /* TMDbMovieManager.swift */,
 				D50DBE93DEC5A726BF8FD767406DE280 /* TMDbRetrierHandler.swift */,
 				B8511236A2506A0F6AC5704F4153AB4E /* TMDbUtils.swift */,
-				A73174A81FF131060077B14A /* TMDbVideo.swift */,
 				616CA4D35453A1A97DA2F38E8F4C7490 /* Support Files */,
 			);
 			name = TMDbFramework;
@@ -928,6 +924,18 @@
 			);
 			name = "Pods-TMDbFramework_Example";
 			path = "Target Support Files/Pods-TMDbFramework_Example";
+			sourceTree = "<group>";
+		};
+		A73174AA1FF131610077B14A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A275F36FDCF6B6354F8A205544F5595B /* TMDbCast.swift */,
+				51B47425B6B25A1930B6A2666FF6C8C0 /* TMDbGenre.swift */,
+				79A4EB4204553C08137762C263F8CAB6 /* TMDbMovie.swift */,
+				A73174A81FF131060077B14A /* TMDbVideo.swift */,
+				FEA0D06E23CAB975685E4040C0BFFB9B /* TMDbImage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A7A5CE1478FB660322E9198F972D4823 /* Development Pods */ = {
