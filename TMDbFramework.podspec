@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.source_files = 'TMDbFramework/Classes/**/*'
 
   s.dependency 'Alamofire'
-  s.dependency 'AlamofireImage'
   s.dependency 'SwiftyJSON'
   s.dependency 'ChameleonFramework'
 
