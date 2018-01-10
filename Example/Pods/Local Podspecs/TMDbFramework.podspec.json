@@ -1,6 +1,6 @@
 {
   "name": "TMDbFramework",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "summary": "Swift framwork to connect with themoviedb.org",
   "homepage": "https://github.com/saragiotto/TMDbFramework",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/saragiotto/TMDbFramework.git",
-    "tag": "1.0.2"
+    "tag": "1.0.3"
   },
   "platforms": {
     "ios": "8.0"
@@ -20,9 +20,6 @@
   "source_files": "TMDbFramework/Classes/**/*",
   "dependencies": {
     "Alamofire": [
-
-    ],
-    "AlamofireImage": [
 
     ],
     "SwiftyJSON": [
