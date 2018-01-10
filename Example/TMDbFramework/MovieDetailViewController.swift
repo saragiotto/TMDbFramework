@@ -9,6 +9,7 @@
 import UIKit
 import ChameleonFramework
 import TMDbFramework
+import Kingfisher
 
 class MovieDetailViewController: UITableViewController {
 
@@ -137,25 +138,6 @@ class MovieDetailViewController: UITableViewController {
     
     private func displayMovie() {
         
-//        let ganreNames = movie!.genresIds!.flatMap() { (genreId:Int) -> (String?) in
-//            var genreName:String? = nil
-//            TMDb.sharedInstance.movieGenreFor(id: genreId) { name in
-//                
-//                genreName = name
-//            }
-//            
-//            return genreName
-//        }
-//        
-//        self.genre.text = ganreNames.joined(separator: ", ")
-        
-//        if let popMovie = movie!.voteAverage, popMovie > 0.0 {
-//            populatiry.textColor = UIColor.flatYellowColorDark()
-//            populatiry.text = String(format:"%.1f", popMovie)
-//        } else {
-//            populatiry.text = ""
-//        }
-        
         if movie!.backdropPath != nil {
             
             let tmdbPod = TMDb.sharedInstance
@@ -163,49 +145,15 @@ class MovieDetailViewController: UITableViewController {
             
             tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in
                 
-                self.animatedImageShow((image?.image)!)
+                self.backdropMovie.kf.setImage(with: URL(string: image!.path!)!,
+                                              placeholder: UIImage(named: "LaunchPoster.png"),
+                                                  options:[.transition(.fade(0.2))])
             }
             
         } else {
             backdropMovie.image = UIImage(named: "NoPosterNew.png")!
         }
         
-        
-//        if (movie!.homepage != nil && !(movie!.homepage!.isEmpty)) {
-//            
-//            if let url = URL(string: movie!.homepage!) {
-//                
-//                if let host = url.host {
-//                
-//                    self.website.textColor = UIColor.flatYellowColorDark()
-//                    self.website.text = host
-//                    self.website.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(MovieDetailViewController.openWebsite)))
-//                } else {
-//                    self.website.text = "Not available"
-//                }
-//            } else {
-//                self.website.text = "Not available"
-//            }
-//        } else {
-//            self.website.text = "Not available"
-//        }
-    }
-    
-    private func animatedImageShow(_ image: UIImage) {
-        
-        let bdMovie = UIImageView(image: UIImage())
-        bdMovie.frame = self.backdropMovie.frame
-        bdMovie.alpha = 1.0
-        bdMovie.backgroundColor = UIColor.black
-        self.backdropMovie.addSubview(bdMovie)
-        self.backdropMovie.image = image
-        
-        
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-            bdMovie.alpha = 0.0
-        }, completion: { finished in
-            bdMovie.removeFromSuperview()
-        })
     }
 
     /*
