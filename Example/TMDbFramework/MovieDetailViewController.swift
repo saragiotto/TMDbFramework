@@ -146,8 +146,8 @@ class MovieDetailViewController: UITableViewController {
             tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in
                 
                 self.backdropMovie.kf.setImage(with: URL(string: image!.path!)!,
-                                              placeholder: UIImage(named: "LaunchPoster.png"),
-                                                  options:[.transition(.fade(0.2))])
+                                        placeholder: UIImage(named: "LaunchPoster.png"),
+                                            options:[.transition(.fade(0.2))])
             }
             
         } else {
