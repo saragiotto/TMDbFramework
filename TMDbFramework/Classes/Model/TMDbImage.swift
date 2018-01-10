@@ -11,24 +11,18 @@ import Alamofire
 import SwiftyJSON
 
 public class TMDbImage {
-
-    public let image:UIImage?
     
     public let size:CGSize?
-    
     public let type:TMDbImageType?
-    
     public let path:String?
     
-    init(image:UIImage, type:TMDbImageType, path:String) {
-        self.image = image
-        self.size = image.size
+    init(size:CGSize, type:TMDbImageType, path:String) {
+        self.size = size
         self.type = type
         self.path = path
     }
     
     init(type:TMDbImageType, path:String) {
-        self.image = nil
         self.size = nil
         self.type = type
         self.path = path

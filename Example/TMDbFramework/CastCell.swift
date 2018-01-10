@@ -8,7 +8,7 @@
 
 import UIKit
 import TMDbFramework
-import AlamofireImage
+import Kingfisher
 
 class CastCell: BaseCell {
     
@@ -59,6 +59,7 @@ class CastCell: BaseCell {
         
         self.castPhoto.backgroundColor = UIColor.clear
         self.castPhoto.contentMode = .scaleAspectFill
+        self.castPhoto.layer.cornerRadius = 8.0
         self.castPhoto.clipsToBounds = true
         self.castPhoto.translatesAutoresizingMaskIntoConstraints = false
         
@@ -148,18 +149,11 @@ class CastCell: BaseCell {
         if (cast.profilePath != nil) {
             
             let tmdbViewModel = MovieListViewModel()
-            let size = self.castPhoto.bounds.size
-            
-            let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-                size: size,
-                radius: 8.0
-            )
             
             tmdbViewModel.tmdbModel.imageURLFor(path: cast.profilePath!, type: .profile) { stringProfilePath in
                 
-                self.castPhoto.af_setImage(withURL: URL(string: stringProfilePath)!,
-                                            filter: filter,
-                                   imageTransition: .crossDissolve(0.2))
+                self.castPhoto.kf.setImage(with: URL(string: stringProfilePath)!,
+                                        options:[.transition(.fade(0.2))])
             }
         } else {
             guard let gender = cast.gender else {
@@ -180,7 +174,7 @@ class CastCell: BaseCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.castPhoto.af_cancelImageRequest()
+        self.castPhoto.kf.cancelDownloadTask()
         self.castPhoto.layer.removeAllAnimations()
         self.castPhoto.image = nil
     }

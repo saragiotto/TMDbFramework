@@ -86,9 +86,9 @@ class BrackdropCell: BaseCell {
         let tmdbViewModel = MovieListViewModel()
         
         tmdbViewModel.tmdbModel.imageURLFor(path: imagePath, type: .backdrop) { stringBackdropPath in
-            
-            self.backdropImageView.af_setImage(withURL: URL(string: stringBackdropPath)!,
-                                         imageTransition: .crossDissolve(0.2))
+            self.backdropImageView.kf.setImage(with: URL(string: stringBackdropPath)!,
+                                        placeholder: UIImage(named: "LaunchPoster.png"),
+                                            options:[.transition(.fade(0.2))])
         }
     }
 

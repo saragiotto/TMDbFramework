@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TMDbFramework'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'Swift framwork to connect with themoviedb.org'
   s.homepage         = 'https://github.com/saragiotto/TMDbFramework'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.source_files = 'TMDbFramework/Classes/**/*'
 
   s.dependency 'Alamofire'
-  s.dependency 'AlamofireImage'
   s.dependency 'SwiftyJSON'
   s.dependency 'ChameleonFramework'
 

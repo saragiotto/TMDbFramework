@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-import AlamofireImage
 
 extension TMDb {
     
@@ -38,14 +37,14 @@ extension TMDb {
     func imageFor(type:TMDbImageType, path:String, _ completition: @escaping ImageBlock) {
         
         let url = TMDbUtils.buildImageURL(path: path, type: type)
-        
-        Alamofire.request(url).responseImage(imageScale: 1.0) { response in
+
+        Alamofire.request(url).responseData() { response in
             debugPrint(response)
             debugPrint(response.result)
             
-            if let image = response.result.value {
+            if let image = UIImage.init(data: response.result.value!) {
                 print("image downloaded: \(image)")
-                completition(TMDbImage.init(image: image, type: type, path: path))
+                completition(TMDbImage.init(size: image.size, type: type, path: path))
             } else {
                 completition(nil)
             }

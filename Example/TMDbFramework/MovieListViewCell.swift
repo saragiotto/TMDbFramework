@@ -68,9 +68,9 @@ class MovieListViewCell: UICollectionViewCell {
             
             tmdbViewModel.tmdbModel.imageURLFor(path: posterPath!, type: .poster) { stringPosterPath in
             
-                self.moviePoster.af_setImage(withURL: URL(string: stringPosterPath)!,
-                                 placeholderImage: UIImage(named: "LaunchPoster.png")!,
-                                 imageTransition: .crossDissolve(0.2))
+                self.moviePoster.kf.setImage(with: URL(string: stringPosterPath)!,
+                                      placeholder: UIImage(named: "LaunchPoster.png"),
+                                          options:[.transition(.fade(0.2))])
             }
         } else {
             self.moviePoster.image = UIImage(named: "NoPosterNew.png")!
@@ -80,7 +80,7 @@ class MovieListViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.moviePoster.af_cancelImageRequest()
+        self.moviePoster.kf.cancelDownloadTask()
         self.moviePoster.layer.removeAllAnimations()
         self.moviePoster.image = nil
     }
