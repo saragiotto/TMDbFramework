@@ -57,7 +57,7 @@ class MovieDetailViewController: UITableViewController {
         self.tableView.register(OverviewCell.classForCoder(), forCellReuseIdentifier: "overviewCell")
         self.tableView.register(CastCell.classForCoder(), forCellReuseIdentifier: "castCell")
         
-        TMDb.sharedInstance.creditsFor(self.movie!) { movie in
+        TMDb.shared.creditsFor(self.movie!) { movie in
             
             if (movie != nil) {
                 self.movie = movie!
@@ -140,7 +140,7 @@ class MovieDetailViewController: UITableViewController {
         
         if movie!.backdropPath != nil {
             
-            let tmdbPod = TMDb.sharedInstance
+            let tmdbPod = TMDb.shared
             tmdbPod.imageQuality = .medium
             
             tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in

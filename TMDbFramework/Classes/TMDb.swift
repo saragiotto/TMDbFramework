@@ -20,7 +20,7 @@ open class TMDb {
     
     internal var genres: [TMDbGenre]?
     
-    public static let sharedInstance: TMDb = {
+    public static let shared: TMDb = {
         let instance = TMDb()
         
         return instance
@@ -31,7 +31,7 @@ open class TMDb {
         urlConfig.requestCachePolicy = .reloadIgnoringLocalCacheData
         
         self.alamofireManager = Alamofire.SessionManager(configuration: urlConfig)
-        self.alamofireManager.retrier = TMDbRetrierHandler.sharedInstance
+        self.alamofireManager.retrier = TMDbRetrierHandler.shared
         self.imageQuality = .medium
         self.apiKey = ""
         self.language = .english

@@ -16,7 +16,7 @@ class TMDbImageTest: QuickSpec {
     override func spec() {
         describe("Test TMDbImageManager and TMDbImage for Medium backdrop") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             let backdropPath = "/puV2PFq42VQPItaygizgag8jrXa.jpg"
             
@@ -47,7 +47,7 @@ class TMDbImageTest: QuickSpec {
         
         describe("Test TMDbImageManager and TMDbImage for High poster") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             let posterPath = "/5qcUGqWoWhEsoQwNUrtf3y3fcWn.jpg"
             
@@ -78,7 +78,7 @@ class TMDbImageTest: QuickSpec {
         
         describe("Backdrop and Poster test") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             it("Request images for movie") {
                 
@@ -95,7 +95,7 @@ class TMDbImageTest: QuickSpec {
         
         describe("Video list test") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             it("Request videos for movie") {
                 

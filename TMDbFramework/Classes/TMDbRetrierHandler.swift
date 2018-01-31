@@ -16,7 +16,7 @@ class TMDbRetrierHandler: RequestRetrier {
     let requestLimit: Int!
     let windowInterval: Double!
     
-    static let sharedInstance: TMDbRetrierHandler = {
+    static let shared: TMDbRetrierHandler = {
         let instance = TMDbRetrierHandler()
         
         return instance

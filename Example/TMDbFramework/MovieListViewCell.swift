@@ -34,7 +34,7 @@ class MovieListViewCell: UICollectionViewCell {
         }
         
         if movie.genresIds != nil && movie.genresIds!.count > 0{
-            TMDb.sharedInstance.movieGenreFor(movie.genresIds![0]) { genreName in
+            TMDb.shared.movieGenreFor(movie.genresIds![0]) { genreName in
                 if let name = genreName {
                     self.movieGenre.text = name
                 } else {

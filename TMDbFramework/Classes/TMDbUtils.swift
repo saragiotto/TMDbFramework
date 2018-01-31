@@ -12,7 +12,7 @@ class TMDbUtils {
     
     internal static func buildURLWith(endpoint:String, page:Int? = nil) -> String {
         
-        let mdbFrmk = TMDb.sharedInstance
+        let mdbFrmk = TMDb.shared
         
         let apiKey = "api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
         
@@ -29,7 +29,7 @@ class TMDbUtils {
     
     internal static func buildImageURL(path:String, type:TMDbImageType) -> String {
         
-        let configuration = TMDb.sharedInstance.configurations!
+        let configuration = TMDb.shared.configurations!
         
         var size = ""
         
