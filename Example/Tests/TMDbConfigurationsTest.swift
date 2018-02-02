@@ -15,7 +15,7 @@ class TMDbConfigurationsTest: QuickSpec {
     override func spec() {
         
         describe("Test TMDbConfigurationManager and TMDbConfiguration for Low image quality") {
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             beforeEach {
                 tmdbPod.imageQuality = .low
@@ -93,7 +93,7 @@ class TMDbConfigurationsTest: QuickSpec {
         }
         
         describe("Test TMDbConfigurationManager and TMDbConfiguration for Medium image quality") {
-            let tmdbPod:TMDb! = TMDb.sharedInstance
+            let tmdbPod:TMDb! = TMDb.shared
             
             beforeEach {
                 tmdbPod.imageQuality = .medium
@@ -171,7 +171,7 @@ class TMDbConfigurationsTest: QuickSpec {
         }
         
         describe("Test TMDbConfigurationManager and TMDbConfiguration for High image quality") {
-            let tmdbPod:TMDb! = TMDb.sharedInstance
+            let tmdbPod:TMDb! = TMDb.shared
             
             beforeEach {
                 tmdbPod.imageQuality = .high
@@ -249,7 +249,7 @@ class TMDbConfigurationsTest: QuickSpec {
         }
         
         describe("Test TMDbConfigurationManager and TMDbConfiguration for VeryHigh image quality") {
-            let tmdbPod:TMDb! = TMDb.sharedInstance
+            let tmdbPod:TMDb! = TMDb.shared
             
             beforeEach {
                 tmdbPod.imageQuality = .veryHigh

@@ -15,7 +15,7 @@ class TMDbCastTest: QuickSpec {
     override func spec() {
         describe("Test TMDbMovieManager and TMDbCast") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             it("Request upcomming movies and then its Cast") {
                 

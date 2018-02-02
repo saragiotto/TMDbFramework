@@ -53,11 +53,11 @@ extension TMDb {
     
     public func imagesFor(movieId:Int, _ completition: @escaping ImagesBlock) {
         let endpoint = "movie/" + String(movieId) + "/images?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         
         let url = TMDbUtils.buildURLWith(endpoint:endpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
@@ -99,10 +99,10 @@ extension TMDb {
     
     public func videosFor(movieId:Int, _ completion: @escaping ([TMDbVideo]) -> ()) {
         let endpoint = "movie/" + String(movieId) + "/videos?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:endpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             

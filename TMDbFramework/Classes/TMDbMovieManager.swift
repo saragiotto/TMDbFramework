@@ -14,7 +14,7 @@ extension TMDb {
     public func listMoviesOf(type:TMDbListMovieType, page pageRequest:Int? = nil, allowExplicit:Bool = false, _ completition: @escaping MovieListBlock) {
         
         let endpoint = "movie/" + type.rawValue
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         var page = 1
         
         if (pageRequest != nil && pageRequest! > 0) {
@@ -23,7 +23,7 @@ extension TMDb {
         
         let url = TMDbUtils.buildURLWith(endpoint:endpoint, page:page)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
@@ -74,10 +74,10 @@ extension TMDb {
     public func movieDetailFor(id movieId:String, _ completition: @escaping MovieDetailBlock) {
         
         let detailEndpoint = "movie/" + movieId + "?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
@@ -102,10 +102,10 @@ extension TMDb {
     public func movieDetailFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
         let detailEndpoint = "movie/" + String.init(describing: movie.id!) + "?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
         
@@ -129,10 +129,10 @@ extension TMDb {
     public func creditsFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
         let creditsEndpoint = "movie/" + String.init(describing: movie.id!) + "/credits?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:creditsEndpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
@@ -155,10 +155,10 @@ extension TMDb {
     
     public func movieCreditsFor(castId:String, _ completion: @escaping ([TMDbMovie]) -> ()) {
         let endpoint = "person/" + castId + "/movie_credits?"
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:endpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             switch response.result {
