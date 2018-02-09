@@ -16,7 +16,7 @@ class TMDbRetrierTest: QuickSpec {
     override func spec() {
         describe("Test Retrier Handler") {
             
-            let tmdbPod:TMDb = TMDb.sharedInstance
+            let tmdbPod:TMDb = TMDb.shared
             
             it("Request 42 times Genres List") {
                 var succesTimes = 0

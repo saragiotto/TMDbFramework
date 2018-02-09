@@ -37,7 +37,7 @@ public class TMDbConfiguration {
     
     init(data:JSON) {
         
-        let imageQuality = TMDb.sharedInstance.imageQuality
+        let imageQuality = TMDb.shared.imageQuality
         
         self.imageBaseUrl = data["base_url"].string
         

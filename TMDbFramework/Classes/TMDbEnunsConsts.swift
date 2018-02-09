@@ -14,6 +14,10 @@ public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
 
 public typealias MovieDetailBlock = (TMDbMovie?) -> Void
 
+public typealias PeopleListBlock = (TMDbListResult, [TMDbPeople]?) -> Void
+
+public typealias PeopleDetailBlock = (TMDbPeople?) -> Void
+
 public typealias ImageBlock = (TMDbImage?) -> Void
 
 public typealias ImagesBlock = ([TMDbImage]?) -> Void
@@ -21,9 +25,9 @@ public typealias ImagesBlock = ([TMDbImage]?) -> Void
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
 public enum TMDbListMovieType: String {
-    case upComing = "upcoming?"
-    case topRated = "top_rated?"
-    case popular = "popular?"
+    case upComing = "upcoming"
+    case topRated = "top_rated"
+    case popular = "popular"
 }
 
 public enum TMDbImageQuality {

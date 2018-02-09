@@ -15,7 +15,7 @@ class TMDbGenreTest: QuickSpec {
     override func spec() {
 
         describe("Test TMDbGenreManager and TMDbGenre") {
-            let tmdbPod:TMDb! = TMDb.sharedInstance
+            let tmdbPod:TMDb! = TMDb.shared
             
             it("Request existing genreName") {
                 

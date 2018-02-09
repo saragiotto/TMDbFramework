@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-open class TMDbCast{
+open class TMDbCast {
     
     public let castId: Int?
     public let character: String?

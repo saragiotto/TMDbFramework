@@ -26,7 +26,7 @@ class MovieListViewModel {
     var requestResults: Int?
     
     init() {
-        tmdbModel = TMDb.sharedInstance
+        tmdbModel = TMDb.shared
         tmdbModel.imageQuality = .medium
         page = 0
         movies = nil

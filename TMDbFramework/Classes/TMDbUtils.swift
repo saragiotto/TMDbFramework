@@ -12,9 +12,9 @@ class TMDbUtils {
     
     internal static func buildURLWith(endpoint:String, page:Int? = nil) -> String {
         
-        let mdbFrmk = TMDb.sharedInstance
+        let mdbFrmk = TMDb.shared
         
-        let apiKey = "api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
+        let apiKey = "?api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
         
         let language = "&language=" + mdbFrmk.language.rawValue
         
@@ -23,13 +23,15 @@ class TMDbUtils {
         if (page != nil) {
             finalString += "&page=\(String(describing: page!))"
         }
+        
+        print(finalString)
 
         return finalString
     }
     
     internal static func buildImageURL(path:String, type:TMDbImageType) -> String {
         
-        let configuration = TMDb.sharedInstance.configurations!
+        let configuration = TMDb.shared.configurations!
         
         var size = ""
         

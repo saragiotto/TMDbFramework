@@ -18,13 +18,13 @@ extension TMDb {
             completition(self.configurations)
         }
         
-        let configEndpoint = "configuration?"
+        let configEndpoint = "configuration"
         
-        let manager = TMDb.sharedInstance.alamofireManager
+        let manager = TMDb.shared.alamofireManager
         
         let url = TMDbUtils.buildURLWith(endpoint:configEndpoint)
         
-        TMDbRetrierHandler.sharedInstance.addRequest()
+        TMDbRetrierHandler.shared.addRequest()
         
         manager.request(url).validate().responseJSON { response in
             
