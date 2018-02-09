@@ -18,7 +18,7 @@ extension TMDb {
             completition(self.configurations)
         }
         
-        let configEndpoint = "configuration?"
+        let configEndpoint = "configuration"
         
         let manager = TMDb.shared.alamofireManager
         

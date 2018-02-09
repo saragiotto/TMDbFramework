@@ -99,7 +99,7 @@ class TMDbImageTest: QuickSpec {
             
             it("Request videos for movie") {
                 
-                waitUntil(timeout: 8.0) { done in
+                waitUntil(timeout: 12.0) { done in
                     tmdbPod.videosFor(movieId: 550) { videoList in
                         
                         expect(videoList.count).to(beGreaterThan(0))

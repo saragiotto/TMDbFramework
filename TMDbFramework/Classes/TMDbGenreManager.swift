@@ -32,7 +32,7 @@ extension TMDb {
     }
     
     private func loadMovieGenres(requestId:Int, completition:@escaping GenreBlock) {
-        let configEndpoint = "genre/movie/list?"
+        let configEndpoint = "genre/movie/list"
         
         let manager = TMDb.shared.alamofireManager
         

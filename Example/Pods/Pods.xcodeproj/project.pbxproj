@@ -145,7 +145,8 @@
 		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13243237E2BD880FB079F33743A7D9EC /* NetworkReachabilityManager.swift */; };
 		A3ACE1D8F180FBDE0B49EA3899F9BCA3 /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = C620E01361F9C79B6B4D657C142C5F2E /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A61ADD214AA182EEB2AC95EA3F3D658F /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 40183EC021496ABA4888168BFAF5C560 /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		A7403B1C2023FCCF00A8AC0E /* TMDbPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7403B1B2023FCCE00A8AC0E /* TMDbPeople.swift */; };
+		A742DFE8202D34DA00A77BDB /* TMDbPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7403B1B2023FCCE00A8AC0E /* TMDbPeople.swift */; };
+		A742DFEB202D361200A77BDB /* TMDbPeopleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742DFE9202D361200A77BDB /* TMDbPeopleManager.swift */; };
 		A74537420FF0CEDC6B9E82E1DC4C2B15 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A81300B3706CE4C3E1A5DFF2DB404AF /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A7C13C62E4116CA964A3E82179092AD5 /* NMBObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BC51A518DA2D9A5A060711E3643C9B /* NMBObjCMatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A7DA0E7B184BFCF02F9AA07DE80B3843 /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EFAFD9FA95A643D0E6A7A3D7F9876 /* World+DSL.swift */; };
@@ -476,6 +477,7 @@
 		A558671F27CB03BE77B287BD035F4297 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68E452ADE0A934C0F449835B4FFFE29 /* Pods-TMDbFramework_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TMDbFramework_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A7403B1B2023FCCE00A8AC0E /* TMDbPeople.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbPeople.swift; sourceTree = "<group>"; };
+		A742DFE9202D361200A77BDB /* TMDbPeopleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbPeopleManager.swift; sourceTree = "<group>"; };
 		A903EE5F211286BB7A77738D287B6243 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		A9EE68CA37ED5637F1CBEC2FEBAE431B /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		ABDB37D0A8B273BE4E24B5554EC69A6A /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
@@ -1106,6 +1108,7 @@
 				26E311E325E0D12A8AD822139CD342BD /* TMDbGenreManager.swift */,
 				CF5350B57F78EBA0F99185CAF30DA33F /* TMDbImageManager.swift */,
 				C094612394145790E56753E43A465BAA /* TMDbMovieManager.swift */,
+				A742DFE9202D361200A77BDB /* TMDbPeopleManager.swift */,
 				F5AB6B84DDC0A5EC4066E770BFB22F42 /* TMDbRetrierHandler.swift */,
 				267DC2A60AED494B02057B86DAC2EE87 /* TMDbUtils.swift */,
 				EE8135CFD3E9357703BA6A9BE922E4AA /* Model */,
@@ -1484,7 +1487,6 @@
 				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
 				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
 				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
-				A7403B1C2023FCCF00A8AC0E /* TMDbPeople.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1581,8 +1583,10 @@
 				C5EC60002CEB9017E289E8D7D63D409F /* TMDbConfiguration.swift in Sources */,
 				B36EF24DB5B08FC79AE6A43761D6B47E /* TMDbConfigurationManager.swift in Sources */,
 				CE4CAC83640F8CF7838C8D677573868A /* TMDbEnunsConsts.swift in Sources */,
+				A742DFEB202D361200A77BDB /* TMDbPeopleManager.swift in Sources */,
 				4FE3939BC1556397AD06456BEBCC46BC /* TMDbFramework-dummy.m in Sources */,
 				A12B841657082DA0BF25E6B47E15DEBD /* TMDbGenre.swift in Sources */,
+				A742DFE8202D34DA00A77BDB /* TMDbPeople.swift in Sources */,
 				665285FDE79A420976ECDABCE20F57FD /* TMDbGenreManager.swift in Sources */,
 				9417C6DF22DDA93F07E887D7E3528BB9 /* TMDbImage.swift in Sources */,
 				3AC7853CD04C12E326FFE570EF7153AD /* TMDbImageManager.swift in Sources */,

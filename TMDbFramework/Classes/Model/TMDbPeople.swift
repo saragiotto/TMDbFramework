@@ -10,23 +10,26 @@ import SwiftyJSON
 
 open class TMDbPeople {
     public let adult:Bool?
-    public let biography:String?
-    public let deathday:String?
-    public let gender:Int?
-    public let homepage:String?
     public let id:Int?
-    public let imdbId:String?
     public let name:String?
-    public let placeOfBirth:String?
-    public let popularity:Int?
+    public let popularity:Double?
     public let profilePath:String?
+    
+    public var biography:String?
+    public var birthday:String?
+    public var deathday:String?
+    public var gender:Int?
+    public var homepage:String?
+    public var imdbId:String?
+    public var placeOfBirth:String?
+    
     
     init(data:JSON) {
         adult = data["adult"].bool
         id = data["id"].int
         name = data["name"].string
-        profilePath = data["profile_path"].string
         popularity = data["popularity"].double
+        profilePath = data["profile_path"].string
     }
     
     func populateDetail(data: JSON) {

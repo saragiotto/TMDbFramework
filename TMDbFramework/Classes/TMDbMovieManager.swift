@@ -73,7 +73,7 @@ extension TMDb {
     
     public func movieDetailFor(id movieId:String, _ completition: @escaping MovieDetailBlock) {
         
-        let detailEndpoint = "movie/" + movieId + "?"
+        let detailEndpoint = "movie/" + movieId
         let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
         
@@ -101,7 +101,7 @@ extension TMDb {
     
     public func movieDetailFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
-        let detailEndpoint = "movie/" + String.init(describing: movie.id!) + "?"
+        let detailEndpoint = "movie/" + String.init(describing: movie.id!)
         let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:detailEndpoint)
         
@@ -128,7 +128,7 @@ extension TMDb {
     
     public func creditsFor(_ movie:TMDbMovie, _ completition: @escaping MovieDetailBlock) {
         
-        let creditsEndpoint = "movie/" + String.init(describing: movie.id!) + "/credits?"
+        let creditsEndpoint = "movie/" + String.init(describing: movie.id!) + "/credits"
         let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:creditsEndpoint)
         
@@ -154,7 +154,7 @@ extension TMDb {
     }
     
     public func movieCreditsFor(castId:String, _ completion: @escaping ([TMDbMovie]) -> ()) {
-        let endpoint = "person/" + castId + "/movie_credits?"
+        let endpoint = "person/" + castId + "/movie_credits"
         let manager = TMDb.shared.alamofireManager
         let url = TMDbUtils.buildURLWith(endpoint:endpoint)
         

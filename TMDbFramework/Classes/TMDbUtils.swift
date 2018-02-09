@@ -14,7 +14,7 @@ class TMDbUtils {
         
         let mdbFrmk = TMDb.shared
         
-        let apiKey = "api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
+        let apiKey = "?api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
         
         let language = "&language=" + mdbFrmk.language.rawValue
         
@@ -23,6 +23,8 @@ class TMDbUtils {
         if (page != nil) {
             finalString += "&page=\(String(describing: page!))"
         }
+        
+        print(finalString)
 
         return finalString
     }
