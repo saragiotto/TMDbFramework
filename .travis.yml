@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.1
+osx_image: xcode9.2
 language: objective-c
 # cache: cocoapods
 # podfile: Example/Podfile
@@ -17,5 +17,5 @@ after_success:
   - slather
   - bash <(curl -s https://codecov.io/bash) -f ./xml_report/cobertura.xml -X coveragepy -X gcov -X xcode -t 914802df-2d31-4f56-95e3-99ee2f287a91
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TMDbFramework.xcworkspace -scheme TMDbFramework-Example -sdk iphonesimulator11.1 -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 | xcpretty
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TMDbFramework.xcworkspace -scheme TMDbFramework-Example -sdk iphonesimulator11.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.2' ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 | xcpretty
 - pod lib lint --allow-warnings
