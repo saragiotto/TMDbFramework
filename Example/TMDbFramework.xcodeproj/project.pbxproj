@@ -80,7 +80,7 @@
 		98F9B1721F4752F1006F64D0 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		A70BF5481F4548C0005C3841 /* MovieListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		A72855D31F4679610066408D /* BrackdropCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrackdropCell.swift; sourceTree = "<group>"; };
-		A742DFEC202D396300A77BDB /* TMDbPeopleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbPeopleTest.swift; sourceTree = "<group>"; };
+		A742DFEC202D396300A77BDB /* TMDbPeopleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbPeopleTest.swift; sourceTree = "<group>"; };
 		A776418E1F33EEFF00717FBD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A77641A01F33EEFF00717FBD /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		A77641A11F33EEFF00717FBD /* LaunchPoster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchPoster.png; sourceTree = "<group>"; };
