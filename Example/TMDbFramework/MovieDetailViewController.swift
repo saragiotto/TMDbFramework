@@ -52,15 +52,15 @@ class MovieDetailViewController: UITableViewController {
         self.tableView.alwaysBounceVertical = false
         self.tableView.tableFooterView = UIView()
         
-        self.tableView.register(BrackdropCell.classForCoder(), forCellReuseIdentifier: "backdropCell")
-        self.tableView.register(ReleaseDateCell.classForCoder(), forCellReuseIdentifier: "releaseDateCell")
-        self.tableView.register(OverviewCell.classForCoder(), forCellReuseIdentifier: "overviewCell")
-        self.tableView.register(CastCell.classForCoder(), forCellReuseIdentifier: "castCell")
+        self.tableView.register(BrackdropCell.self, forCellReuseIdentifier: "backdropCell")
+        self.tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
+        self.tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
+        self.tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
         
         TMDb.shared.creditsFor(self.movie!) { movie in
             
-            if (movie != nil) {
-                self.movie = movie!
+            if let movie = movie {
+                self.movie = movie
                 self.tableView.reloadData()
             }
         }
@@ -134,26 +134,6 @@ class MovieDetailViewController: UITableViewController {
         }
         
         return finalTitle
-    }
-    
-    private func displayMovie() {
-        
-        if movie!.backdropPath != nil {
-            
-            let tmdbPod = TMDb.shared
-            tmdbPod.imageQuality = .medium
-            
-            tmdbPod.loadImageFor(path: movie!.backdropPath!, type: .backdrop) { image in
-                
-                self.backdropMovie.kf.setImage(with: URL(string: image!.path!)!,
-                                        placeholder: UIImage(named: "LaunchPoster.png"),
-                                            options:[.transition(.fade(0.2))])
-            }
-            
-        } else {
-            backdropMovie.image = UIImage(named: "NoPosterNew.png")!
-        }
-        
     }
 
     /*
