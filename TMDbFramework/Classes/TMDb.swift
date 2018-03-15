@@ -11,12 +11,12 @@ import Alamofire
 
 open class TMDb {
     
-    private let alamofireManager:SessionManager
     public var imageQuality: TMDbImageQuality
     public var apiKey: String
     public var language: TMDbLanguage
     public var configurations: TMDbConfiguration?
     
+    internal let alamofireManager:SessionManager
     internal var genres: [TMDbGenre]?
     
     public static let shared: TMDb = {
