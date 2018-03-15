@@ -17,39 +17,56 @@ class TMDbPeoplesTest: QuickSpec {
             
             let tmdbPod:TMDb = TMDb.shared
             
-            it("Request upComing Peoples ommiting page param") {
+            it("Request popular Peoples ommiting page param") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listPopularPeople() { listResult, PeopleList in
+                    tmdbPod.listPopularPeople() { listResult, peopleList in
                         
                         expect(listResult.page).to(equal(1))
-                        expect(PeopleList?.count).to(equal(20))
+                        expect(peopleList?.count).to(equal(20))
                         done()
                     }
                 }
                 
             }
             
-            it("Request page 1 upComing Peoples") {
+            it("Request page 1 popular Peoples") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listPopularPeople(page: 1) { listResult, PeopleList in
+                    tmdbPod.listPopularPeople(page: 1) { listResult, peopleList in
                         
                         expect(listResult.page).to(equal(1))
-                        expect(PeopleList?.count).to(equal(20))
+                        expect(peopleList?.count).to(equal(20))
                         done()
                     }
                 }
                 
             }
             
-            it("Request page 3 upComing Peoples") {
+            it("Request page 3 popular Peoples") {
                 
                 waitUntil(timeout: 12.0) { done in
-                    tmdbPod.listPopularPeople(page: 3) { listResult, PeopleList in
+                    tmdbPod.listPopularPeople(page: 3) { listResult, peopleList in
                         
                         expect(listResult.page).to(equal(3))
-                        expect(PeopleList?.count).to(equal(20))
+                        expect(peopleList?.count).to(equal(20))
+                        done()
+                    }
+                }
+                
+            }
+            
+            it("Request popular Peoples and check KnownFor property") {
+                
+                waitUntil(timeout: 12.0) { done in
+                    tmdbPod.listPopularPeople() { listResult, peopleList in
+                        
+                        expect(peopleList?.count).to(beGreaterThan(0))
+                        
+                        let knownForList = peopleList?.first?.knownFor
+                        
+                        expect(knownForList?.count).to(beGreaterThan(0))
+                        expect(knownForList?.first??.id).toNot(beNil())
                         done()
                     }
                 }
