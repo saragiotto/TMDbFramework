@@ -14,6 +14,7 @@ open class TMDbPeople {
     public let name:String?
     public let popularity:Double?
     public let profilePath:String?
+    public let knownFor:[TMDbMovie?]
     
     public var biography:String?
     public var birthday:String?
@@ -23,13 +24,22 @@ open class TMDbPeople {
     public var imdbId:String?
     public var placeOfBirth:String?
     
-    
     init(data:JSON) {
         adult = data["adult"].bool
         id = data["id"].int
         name = data["name"].string
         popularity = data["popularity"].double
         profilePath = data["profile_path"].string
+        
+        knownFor = data["known_for"].arrayValue.map({ jsonValue in
+            let movieOrTvSeries = JSON(jsonValue).dictionary
+            if let mediaType = movieOrTvSeries!["media_type"]?.string {
+                if mediaType.isEqual("movie") {
+                    return TMDbMovie(data:jsonValue)
+                }
+            }
+            return nil
+        })
     }
     
     func populateDetail(data: JSON) {
