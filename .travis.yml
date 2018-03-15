@@ -10,7 +10,9 @@ before_install:
   - rvm use $RVM_RUBY_VERSION
   - gem install cocoapods # Since Travis is not always on latest version
   - pod repo update
-  - pod deintegrate --project-directory=Example 
+  - cd Example
+  - pod deintegrate
+  - cd ..
   - pod install --project-directory=Example --verbose
 install: 
   - gem install slather --no-rdoc --no-ri --no-document --quiet
