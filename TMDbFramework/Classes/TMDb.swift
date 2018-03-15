@@ -11,8 +11,7 @@ import Alamofire
 
 open class TMDb {
     
-    public let alamofireManager:SessionManager
-    
+    private let alamofireManager:SessionManager
     public var imageQuality: TMDbImageQuality
     public var apiKey: String
     public var language: TMDbLanguage

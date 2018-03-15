@@ -13,15 +13,13 @@ class TMDbUtils {
     internal static func buildURLWith(endpoint:String, page:Int? = nil) -> String {
         
         let mdbFrmk = TMDb.shared
-        
         let apiKey = "?api_key=" + ((mdbFrmk.apiKey.isEmpty) ? kApiKeyV3 : mdbFrmk.apiKey)
-        
         let language = "&language=" + mdbFrmk.language.rawValue
         
         var finalString = kBaseTMDbURLV3 + endpoint + apiKey + language
         
-        if (page != nil) {
-            finalString += "&page=\(String(describing: page!))"
+        if let page = page {
+            finalString += "&page=\(String(describing: page))"
         }
         
         print(finalString)

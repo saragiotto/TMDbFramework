@@ -14,14 +14,13 @@ extension TMDb {
     
     public func loadConfiguration(_ completition:@escaping ConfigurationBlock) {
         
-        if (self.configurations != nil) {
-            completition(self.configurations)
+        if let config = self.configurations {
+            completition(config)
+            return
         }
         
         let configEndpoint = "configuration"
-        
         let manager = TMDb.shared.alamofireManager
-        
         let url = TMDbUtils.buildURLWith(endpoint:configEndpoint)
         
         TMDbRetrierHandler.shared.addRequest()
