@@ -1,13 +1,11 @@
 # TMDbFramework
 
-<!--
 [![CI Status](http://img.shields.io/travis/saragiotto/TMDbFramework.svg?style=flat)](https://travis-ci.org/saragiotto/TMDbFramework)
 [![Version](https://img.shields.io/cocoapods/v/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
 [![License](https://img.shields.io/cocoapods/l/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
 [![Platform](https://img.shields.io/cocoapods/p/TMDbFramework.svg?style=flat)](http://cocoapods.org/pods/TMDbFramework)
 [![codecov.io](https://codecov.io/gh/saragiotto/TMDbFramework/branch/master/graphs/badge.svg)](https://codecov.io/gh/saragiotto/TMDbFramework/branch/master)
 [![codebeat badge](https://codebeat.co/badges/84404fc1-6380-4eb7-9540-d567b1c16064)](https://codebeat.co/projects/github-com-saragiotto-tmdbframework-master)
--->
 
 TMDbFramework is swift pod to encapsulate all the themoviedb.org API.
 
