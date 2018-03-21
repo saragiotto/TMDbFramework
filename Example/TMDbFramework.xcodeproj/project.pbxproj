@@ -150,7 +150,7 @@
 		607FACD21AFB9204008FA782 /* Example for TMDbFramework */ = {
 			isa = PBXGroup;
 			children = (
-				A70BF5471F4548AD005C3841 /* ViewModel */,
+				A70BF5471F4548AD005C3841 /* View Model */,
 				A77641CC1F33EFBA00717FBD /* View Controller */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -211,24 +211,40 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		A70BF5471F4548AD005C3841 /* ViewModel */ = {
+		98229C632062A5D3005ACE33 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A70BF5481F4548C0005C3841 /* MovieListViewModel.swift */,
-				98229C6120628B72005ACE33 /* MovieDetailViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		A72855CF1F4679070066408D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A77641A81F33EEFF00717FBD /* MovieListViewCell.swift */,
 				98F9B1721F4752F1006F64D0 /* BaseCell.swift */,
 				A72855D31F4679610066408D /* BrackdropCell.swift */,
 				98F9B16C1F472AC9006F64D0 /* ReleaseDateCell.swift */,
 				98F9B16E1F472ADA006F64D0 /* OverviewCell.swift */,
 				98F9B1701F472AEA006F64D0 /* CastCell.swift */,
+			);
+			name = DetailViewController;
+			sourceTree = "<group>";
+		};
+		98229C642062A5F2005ACE33 /* ListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A77641A81F33EEFF00717FBD /* MovieListViewCell.swift */,
+			);
+			name = ListViewController;
+			sourceTree = "<group>";
+		};
+		A70BF5471F4548AD005C3841 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				A70BF5481F4548C0005C3841 /* MovieListViewModel.swift */,
+				98229C6120628B72005ACE33 /* MovieDetailViewModel.swift */,
+			);
+			name = "View Model";
+			sourceTree = "<group>";
+		};
+		A72855CF1F4679070066408D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98229C642062A5F2005ACE33 /* ListViewController */,
+				98229C632062A5D3005ACE33 /* DetailViewController */,
 			);
 			name = Cell;
 			sourceTree = "<group>";

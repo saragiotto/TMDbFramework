@@ -32,35 +32,50 @@ class MovieDetailViewController: UITableViewController {
     private func initViewController() {
         self.title = self.viewModel?.titleForView ?? ""
         
-        self.tableView.contentInset = .zero
-        self.tableView.separatorInset = .zero
-        self.tableView.layoutMargins = .zero
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.backgroundColor = UIColor.black
-        self.tableView.cellLayoutMarginsFollowReadableWidth = false
-        self.tableView.alwaysBounceVertical = false
-        self.tableView.tableFooterView = UIView()
+        tableView.contentInset = .zero
+        tableView.separatorInset = .zero
+        tableView.layoutMargins = .zero
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor.black
+        tableView.cellLayoutMarginsFollowReadableWidth = false
+        tableView.alwaysBounceVertical = false
+        tableView.tableFooterView = UIView()
         
-        self.tableView.register(BrackdropCell.self, forCellReuseIdentifier: "backdropCell")
-        self.tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
-        self.tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
-        self.tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
+        tableView.register(BrackdropCell.self, forCellReuseIdentifier: "backdropCell")
+        tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
+        tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
+        tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
     }
     
     private func initViewModel() {
-        self.viewModel?.reloadTableViewClosure = {
-            self.tableView.reloadData()
+        self.viewModel?.reloadTableViewClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         
         self.viewModel?.fetchDetails()
     }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+}
+
+extension MovieDetailViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRows ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         switch indexPath.row {
         case 0:
             let cell:BrackdropCell = tableView.dequeueReusableCell(withIdentifier: "backdropCell", for: indexPath) as! BrackdropCell
@@ -94,14 +109,4 @@ class MovieDetailViewController: UITableViewController {
             return 56.0
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
