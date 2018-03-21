@@ -9,19 +9,12 @@
 import Foundation
 
 public typealias GenreBlock = (String?) -> Void
-
 public typealias MovieListBlock = (TMDbListResult, [TMDbMovie]?) -> Void
-
 public typealias MovieDetailBlock = (TMDbMovie?) -> Void
-
 public typealias PeopleListBlock = (TMDbListResult, [TMDbPeople]?) -> Void
-
 public typealias PeopleDetailBlock = (TMDbPeople?) -> Void
-
 public typealias ImageBlock = (TMDbImage?) -> Void
-
 public typealias ImagesBlock = ([TMDbImage]?) -> Void
-
 public typealias ConfigurationBlock = (TMDbConfiguration?) -> Void
 
 public enum TMDbListMovieType: String {

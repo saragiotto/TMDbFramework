@@ -81,11 +81,13 @@ class BrackdropCell: BaseCell {
                                                                  constant: 0.0),])
     }
     
-    func configureWith(imagePath: String) {
+    func configureWith(_ cellViewModel: BackdropCellViewModel) {
         
-        let tmdbViewModel = MovieListViewModel()
+        if cellViewModel.backdroPath.isEmpty {
+            return
+        }
         
-        tmdbViewModel.tmdbModel.imageURLFor(path: imagePath, type: .backdrop) { stringBackdropPath in
+        TMDb.shared.imageURLFor(path: cellViewModel.backdroPath, type: .backdrop) { stringBackdropPath in
             self.backdropImageView.kf.setImage(with: URL(string: stringBackdropPath)!,
                                         placeholder: UIImage(named: "LaunchPoster.png"),
                                             options:[.transition(.fade(0.2))])

@@ -8,7 +8,6 @@
 
 import UIKit
 import ChameleonFramework
-import TMDbFramework
 import Kingfisher
 
 class MovieDetailViewController: UITableViewController {
@@ -16,93 +15,83 @@ class MovieDetailViewController: UITableViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backdropMovie: UIImageView!
     @IBOutlet weak var overview: UITextView!
-    
-    
-    @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
-    @IBOutlet weak var genre: UILabel!
-    @IBOutlet weak var cast: UILabel!
     
-    
-    @IBOutlet weak var runTime: UILabel!
-    
-    @IBOutlet weak var genreLabel: UILabel!
-    @IBOutlet weak var populatiry: UILabel!
-    @IBOutlet weak var website: UILabel!
-    
-    @IBOutlet weak var castTableView: UITableView!
-    
-    var movie: TMDbMovie?
-    
-    private var curtainsView = UIView()
+    var viewModel:MovieDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        self.title = self.movieTitle()
+        self.initViewController()
         
-        self.tableView.contentInset = .zero
-        self.tableView.separatorInset = .zero
-        self.tableView.layoutMargins = .zero
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.backgroundColor = UIColor.black
-        self.tableView.cellLayoutMarginsFollowReadableWidth = false
-        self.tableView.alwaysBounceVertical = false
-        self.tableView.tableFooterView = UIView()
-        
-        self.tableView.register(BrackdropCell.self, forCellReuseIdentifier: "backdropCell")
-        self.tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
-        self.tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
-        self.tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
-        
-        TMDb.shared.creditsFor(self.movie!) { movie in
-            
-            if let movie = movie {
-                self.movie = movie
-                self.tableView.reloadData()
-            }
-        }
+        self.initViewModel()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func initViewController() {
+        self.title = self.viewModel?.titleForView ?? ""
         
-        if (self.movie?.cast != nil && (self.movie?.cast!.count)! > 0) {
-            return 3 + (self.movie?.cast?.count)!
+        tableView.contentInset = .zero
+        tableView.separatorInset = .zero
+        tableView.layoutMargins = .zero
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor.black
+        tableView.cellLayoutMarginsFollowReadableWidth = false
+        tableView.alwaysBounceVertical = false
+        tableView.tableFooterView = UIView()
+        
+        tableView.register(BrackdropCell.self, forCellReuseIdentifier: "backdropCell")
+        tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
+        tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
+        tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
+    }
+    
+    private func initViewModel() {
+        self.viewModel?.reloadTableViewClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         
-        return 3
+        self.viewModel?.fetchDetails()
+    }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+}
+
+extension MovieDetailViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.numberOfRows ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         switch indexPath.row {
         case 0:
             let cell:BrackdropCell = tableView.dequeueReusableCell(withIdentifier: "backdropCell", for: indexPath) as! BrackdropCell
-            
-            if movie!.backdropPath != nil {
-                cell.configureWith(imagePath: movie!.backdropPath!)
-            }
-            
+            cell.configureWith(self.viewModel!.getBarckdropCellModel())
             return cell
         case 1:
             let cell:ReleaseDateCell  = tableView.dequeueReusableCell(withIdentifier: "releaseDateCell", for: indexPath) as! ReleaseDateCell
-            
-            cell.configureWith(releaseDate: movie!.releaseDate)
-            
+            cell.configureWith(self.viewModel!.getReleaseDateCellModel())
             return cell
         case 2:
             let cell:OverviewCell  = tableView.dequeueReusableCell(withIdentifier: "overviewCell", for: indexPath) as! OverviewCell
-            
-            cell.configureWith(overview: movie!.overview)
-            
+            cell.configureWith(self.viewModel!.getOverviewCellModel())
             return cell
         default:
             let cell:CastCell  = tableView.dequeueReusableCell(withIdentifier: "castCell", for: indexPath) as! CastCell
-            
-            cell.configureWith(cast: movie!.cast![indexPath.row - 3])
-            
+            cell.configureWith(self.viewModel!.getCastCellMode(at: indexPath))
             return cell
         }
     }
@@ -115,42 +104,9 @@ class MovieDetailViewController: UITableViewController {
         case 1:
             return 44.0
         case 2:
-            return 88.0
+            return OverviewCell.getOverviewCellSize(for: self.viewModel!.getOverviewCellModel()).height
         default:
             return 56.0
         }
-    }
-    
-    private func movieTitle() -> String {
-        
-        var finalTitle = "Title Not Available"
-        
-        if let title = movie!.title {
-            finalTitle = title
-        } else {
-            if let originalTitle = movie!.originalTitle {
-                finalTitle = originalTitle
-            }
-        }
-        
-        return finalTitle
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    public func openWebsite() {
-        if let website = self.movie!.homepage {
-            UIApplication.shared.open(URL.init(string: website)!, options: [:], completionHandler: nil)
-        }
-        
-        return
     }
 }

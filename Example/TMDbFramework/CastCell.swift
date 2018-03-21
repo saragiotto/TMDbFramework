@@ -134,40 +134,21 @@ class CastCell: BaseCell {
         
     }
     
-    func configureWith(cast: TMDbCast) {
+    func configureWith(_ viewCellModel: CastCellViewModel) {
         
-        if (cast.name != nil) {
-            self.castName.text = cast.name!
-            self.castName.sizeToFit()
-        }
+        self.castName.text = viewCellModel.name
+        self.castName.sizeToFit()
+        self.castRole.text = viewCellModel.character
+        self.castRole.sizeToFit()
         
-        if (cast.character != nil) {
-            self.castRole.text = cast.character!
-            self.castRole.sizeToFit()
-        }
-        
-        if (cast.profilePath != nil) {
-            
-            let tmdbViewModel = MovieListViewModel()
-            
-            tmdbViewModel.tmdbModel.imageURLFor(path: cast.profilePath!, type: .profile) { stringProfilePath in
+        if (!viewCellModel.profilePath.isEmpty) {
+            TMDb.shared.imageURLFor(path: viewCellModel.profilePath, type: .profile) { stringProfilePath in
                 
                 self.castPhoto.kf.setImage(with: URL(string: stringProfilePath)!,
                                         options:[.transition(.fade(0.2))])
             }
         } else {
-            guard let gender = cast.gender else {
-                self.castPhoto.image = UIImage(named: "manProfile.png")
-                return
-            }
-            
-            switch gender {
-            case 1:
-                self.castPhoto.image = UIImage(named: "womanProfile.png")
-                break
-            default:
-                self.castPhoto.image = UIImage(named: "manProfile.png")
-            }
+            self.castPhoto.image = UIImage(named: (viewCellModel.gender == 1) ? "manProfile.png" : "womanProfile.png")
         }
         
     }

@@ -38,24 +38,40 @@ class OverviewCell: BaseCell {
     }
     
     func commomInit() {
-
-        self.overviewTextView.textColor = UIColor.lightText
-        self.overviewTextView.font = UIFont.systemFont(ofSize: 12.0)
-        self.overviewTextView.textAlignment = .justified
-        self.overviewTextView.numberOfLines = 0
-        self.overviewTextView.lineBreakMode = .byWordWrapping
-        self.overviewTextView.backgroundColor = UIColor.clear
-        self.overviewTextView.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.overviewTextView = OverviewCell.labelConfiguration()
         self.contentView.addSubview(self.overviewTextView)
-        
         self.setConstraints()
+    }
+    
+    static func labelConfiguration() -> UILabel {
+        let label = UILabel()
+        
+        label.textColor = UIColor.lightText
+        label.font = UIFont.systemFont(ofSize: 12.0)
+        label.textAlignment = .justified
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.backgroundColor = UIColor.clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }
+    
+    static func getOverviewCellSize(for viewCellModel: OverviewCellViewModel) -> CGSize {
+        let autoLayoutLabel = OverviewCell.labelConfiguration()
+        let margins = CGFloat(16.0)
+        autoLayoutLabel.text = viewCellModel.overview
+        let screenSize = UIScreen.main.bounds
+        let labelSize = autoLayoutLabel.sizeThatFits(CGSize(width: Double(screenSize.width - margins), height: Double(MAXFLOAT)))
+        
+        return CGSize(width: screenSize.width - margins, height: labelSize.height + margins)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
     }
+    
     func setConstraints() {
         
         self.contentView.addConstraints([NSLayoutConstraint.init(item: self.overviewTextView,
@@ -81,12 +97,9 @@ class OverviewCell: BaseCell {
                                                                  constant: -8.0)])
     }
 
-    func configureWith(overview: String?) {
-        
-        if (overview != nil) {
-            self.overviewTextView.text = overview!
-            self.overviewTextView.sizeToFit()
-            self.contentView.sizeToFit()
-        }
+    func configureWith(_ viewCellModel: OverviewCellViewModel) {
+        self.overviewTextView.text = viewCellModel.overview
+        self.overviewTextView.sizeToFit()
+        self.contentView.sizeToFit()
     }
 }
