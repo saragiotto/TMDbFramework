@@ -8,7 +8,6 @@
 
 import UIKit
 import ChameleonFramework
-import TMDbFramework
 import Kingfisher
 
 class MovieDetailViewController: UITableViewController {
@@ -16,32 +15,22 @@ class MovieDetailViewController: UITableViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backdropMovie: UIImageView!
     @IBOutlet weak var overview: UITextView!
-    
-    
-    @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
-    @IBOutlet weak var genre: UILabel!
-    @IBOutlet weak var cast: UILabel!
     
-    
-    @IBOutlet weak var runTime: UILabel!
-    
-    @IBOutlet weak var genreLabel: UILabel!
-    @IBOutlet weak var populatiry: UILabel!
-    @IBOutlet weak var website: UILabel!
-    
-    @IBOutlet weak var castTableView: UITableView!
-    
-    var movie: TMDbMovie?
-    
-    private var curtainsView = UIView()
+    var viewModel:MovieDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        self.title = self.movieTitle()
+        self.initViewController()
+        
+        self.initViewModel()
+    }
+    
+    private func initViewController() {
+        self.title = self.viewModel?.titleForView ?? ""
         
         self.tableView.contentInset = .zero
         self.tableView.separatorInset = .zero
@@ -56,23 +45,18 @@ class MovieDetailViewController: UITableViewController {
         self.tableView.register(ReleaseDateCell.self, forCellReuseIdentifier: "releaseDateCell")
         self.tableView.register(OverviewCell.self, forCellReuseIdentifier: "overviewCell")
         self.tableView.register(CastCell.self, forCellReuseIdentifier: "castCell")
-        
-        TMDb.shared.creditsFor(self.movie!) { movie in
-            
-            if let movie = movie {
-                self.movie = movie
-                self.tableView.reloadData()
-            }
+    }
+    
+    private func initViewModel() {
+        self.viewModel?.reloadTableViewClosure = {
+            self.tableView.reloadData()
         }
+        
+        self.viewModel?.fetchDetails()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if (self.movie?.cast != nil && (self.movie?.cast!.count)! > 0) {
-            return 3 + (self.movie?.cast?.count)!
-        }
-        
-        return 3
+        return self.viewModel?.numberOfRows ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,29 +64,19 @@ class MovieDetailViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             let cell:BrackdropCell = tableView.dequeueReusableCell(withIdentifier: "backdropCell", for: indexPath) as! BrackdropCell
-            
-            if movie!.backdropPath != nil {
-                cell.configureWith(imagePath: movie!.backdropPath!)
-            }
-            
+            cell.configureWith(self.viewModel!.getBarckdropCellModel())
             return cell
         case 1:
             let cell:ReleaseDateCell  = tableView.dequeueReusableCell(withIdentifier: "releaseDateCell", for: indexPath) as! ReleaseDateCell
-            
-            cell.configureWith(releaseDate: movie!.releaseDate)
-            
+            cell.configureWith(self.viewModel!.getReleaseDateCellModel())
             return cell
         case 2:
             let cell:OverviewCell  = tableView.dequeueReusableCell(withIdentifier: "overviewCell", for: indexPath) as! OverviewCell
-            
-            cell.configureWith(overview: movie!.overview)
-            
+            cell.configureWith(self.viewModel!.getOverviewCellModel())
             return cell
         default:
             let cell:CastCell  = tableView.dequeueReusableCell(withIdentifier: "castCell", for: indexPath) as! CastCell
-            
-            cell.configureWith(cast: movie!.cast![indexPath.row - 3])
-            
+            cell.configureWith(self.viewModel!.getCastCellMode(at: indexPath))
             return cell
         }
     }
@@ -120,21 +94,6 @@ class MovieDetailViewController: UITableViewController {
             return 56.0
         }
     }
-    
-    private func movieTitle() -> String {
-        
-        var finalTitle = "Title Not Available"
-        
-        if let title = movie!.title {
-            finalTitle = title
-        } else {
-            if let originalTitle = movie!.originalTitle {
-                finalTitle = originalTitle
-            }
-        }
-        
-        return finalTitle
-    }
 
     /*
     // MARK: - Navigation
@@ -145,12 +104,4 @@ class MovieDetailViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    public func openWebsite() {
-        if let website = self.movie!.homepage {
-            UIApplication.shared.open(URL.init(string: website)!, options: [:], completionHandler: nil)
-        }
-        
-        return
-    }
 }

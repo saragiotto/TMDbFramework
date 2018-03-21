@@ -81,12 +81,9 @@ class OverviewCell: BaseCell {
                                                                  constant: -8.0)])
     }
 
-    func configureWith(overview: String?) {
-        
-        if (overview != nil) {
-            self.overviewTextView.text = overview!
-            self.overviewTextView.sizeToFit()
-            self.contentView.sizeToFit()
-        }
+    func configureWith(_ viewCellModel: OverviewCellViewModel) {
+        self.overviewTextView.text = viewCellModel.overview
+        self.overviewTextView.sizeToFit()
+        self.contentView.sizeToFit()
     }
 }

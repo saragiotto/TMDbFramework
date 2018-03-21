@@ -56,7 +56,8 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
         case Storyboard.movieDetailIdentifier:
             if let movieDetailVC = segue.destination as? MovieDetailViewController {
                 let row = self.collectionView!.indexPathsForSelectedItems!.first!.row
-                movieDetailVC.movie = movieListVM.movies?[row]
+                let detailVM = MovieDetailViewModel(movieListVM.movies![row])
+                movieDetailVC.viewModel = detailVM
             }
         default:
             break

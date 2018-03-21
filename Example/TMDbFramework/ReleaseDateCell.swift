@@ -74,23 +74,8 @@ class ReleaseDateCell: BaseCell {
                                                                  constant: -8.0),])
     }
     
-    func configureWith(releaseDate: String?) {
-        
-        if (releaseDate != nil) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            
-            let releaseDateFormatted = dateFormatter.date(from: releaseDate!)
-            
-            let newDateFormat = DateFormatter()
-            newDateFormat.dateStyle = .medium
-        
-            self.releaseDate.text = "Release Date " + newDateFormat.string(from: releaseDateFormatted!)
-        } else {
-            self.releaseDate.text = "To be announced"
-        }
-        
+    func configureWith(_ viewCellModel: ReleaseDateCellViewModel) {
+        self.releaseDate.text = viewCellModel.releaseDate
         self.releaseDate.sizeToFit()
     }
 }
