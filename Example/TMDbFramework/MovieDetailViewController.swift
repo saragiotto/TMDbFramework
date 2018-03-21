@@ -89,7 +89,7 @@ class MovieDetailViewController: UITableViewController {
         case 1:
             return 44.0
         case 2:
-            return 88.0
+            return OverviewCell.getOverviewCellSize(for: self.viewModel!.getOverviewCellModel()).height
         default:
             return 56.0
         }
