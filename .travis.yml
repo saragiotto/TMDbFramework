@@ -21,4 +21,3 @@ after_success:
   - bash <(curl -s https://codecov.io/bash) -f ./xml_report/cobertura.xml -X coveragepy -X gcov -X xcode -t 914802df-2d31-4f56-95e3-99ee2f287a91
 script:
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TMDbFramework.xcworkspace -scheme TMDbFramework-Example -sdk iphonesimulator11.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.2' ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 | xcpretty
-- pod lib lint --allow-warnings

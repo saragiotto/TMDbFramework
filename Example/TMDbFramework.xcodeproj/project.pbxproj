@@ -283,7 +283,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D34432DD12CE24F39CB7A21A /* [CP] Embed Pods Frameworks */,
-				257F0799E599119AA0F4F52F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,7 +302,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				3514135AB4C2A404C3EF59E4 /* [CP] Embed Pods Frameworks */,
-				3D4F1BEF2191451D1EECCE9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -386,21 +384,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		257F0799E599119AA0F4F52F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDbFramework_Example/Pods-TMDbFramework_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3514135AB4C2A404C3EF59E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,21 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDbFramework_Tests/Pods-TMDbFramework_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3D4F1BEF2191451D1EECCE9C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDbFramework_Tests/Pods-TMDbFramework_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5B26FCD5804DA89EE35725B8 /* [CP] Check Pods Manifest.lock */ = {
